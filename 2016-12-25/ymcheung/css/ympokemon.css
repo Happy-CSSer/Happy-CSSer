@@ -3656,6 +3656,28 @@ body {
 .pokeballContainer a {
   display: inline-block; }
 
+.itemCountText {
+  display: inline-block;
+  color: #40666B;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 50px; }
+
+.xpNumberContainer {
+  text-align: right; }
+
+.xpTitle,
+.xpNumber {
+  font-size: .875rem;
+  font-weight: 700; }
+
+.xpTitle {
+  color: #40666B;
+  text-transform: uppercase; }
+
+.xpNumber {
+  color: #FF5C8E; }
+
 .icon {
   display: inline-block;
   margin-right: -4px;
@@ -3672,6 +3694,16 @@ body {
   width: 80px;
   height: 80px;
   background-image: url("../assets/icon/pokeball.png"); }
+
+.icon.potion {
+  width: 50px;
+  height: 50px;
+  background-image: url("../assets/icon/potion.png"); }
+
+.icon.food {
+  width: 50px;
+  height: 50px;
+  background-image: url("../assets/icon/food.png"); }
 
 .modalConfirm {
   width: 50%;

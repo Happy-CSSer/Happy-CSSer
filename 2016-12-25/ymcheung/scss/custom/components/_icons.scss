@@ -25,4 +25,16 @@
 		background-image: url('../assets/icon/pokeball.png');
 		// box-shadow: 0 18px 50px 0 rgba(0,0,0,0.75);
 	}
+	&.potion
+	{
+		width: 50px;
+		height: 50px;
+		background-image: url('../assets/icon/potion.png');
+	}
+	&.food
+	{
+		width: 50px;
+		height: 50px;
+		background-image: url('../assets/icon/food.png');
+	}
 }
