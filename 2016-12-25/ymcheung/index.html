@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Go</title>
+    <link rel="stylesheet" href="css/ympokemon.css">
+</head>
+<body>
+
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="pokeballContainer">
+                <a href="javascript:void(0)" data-open="gotcha">
+                    <i class="icon oriHz pokeball"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+    <div class="gotchaModal small reveal" id="gotcha" data-reveal>
+        
+        <div class="row">
+            <div class="small-6 columns">
+                <i class="icon oriHz potion"></i>
+                <span class="itemCountText">100</span>
+            </div>
+            <div class="small-6 columns">
+                <i class="icon oriHz food"></i>
+                <span class="itemCountText">3</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-8">
+                <span class="xpTitle">Pokemon Caught</span>
+            </div>
+            <div class="xpNumberContainer small-4">
+                <span class="xpNumber">100 XP</span>
+            </div>
+
+            <div class="small-8">
+                <span class="xpTitle">Great Throw</span>
+            </div>
+            <div class="xpNumberContainer small-4">
+                <span class="xpNumber">50 XP</span>
+            </div>
+            <div class="small-8">
+                <span class="xpTitle">Curveball</span>
+            </div>
+            <div class="xpNumberContainer small-4">
+                <span class="xpNumber">10 XP</span>
+            </div>
+            <div class="small-12">
+                <hr>
+            </div>
+        </div>
+
+        <button class="modalConfirm close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">OK</span>
+        </button>
+    </div>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/dist/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="js/min/app-min.js"></script>
+</body>
+</html>

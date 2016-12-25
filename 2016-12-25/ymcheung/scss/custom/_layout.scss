@@ -1,0 +1,78 @@
+html,
+body 
+{
+	height: 100%;
+}
+
+body 
+{
+	background: url('../assets/images/fieldBg.png');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+// Modal Window's Background Gradient
+%modalBgGradient
+{
+	background: rgba( 255, 255, 255, 1);
+	background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(237,255,233,1) 100%);
+}
+
+
+// Pokeball Container
+.pokeballContainer
+{
+	margin-top: 70vh;
+	text-align: center;
+}
+
+// Trigger Modal Window
+.pokeballContainer
+{
+	a 
+	{
+		display: inline-block;
+	}
+}
+
+
+
+
+// Gotcha Window
+.gotchaModal
+{
+	@extend %modalBgGradient;
+}
+
+.itemCountText
+{
+	display: inline-block;
+	color: $plainTextColor;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 50px;
+}
+
+
+.xpNumberContainer
+{
+	text-align: right;
+}
+
+.xpTitle,
+.xpNumber
+{
+	font-size: .875rem;
+	font-weight: 700;
+}
+
+.xpTitle
+{
+	color: $plainTextColor;
+	text-transform: uppercase;
+}
+
+.xpNumber
+{
+	color: $expTextColor;
+}
