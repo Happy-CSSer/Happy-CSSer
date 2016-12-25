@@ -1,0 +1,75 @@
+.toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden.toolbar {
+  pointer-events: none;
+}
+
+.cancel {
+  height: 40px;
+  width: 40px;
+  background: white;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  color: #2A7E8A;
+  border: 3px solid #2A7E8A;
+}
+
+.hidden .cancel {
+  opacity: 0;
+}
+
+.pokeball {
+  height: 80px;
+  width: 80px;
+  background: white;
+  border-radius: 80px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.hidden .pokeball {
+  opacity: 0;
+}
+
+.pokeballTop {
+  background: #FC3C4B;
+  flex: 1;
+}
+
+.pokeballBottom {
+  background: #FEFFFF;
+  flex: 1;
+}
+
+.pokeballWrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokeballCenter {
+  background: #ACBEB5;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #FEFFFF;
+  border-radius: 20px;
+}
