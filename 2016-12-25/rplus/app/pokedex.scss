@@ -1,4 +1,5 @@
 $c-white: #fff;
+$c-black: #000;
 $c-cell-bgc: #ccc8fd;
 $c-shadow-avatar: #aea8f3;
 
@@ -70,6 +71,7 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
 }
 
 .wall {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15vmin, 1fr));
   grid-gap: 1vmin;
@@ -125,6 +127,47 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
   // pm index
   &[data-state="unknown"]::after {
     content: counter(pm-counter);
+  }
+}
+
+.close-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5vmin;
+  z-index: 5;
+  width: 1em;
+  height: 1em;
+  font-size: 12vmin;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: .125em solid rgba($c-white, .3);
+  box-shadow:
+    inset 0 0 0 .03em rgba($c-black, .75),
+    inset 0 0 0 .5em $c-white,
+    0 0 0 .05em rgba($c-black, .1);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: .03em;
+    opacity: .75;
+    background-color: currentColor;
+    transform: translate(-50%, -50%) rotate(-45deg) scaleY(1.25);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(45deg) scaleY(1.25);
+  }
+
+  &:focus,
+  &:active {
+    filter: contrast(.75);
   }
 }
 

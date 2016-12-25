@@ -19,6 +19,7 @@ body
       };
 
     main.wall
+      .close-btn
       each $, i in Array(151)
         .cell
           .pm(data-state=`${randomState()}`, style=`background-image: url('./pokemonSprites/${i + 1}.png')`)
