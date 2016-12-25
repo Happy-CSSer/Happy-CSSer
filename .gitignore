@@ -1,2 +1,4 @@
-.DS_Store
-config.codekit3
+.sass-cache
+node_modules
+bower_components
+# dist

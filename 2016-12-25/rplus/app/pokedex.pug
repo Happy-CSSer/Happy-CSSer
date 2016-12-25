@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title pokedex
+  link(rel="stylesheet", href="pokedex.css")
+body
+  .app
+    header.header
+      h1.title pokedex
+      h2.subtitle(data-caught="144", data-seen="147")
+
+    -
+      var states = ['unknown', 'seen', 'caught'];
+      var randomState = function () {
+        return states[~~(Math.random() * 100) % 3];
+      };
+
+    main.wall
+      each $, i in Array(153)
+        .cell
+          .pm(data-state=`${randomState()}`, style=`background-image: url('./pokemonSprites/${i + 1}.png')`)
+
