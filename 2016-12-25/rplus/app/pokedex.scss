@@ -71,35 +71,47 @@ $app-height: 640px;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-position: 50%;
-  background-size: cover;
   color: #fff;
+  background-size: 0% 0%;
+  background-repeat: no-repeat;
 
-  &[data-state="seen"] {
-    // filter: opacity(10%);
-  }
-
-  &[data-state="unknown"] {
-    &::before {
-      content: counter(pm-counter);
-      position: relative;
-      z-index: 2;
-      font-size: 1.25em;
-    }
-
-  &::after {
+  // avatar
+  &:not([data-state="unknown"])::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
+    background-image: inherit;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &[data-state="seen"]::before {
+    filter: contrast(0) opacity(30%);
+  }
+
+  &:not([data-state="caught"])::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 15%;
     background-color: #ccf;
+    font-size: 1.25em;
   }
+
+  &[data-state="unknown"]::after {
+    content: counter(pm-counter);
   }
 }
 
