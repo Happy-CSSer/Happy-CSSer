@@ -1,36 +1,57 @@
-$app-width: 360px;
-$app-height: 640px;
+$c-white: #fff;
+$c-cell-bgc: #ccc8fd;
+$c-shadow-avatar: #aea8f3;
+
+$bg-gradient: linear-gradient($c-white, #c8e0ff);
+
+@mixin fill-full($dir: 'full', $type: absolute) {
+  position: $type;
+  @if $dir != 'top' {bottom: 0; }
+  @if $dir != 'left' {right: 0; }
+  @if $dir != 'right' {left: 0; }
+  @if $dir != 'bottom' {top: 0; }
+}
 
 .app {
   position: relative;
-  // width: $app-width;
-  // height: $app-height;
   margin-left: auto;
   margin-right: auto;
+  padding: 5em 5vmin;
   text-align: center;
-  background-color: #eee;
   font-family: sans;
+  line-height: 1;
 
-  padding-top: 4em; // for fixed header
+  &::before {
+    content: '';
+    @include fill-full('full', fixed);
+    z-index: -1;
+    pointer-events: none;
+    background-image: $bg-gradient;
+  }
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  @include fill-full('top', fixed);
   z-index: 10;
-  background-color: #fff;
-  background-image: linear-gradient(transparent 80%, rgba(#000, .1));
+  overflow: hidden;
+  padding-top: 4vh;
+  padding-bottom: .5em;
+  background-color: $c-white;
   text-transform: uppercase;
+  background: $bg-gradient 50% 0 / 100vw 50vh no-repeat;
+  box-shadow: 0 1px 5px $c-shadow-avatar;
 }
 
 .title {
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .subtitle {
+  padding-top: .5em;
+  opacity: .5;
   font-size: inherit;
-  font-weight: inherit;
+  font-weight: 300;
 
   @mixin subtitle-gap ($size: .5em) {
     padding-left: $size;
@@ -50,8 +71,8 @@ $app-height: 640px;
 
 .wall {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 3px;
+  grid-template-columns: repeat(auto-fill, minmax(15vmin, 1fr));
+  grid-gap: 1vmin;
 }
 
 .cell {
@@ -66,23 +87,15 @@ $app-height: 640px;
 }
 
 .pm {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color: #fff;
+  @include fill-full;
+  color: $c-white;
   background-size: 0% 0%;
   background-repeat: no-repeat;
 
-  // avatar
+  // pm avatar
   &:not([data-state="unknown"])::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @include fill-full;
     z-index: 2;
     background-image: inherit;
     background-position: 50%;
@@ -90,26 +103,26 @@ $app-height: 640px;
     background-repeat: no-repeat;
   }
 
+  // pm avatar shadow image effect
   &[data-state="seen"]::before {
-    filter: contrast(0) opacity(30%);
+    filter: contrast(0) opacity(20%);
+    mix-blend-mode: difference;
   }
 
+  // square with border-radius in background
   &:not([data-state="caught"])::after {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+    @include fill-full;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
     border-radius: 15%;
-    background-color: #ccf;
-    font-size: 1.25em;
+    background-color: $c-cell-bgc;
+    font-size: calc(5vmin);
   }
 
+  // pm index
   &[data-state="unknown"]::after {
     content: counter(pm-counter);
   }
