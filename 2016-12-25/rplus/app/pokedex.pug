@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title pokedex
+  link(rel="stylesheet", href="pokedex.css")
+body
+  .app
+    header.header
+      h1.title pokedex
+      h2.subtitle(data-caught="144", data-seen="147")
+
+    main.wall
+      each $ in Array(151)
+        .cell
+          .pm
+

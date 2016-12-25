@@ -1,0 +1,91 @@
+$app-width: 360px;
+$app-height: 640px;
+
+.app {
+  position: relative;
+  width: $app-width;
+  height: $app-height;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #ccc;
+
+  padding-top: 4em; // for fixed header
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: $app-width;
+  background-color: #fff;
+  background-image: linear-gradient(transparent 80%, rgba(#000, .1));
+  text-transform: uppercase;
+}
+
+.title {
+}
+
+.subtitle {
+  font-size: inherit;
+  font-weight: inherit;
+
+  @mixin subtitle-gap ($size: .5em) {
+    padding-left: $size;
+    padding-right: $size;
+  }
+
+  &::before {
+    content: 'caught: ' attr(data-caught);
+    @include subtitle-gap;
+  }
+
+  &::after {
+    content:  'seen: ' attr(data-seen);;
+    @include subtitle-gap;
+  }
+}
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.cell {
+  // height: 50px;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+/*
+.app
+  header.header
+    h1.title pokedex
+    h2(data-caught="144", data-seen="147")
+
+  main.wall
+    .cell
+      .pm
+*/
+
+// reset forcely
+
+:root {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+
+  box-shadow: inset 0 0 1px;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
