@@ -3,12 +3,13 @@ $app-height: 640px;
 
 .app {
   position: relative;
-  width: $app-width;
-  height: $app-height;
+  // width: $app-width;
+  // height: $app-height;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: #ccc;
+  background-color: #eee;
+  font-family: sans;
 
   padding-top: 4em; // for fixed header
 }
@@ -16,7 +17,9 @@ $app-height: 640px;
 .header {
   position: fixed;
   top: 0;
-  width: $app-width;
+  left: 0;
+  right: 0;
+  z-index: 10;
   background-color: #fff;
   background-image: linear-gradient(transparent 80%, rgba(#000, .1));
   text-transform: uppercase;
@@ -48,15 +51,55 @@ $app-height: 640px;
 .wall {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-gap: 3px;
 }
 
 .cell {
-  // height: 50px;
+  position: relative;
+  counter-increment: pm-counter;
 
   &::before {
     content: '';
     display: block;
     padding-bottom: 100%;
+  }
+}
+
+.pm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: 50%;
+  background-size: cover;
+  color: #fff;
+
+  &[data-state="seen"] {
+    // filter: opacity(10%);
+  }
+
+  &[data-state="unknown"] {
+    &::before {
+      content: counter(pm-counter);
+      position: relative;
+      z-index: 2;
+      font-size: 1.25em;
+    }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15%;
+    background-color: #ccf;
+  }
   }
 }
 
@@ -82,7 +125,7 @@ $app-height: 640px;
   padding: 0;
   box-sizing: inherit;
 
-  box-shadow: inset 0 0 1px;
+  // box-shadow: inset 0 0 1px;
 
   &::before,
   &::after {

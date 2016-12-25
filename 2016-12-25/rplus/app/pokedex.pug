@@ -10,8 +10,14 @@ body
       h1.title pokedex
       h2.subtitle(data-caught="144", data-seen="147")
 
+    -
+      var states = ['unknown', 'seen', 'caught'];
+      var randomState = function () {
+        return states[~~(Math.random() * 100) % 3];
+      };
+
     main.wall
-      each $ in Array(151)
+      each $, i in Array(153)
         .cell
-          .pm
+          .pm(data-state=`${randomState()}`, style=`background-image: url('./pokemonSprites/${i + 1}.png')`)
 
