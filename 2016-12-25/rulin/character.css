@@ -26,6 +26,7 @@ body {
 .setting_preview {
     width: 80%;
     max-width: 400px;
+    object-fit: contain;
 }
 
 @media (min-width: 360px) {
