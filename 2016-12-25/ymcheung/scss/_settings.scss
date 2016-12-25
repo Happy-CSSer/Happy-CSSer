@@ -61,9 +61,18 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+
+// custom Colors
+$expTextColor: #40666B;
+$expTextColor: #FF5C8E;
+$confirmLeft: #A9D7A1;
+$confirmRight: #26CCAE;
+// $modalStart: white;
+$modalEnd: #F0FFEE;
+
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Lato' 'Roboto', 'Arial', sans-serif;
+$body-font-family: 'Lato', 'Roboto', 'Arial', sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -298,7 +307,7 @@ $card-margin: $global-margin;
 // 15. Close Button
 // ----------------
 
-$closebutton-position: right top;
+$closebutton-position: 50% bottom;
 $closebutton-offset-horizontal: (
   small: 0.66rem,
   medium: 1rem,

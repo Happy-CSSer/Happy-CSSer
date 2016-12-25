@@ -1,18 +1,47 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Go</title>
     <link rel="stylesheet" href="css/ympokemon.css">
-  </head>
-  <body>
+</head>
+<body>
+
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="pokeballContainer">
+                <a href="javascript:void(0)" data-open="gotcha">
+                    <i class="icon oriHz pokeball"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+    <div class="gotchaModal small reveal" id="gotcha" data-reveal>
+        
+        <div class="row">
+            <div class="small-6 columns">
+                
+            </div>
+            <div class="small-6 columns">
+                
+            </div>
+        </div>
+
+        <button class="modalConfirm close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">OK</span>
+        </button>
+    </div>
 
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/what-input/dist/what-input.js"></script>
     <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
     <script src="js/min/app-min.js"></script>
-  </body>
+</body>
 </html>
