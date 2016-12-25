@@ -171,6 +171,43 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
   }
 }
 
+.scroll-indicator {
+  position: fixed;
+  top: 70%;
+  right: -.4em;
+  z-index: 10;
+  width: 1em;
+  height: 1em;
+  font-size: 12vmin;
+  border-radius: 50%;
+  background-color: rgba($c-white, .75);
+  box-shadow: 0 0 .1em $c-shadow-avatar;
+  opacity: .75;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    height: 20%;
+    color: $c-shadow-avatar;
+  }
+
+  &::before {
+    border-top: .05em solid;
+    border-right: .05em solid;
+    transform: translate(-100%, -100%) rotate(-45deg);
+  }
+
+  &::after {
+    border-left: .05em solid;
+    border-bottom: .05em solid;
+    transform: translate(-100%, 0%) rotate(-45deg);
+  }
+}
+
 /*
 .app
   header.header
