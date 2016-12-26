@@ -2,26 +2,44 @@
 html(lang="en")
 head
   meta(charset="UTF-8")
-  title pokedex
+  title Pokédex
   meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
   link(rel="stylesheet", href="pokedex.css")
 body
-  .app
-    header.header
-      h1.title pokedex
-      h2.subtitle(data-caught="144", data-seen="147")
-
-    -
-      var states = ['unknown', 'seen', 'caught'];
-      var randomState = function () {
-        return states[~~(Math.random() * 100) % 3];
+  -
+    var states = (() => {
+      var stateMap = {
+        'unknown': 1,
+        'seen': 2,
+        'caught': 7
       };
+      return Object.keys(stateMap).reduce(
+        (summary, curState) => summary.concat(new Array(stateMap[curState]).fill(curState)),
+        []
+      );
+    })();
 
+    var randomState = function () {
+      return states[~~(Math.random() * 100) % states.length];
+    };
+
+    var getXY = function (idx) {
+      var cellInRow = 13;
+      var cellInCol = 12;
+      var row = ~~(idx / (cellInRow - 1));
+      var col = idx - row * (cellInRow - 1);
+      return `${(100 / (cellInCol - 1)) * col}% ${(100 / (cellInRow - 1)) * row}%`;
+    };
+
+  .app
     main.wall
       .scroll-indicator
       .close-btn
       each $, i in Array(151)
-        .cell
-          .pm(data-state=`${randomState()}`, style=`background-image: url('./pokemonSprites/${i + 1}.png')`)
+        .tile(data-state=`${randomState()}`)
+          .pm(style=`--bgp: ${getXY(i)}`)
 
+      header.header
+        h1.title Pokédex
+        h2.subtitle

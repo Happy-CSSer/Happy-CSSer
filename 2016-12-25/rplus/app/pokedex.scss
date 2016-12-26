@@ -1,27 +1,32 @@
 $c-white: #fff;
 $c-black: #000;
-$c-cell-bgc: #ccc8fd;
+$c-tile-bgc: #ccc8fd;
 $c-shadow-avatar: #aea8f3;
+$c-indicator: #2f8393;
 
 $bg-gradient: linear-gradient($c-white, #c8e0ff);
 
+// $pm-sprite-src: 'https://images.weserv.nl/?url=//www.pokemap.net/img/vt&il';
+$pm-sprite-src: 'https://images.weserv.nl/?url=//i.imgur.com/ku3aMpc.png&il';
+
 @mixin fill-full($dir: 'full', $type: absolute) {
   position: $type;
-  @if $dir != 'top' {bottom: 0; }
-  @if $dir != 'left' {right: 0; }
-  @if $dir != 'right' {left: 0; }
   @if $dir != 'bottom' {top: 0; }
+  @if $dir != 'right' {left: 0; }
+  @if $dir != 'left' {right: 0; }
+  @if $dir != 'top' {bottom: 0; }
 }
 
 .app {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding: 5em 5vmin;
+  padding: calc(3vh + 3em + 2.5vmax) 5vmin;
   text-align: center;
   font-family: sans;
   line-height: 1;
 
+  // fake fixed gradient bgc for performance
   &::before {
     content: '';
     @include fill-full('full', fixed);
@@ -35,8 +40,8 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
   @include fill-full('top', fixed);
   z-index: 10;
   overflow: hidden;
-  padding-top: 4vh;
-  padding-bottom: .5em;
+  padding-top: 3vh;
+  padding-bottom: .25em;
   background-color: $c-white;
   text-transform: uppercase;
   background: $bg-gradient 50% 0 / 100vw 50vh no-repeat;
@@ -44,43 +49,73 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: inherit;
   font-weight: 400;
+  padding-bottom: .75em;
 }
 
 .subtitle {
-  padding-top: .5em;
   opacity: .5;
-  font-size: inherit;
-  font-weight: 300;
+  font-size: smaller;
+  font-weight: inherit;
+  color: $c-indicator;
 
-  @mixin subtitle-gap ($size: .5em) {
-    padding-left: $size;
-    padding-right: $size;
+  &::before,
+  &::after {
+    display: inline-block;
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-bottom: .25em;
   }
 
   &::before {
-    content: 'caught: ' attr(data-caught);
-    @include subtitle-gap;
+    content: 'caught: ' counter(pm-caught);
   }
 
   &::after {
-    content:  'seen: ' attr(data-seen);;
-    @include subtitle-gap;
+    content: 'seen: ' counter(pm-seen);
   }
 }
 
 .wall {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15vmin, 1fr));
-  grid-gap: 1vmin;
+  grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+  grid-gap: .5em;
+
+  @media (min-width: 360px) {
+    grid-template-columns: repeat(auto-fill, minmax(15vmin, 1fr));
+    grid-gap: 1vmin;
+  }
+
+  // for grid fallback
+  @supports not (display: grid) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
-.cell {
+.tile {
   position: relative;
   counter-increment: pm-counter;
 
+  // for grid fallback
+  @supports not (display: grid) {
+    width: 15vmin;
+    margin: .5vmin;
+  }
+
+  &[data-state="caught"] {
+    // caught must have seen
+    counter-increment: pm-seen pm-caught pm-counter;
+  }
+
+  &[data-state="seen"] {
+    counter-increment: pm-seen pm-counter;
+  }
+
+  // for square tile layout
   &::before {
     content: '';
     display: block;
@@ -91,28 +126,30 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
 .pm {
   @include fill-full;
   color: $c-white;
-  background-size: 0% 0%;
-  background-repeat: no-repeat;
 
   // pm avatar
-  &:not([data-state="unknown"])::before {
+  .tile:not([data-state="unknown"]) &::before {
     content: '';
-    @include fill-full;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     z-index: 2;
-    background-image: inherit;
-    background-position: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    background-image: url($pm-sprite-src);
+    background-position: var(--bgp);
+    background-size: 1200% 1300%;
   }
 
   // pm avatar shadow image effect
-  &[data-state="seen"]::before {
+  .tile[data-state="seen"] &::before {
     filter: contrast(0) opacity(20%);
     mix-blend-mode: difference;
   }
 
   // square with border-radius in background
-  &:not([data-state="caught"])::after {
+  .tile:not([data-state="caught"]) &::after {
     content: '';
     @include fill-full;
     display: flex;
@@ -120,12 +157,12 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
     align-items: center;
     z-index: 1;
     border-radius: 15%;
-    background-color: $c-cell-bgc;
+    background-color: $c-tile-bgc;
     font-size: calc(5vmin);
   }
 
   // pm index
-  &[data-state="unknown"]::after {
+  .tile[data-state="unknown"] &::after {
     content: counter(pm-counter);
   }
 }
@@ -143,9 +180,10 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
   margin-right: auto;
   border-radius: 50%;
   border: .125em solid rgba($c-white, .3);
+  color: $c-indicator;
   box-shadow:
-    inset 0 0 0 .03em rgba($c-black, .75),
-    inset 0 0 0 .5em $c-white,
+    inset 0 0 0 .03em,
+    inset 0 0 0 .5em rgba($c-white, .9),
     0 0 0 .05em rgba($c-black, .1);
 
   &::before,
@@ -156,7 +194,7 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
     left: 50%;
     width: 40%;
     height: .03em;
-    opacity: .75;
+    opacity: .8;
     background-color: currentColor;
     transform: translate(-50%, -50%) rotate(-45deg) scaleY(1.25);
   }
@@ -180,44 +218,33 @@ $bg-gradient: linear-gradient($c-white, #c8e0ff);
   height: 1em;
   font-size: 12vmin;
   border-radius: 50%;
-  background-color: rgba($c-white, .75);
-  box-shadow: 0 0 .1em $c-shadow-avatar;
-  opacity: .75;
+  color: $c-indicator;
+  background-color: rgba($c-white, .5);
+  box-shadow: 0 0 .15em rgba($c-indicator, .6);
+  cursor: pointer;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 50%;
-    width: 20%;
-    height: 20%;
-    color: $c-shadow-avatar;
+    left: 37.5%;
+    width: 17.5%;
+    height: 17.5%;
   }
 
   &::before {
     border-top: .05em solid;
     border-right: .05em solid;
-    transform: translate(-100%, -100%) rotate(-45deg);
+    transform: scaleX(.9) translate(-50%, -100%) rotate(-45deg);
   }
 
   &::after {
     border-left: .05em solid;
     border-bottom: .05em solid;
-    transform: translate(-100%, 0%) rotate(-45deg);
+    transform: scaleX(.9) translate(-50%, 0%) rotate(-45deg);
   }
 }
-
-/*
-.app
-  header.header
-    h1.title pokedex
-    h2(data-caught="144", data-seen="147")
-
-  main.wall
-    .cell
-      .pm
-*/
 
 // reset forcely
 
