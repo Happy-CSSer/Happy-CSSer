@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>journal</title>
+<link href="./src/pure.css" rel="stylesheet">
+<link href="./src/grids-responsive.css" rel="stylesheet">
+<link href="./src/reset.css" rel="stylesheet">
+<link href="./src/journal.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 class="x_large">journal</h1>
+    </header>
+    <ol id="items_list">
+        <li class="mod_table">
+            <img src="" alt="" class="mod_table_cell">
+            <div class="info mod_table_cell">
+                <h2>name</h2>
+                <div class="cp">CP 123</div>
+                <time>12/12/2016/ 3:32PM</time>
+            </div>
+        </li>
+    </ol>
+</div>
+</body>
+<script>
+    var imgArray = ['', './image/team_blue.png', './image/team_red.png', './image/team_yellow.png'];
+    var ol = document.querySelector('#items_list');
+    for (var i = 0; i < 20; i++) {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'mod_table');
+        li.innerHTML = '<img src="' +  imgArray[Math.floor((Math.random() * 3) + 1)] + '" alt="pokemon" class="mod_table_cell">' +
+            '<div class="info mod_table_cell">' +
+                '<h2>name</h2>' +
+                '<div class="cp">CP 123</div>' +
+                '<time>12/12/2016/ 3:32PM</time>' +
+        '</div>';
+        ol.appendChild(li);
+    }
+</script>
+</html>
