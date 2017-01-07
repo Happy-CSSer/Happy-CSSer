@@ -49,21 +49,7 @@ $debug: true;
   left: 1em;
   right: 1em;
   bottom: 1em;
-  box-shadow: 0 0 3px;
   font-size: calc(1.5vmin + .5em);
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: calc(45vw - 35vmin + 50vmin);
-    bottom: 100%;
-    border-bottom: 1em solid;
-    border-left: .65em solid transparent;
-    border-right: .65em solid transparent;
-    font-size: smaller;
-    color: $c-white;
-    filter: drop-shadow(0 0 2px $c-black);
-  }
 }
 
 .intro__item {
@@ -112,6 +98,20 @@ $debug: true;
   line-height: 1.5;
   color: lighten($c-black, 25%);
   font-family: sans-serif;
+  box-shadow: 0 0 .25em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(45vw - 35vmin + 50vmin);
+    bottom: 100%;
+    border-bottom: 1em solid;
+    border-left: .65em solid transparent;
+    border-right: .65em solid transparent;
+    font-size: smaller;
+    color: $c-white;
+    filter: drop-shadow(0 -.125em .125em rgba($c-black, .3));
+  }
 }
 
 // reset forcely
