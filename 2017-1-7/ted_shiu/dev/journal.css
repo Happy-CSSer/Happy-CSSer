@@ -1,0 +1,110 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors Ted Shiu (tedshd@gmail.com)
+ * @date    2017-01-07 15:31:27
+ * @version $Id$
+ */
+
+/* basic */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* clear float */
+.clearfix {
+    *zoom: 1;
+}
+.clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+    clear: both;
+}
+
+/* text vertical center */
+/* area must display: inline-block & vertical-align: middle */
+.vertical_middle:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/* ellipsis text */
+/* add width */
+.ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hide {
+    display: none !important;
+}
+.hidden {
+    visibility: hidden;
+}
+
+.mod_table {
+    display: table;
+}
+
+.mod_table_cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* font size */
+
+.small {
+    font-size: .75rem;
+}
+.large {
+    font-size: 1.5rem;
+}
+.x_large {
+    font-size: 2rem;
+}
+
+/* journal */
+
+body {
+    background: #9cd6f7;
+}
+.container {
+    /* width: 100%; */
+    margin: 0 1rem;
+    box-sizing: border-box;
+    background: #e4f5fd;
+}
+header {
+    border-bottom: solid 1px rgba(0, 0, 0, .1);
+    background: #e4f5fd;
+}
+
+header h1 {
+    padding: 3rem;
+    text-align: center;
+}
+
+#items_list {
+    height: calc(100vh - 8rem - 1px);
+    overflow: scroll;
+}
+#items_list li {
+    border-bottom: solid 1px #fff;
+}
+#items_list li img {
+    width: 100px;
+    height: 100px;
+    margin: .5rem 0;
+}
+#items_list li .info * {
+    padding: .5rem 0 .5rem 1rem;
+}

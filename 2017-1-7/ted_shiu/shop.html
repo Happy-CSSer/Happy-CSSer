@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SHOP</title>
+<link href="./src/pure.css" rel="stylesheet">
+<link href="./src/grids-responsive.css" rel="stylesheet">
+<link href="./src/reset.css" rel="stylesheet">
+<link href="./src/shop.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <section id="title">
+        <h1 class="large">SHOP</h1>
+        <div class="vertical_middle">
+            <img src="./image/Item_COIN_01.png" alt="money" width="28" height="28">
+            <span class="x_large">690</span>
+        </div>
+    </section>
+    <section id="header_divider" class="pure-g">
+        <span class="divider pure-u-1-3"></span>
+        <span class="items pure-u-1-3">ITEMS</span>
+        <span class="divider pure-u-1-3"></span>
+    </section>
+    <section id="defend">
+        <img src="./image/btn_defender_unavailable.png" alt="defend" width="64" height="64">
+        <time>14:22:41</time>
+        <div id="count">12</div>
+    </section>
+</header>
+<ol id="items_list" class="pure-g">
+    <!-- <li class="pure-u-1-3 pure-u-sm-1-3 pure-u-md-1-4 pure-u-lg-1-6">
+        <div class="ball ball_1"></div>
+        <h2>20 Poke BALLS</h2>
+        <div>
+            <img src="./image/Item_COIN_01.png" alt="money" width="16" height="16">
+            <span>100</span>
+        </div>
+    </li> -->
+</ol>
+</body>
+<script>
+    var imgArray = ['./pokeball_store.png', './image/pokeball_store.100.png', './image/pokeball_store.200.png'];
+    var ol = document.querySelector('#items_list');
+    for (var i = 0; i < 20; i++) {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'pure-u-1-3 pure-u-sm-1-3 pure-u-md-1-4 pure-u-lg-1-6');
+        li.innerHTML = '<img src="' +  imgArray[Math.floor((Math.random() * 2) + 1)] + '" class="item_img pure-img">' +
+            '<h2>20 Poke BALLS</h2>' +
+            '<div class="price">' +
+                '<img src="./image/Item_COIN_01.png" alt="money" width="16" height="16">' +
+                '<span>' + i + '00</span>' +
+        '</div>';
+        ol.appendChild(li);
+    }
+</script>
+</html>
