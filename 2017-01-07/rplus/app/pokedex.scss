@@ -3,6 +3,13 @@ $c-black: #000;
 
 $bgi-src: 'https://rawgit.com/Superviral/Pokemon-GO-App-Assets-and-Images/master/App%20Converted%20Images/Professor.png';
 
+$debug: false;
+$debug: true;
+
+@if $debug == true {
+  $bgi-src: 'Professor.png';
+}
+
 @mixin fill-full($dir: 'full', $type: absolute) {
   position: $type;
   @if $dir != 'bottom' {top: 0; }
@@ -13,15 +20,21 @@ $bgi-src: 'https://rawgit.com/Superviral/Pokemon-GO-App-Assets-and-Images/master
 
 .dialog {
   @include fill-full('full', fixed);
-  background-image: linear-gradient(transparent 15%, var(--dialog-bgc, lighten($c-black, 50%)));
+  background-image:
+    linear-gradient(
+      transparent 15%,
+      var(--dialog-themeColor, lighten($c-black, 50%))
+    );
 
   &::before {
     $bgi-offset-y: 25vw;
 
     content: '';
     @include fill-full;
-    // background-image: var(--bgi);
-    background: url($bgi-src) $bgi-offset-y 50vh / 140vmin no-repeat;
+    background-image: var(--introducer-imgSrc);
+    background-repeat: no-repeat;
+    background-position: $bgi-offset-y 50vh;
+    background-size: 140vmin;
 
     @supports (background-position: right 1px top 1px) {
       // four-value syntax,
@@ -37,16 +50,17 @@ $bgi-src: 'https://rawgit.com/Superviral/Pokemon-GO-App-Assets-and-Images/master
   right: 1em;
   bottom: 1em;
   box-shadow: 0 0 3px;
+  font-size: calc(1.5vmin + .5em);
 
   &::before {
     content: '';
     position: absolute;
-    right: 25vw;
-    bottom: calc(100%);
-    font-size: smaller;
+    left: calc(45vw - 35vmin + 50vmin);
+    bottom: 100%;
     border-bottom: 1em solid;
     border-left: .65em solid transparent;
     border-right: .65em solid transparent;
+    font-size: smaller;
     color: $c-white;
     filter: drop-shadow(0 0 2px $c-black);
   }
@@ -110,8 +124,6 @@ $bgi-src: 'https://rawgit.com/Superviral/Pokemon-GO-App-Assets-and-Images/master
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-
-  // box-shadow: inset 0 0 1px;
 
   &::before,
   &::after {
