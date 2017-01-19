@@ -1,5 +1,4 @@
-
-＃ Happy CSSer-3
+# Happy CSSer-3
 
 https://www.facebook.com/events/1911828859048006/
 
