@@ -1,0 +1,32 @@
+.circle_layout {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size:50px 50px;
+    background-repeat:no-repeat;
+    margin: 10px;
+    padding: 0px;
+    background-image:url("http://i.imgur.com/2S7BI6v.png?2");
+  
+}
+.right_down_corner img{
+  display:inherit;
+  
+}
+.right_down_corner{
+  position:relative;
+  display:block;
+}
+.modal_layout {
+    border-style: solid;
+    border-radius: 10px;
+
+}
+.outer_circle {
+  border-style:solid;
+  display: inline-block;
+  border-color: #1ad1ff;
+  border-radius: 50px;
+  margin: 10px;
+  padding: 0px;
+}
