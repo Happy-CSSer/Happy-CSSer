@@ -8,11 +8,13 @@ header {
 .box__level {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: baseline;
   color: white;
-  vertical-align: bottom;
   font-size: 8vw;
-  .span__cp {}
+  vertical-align: bottom;
+  .span__cp {
+    font-size: 5vw;
+  }
   .span__level {}
 }
 
