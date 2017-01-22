@@ -8,26 +8,31 @@ header {
 .box__level {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: baseline;
   color: white;
-  vertical-align: bottom;
   font-size: 8vw;
-  .span__cp {}
+  vertical-align: bottom;
+  .span__cp {
+    font-size: 5vw;
+  }
   .span__level {}
 }
 
 $circle__size: 85vw;
+$padding__dot: 8px;
 %circle__base {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
-  width: calc( #{$circle__size} - 5px);
-  height: calc( #{$circle__size} - 5px);
+  margin: auto;
+  width: calc( #{$circle__size} - #{$padding__dot});
+  height: calc( #{$circle__size} - #{$padding__dot});
   border-radius: 50%;
 }
 
 $exp_border_width: 5px;
-$exp_dot__size: 10px;
+$exp_dot__size: 14px;
 @mixin exp_border($bg__color) {
   box-sizing: border-box;
   border-top: #{$exp_border_width} solid #{$bg__color};
@@ -64,8 +69,8 @@ $exp_dot__size: 10px;
       background-color: white;
       border-radius: 50%;
       position: absolute;
-      bottom: ( $exp_border_width - $exp_dot__size + 5px);
-      right: ( $exp_border_width - $exp_dot__size + 10px) / 2;
+      bottom: ( $exp_border_width - $exp_dot__size + $padding__dot);
+      right: ( $exp_border_width - $exp_dot__size + $padding__dot) / 2;
     }
     &:after {
       @extend %be_af_block;
@@ -80,6 +85,8 @@ $exp_dot__size: 10px;
   display: block;
   position: absolute;
   margin: auto;
+  left: 0;
+  right: 0;
   top: 40vw;
   width: 30vw;
 }

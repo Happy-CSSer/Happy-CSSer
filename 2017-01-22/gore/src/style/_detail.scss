@@ -10,17 +10,56 @@
   align-items: center;
 }
 
+%bef_aft__block {
+  display: block;
+  content: '';
+}
+
 .container {
   width: 90vw;
   background-color: white;
   border-radius: 2vw;
   padding-top: 8vw;
   padding: 0 5vw;
+  box-sizing: border-box;
+  text-align: center;
   .poke__name {
-    font-size: 10vw;
+    display: inline-block;
+    position: relative;
+    font-size: 8vw;
     color: #44696C;
     font-weight: bold;
     text-align: center;
+    .btn__name_edit {
+      $pen_height: 1.2vw;
+      $pen_color: #D9D9D9;
+      width: 5vw;
+      height: $pen_height;
+      background-color: $pen_color;
+      position: absolute;
+      bottom: 2vw;
+      left: calc( 100% + 3vw);
+      transform-origin: left bottom;
+      transform: rotate(-45deg);
+      &:before {
+        @extend %bef_aft__block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 100%;
+        top: 0;
+        border: $pen_height/2 solid transparent;
+        border-right: $pen_height/2 solid $pen_color;
+      }
+      &:after {
+        @extend %bef_aft__block;
+        width: $pen_height;
+        height: $pen_height;
+        background-color: $pen_color;
+        position: absolute;
+        left: calc(100% + 0.5vw);
+      }
+    }
   }
 }
 
@@ -42,17 +81,48 @@
 
 .box__poke_detail {
   @extend %flex_row_center;
+  align-items: stretch;
   .detail {
     flex: 1;
     @extend %flex_col_center;
+    justify-content: flex-end;
+    position: relative;
+    &:not(:last-of-type) {
+      &:after {
+        display: block;
+        content: '';
+        width: 1px;
+        height: 7vw;
+        background-color: #D9D9D9;
+        position: absolute;
+        top: -0.5vw;
+        left: calc( 100% - 1px);
+      }
+    }
     span {
       &:first-child {
         color: #44696C;
-        font-size: 6vw;
+        font-size: 5vw;
       }
       &:last-child {
         color: #95AAAB;
         font-size: 3vw;
+        margin: 2vw 0;
+      }
+      .icon__type {
+        display: inline-block;
+        $iconSize: 5.5vw;
+        width: $iconSize;
+        height: $iconSize;
+        border-radius: 50%;
+        margin: 0 1vw;
+        vertical-align: text-bottom;
+      }
+      .icon__type__gress {
+        background-image: linear-gradient( #9c62bc 0%, #C561D4 100%);
+      }
+      .icon__type__poison {
+        background-color: #61BA56;
       }
     }
   }
