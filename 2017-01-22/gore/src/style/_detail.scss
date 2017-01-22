@@ -1,0 +1,34 @@
+%flex_col_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 90vw;
+  background-color: white;
+  border-radius: 2vw;
+  padding-top: 8vw;
+  .poke__name {
+    font-size: 10vw;
+    color: #44696C;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.box__hp {
+  @extend %flex_col_center;
+  .bar__hp {
+    $hpHeight: 2vw;
+    width: 60vw;
+    height: $hpHeight;
+    background-color: #89EFC4;
+    border-radius: $hpHeight / 2;
+  }
+  .hp__detail {
+    font-size: 4vw;
+    font-weight: bold;
+    margin: 3vw 0;
+  }
+}

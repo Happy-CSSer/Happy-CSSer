@@ -1,0 +1,94 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10vw 0;
+}
+
+.box__level {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: white;
+  vertical-align: bottom;
+  font-size: 8vw;
+  .span__cp {}
+  .span__level {}
+}
+
+$circle__size: 85vw;
+%circle__base {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc( #{$circle__size} - 5px);
+  height: calc( #{$circle__size} - 5px);
+  border-radius: 50%;
+}
+
+$exp_border_width: 5px;
+$exp_dot__size: 10px;
+@mixin exp_border($bg__color) {
+  box-sizing: border-box;
+  border-top: #{$exp_border_width} solid #{$bg__color};
+  border-left: #{$exp_border_width} solid #{$bg__color};
+  border-right: #{$exp_border_width} solid transparent;
+  border-bottom: #{$exp_border_width} solid transparent;
+  border-radius: 50%;
+}
+
+%be_af_block {
+  display: block;
+  content: '';
+}
+
+.box__experiment {
+  position: relative;
+  width: $circle__size;
+  height: $circle__size / 2;
+  overflow: hidden;
+  .exp_circle__base {
+    @extend %circle__base;
+    @include exp_border('rgba(255, 255, 255, 0.1)');
+    transform: rotate(45deg);
+  }
+  .exp_circle__data {
+    width: 100%;
+    height: 100%;
+    transform-origin: center bottom;
+    animation: exp_rotate 2s linear infinite alternate;
+    &:before {
+      @extend %be_af_block;
+      width: $exp_dot__size;
+      height: $exp_dot__size;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      bottom: ( $exp_border_width - $exp_dot__size + 5px);
+      right: ( $exp_border_width - $exp_dot__size + 10px) / 2;
+    }
+    &:after {
+      @extend %be_af_block;
+      @extend %circle__base;
+      @include exp_border('white');
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.img__pokemon {
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 40vw;
+  width: 30vw;
+}
+
+@keyframes exp_rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-50deg);
+  }
+}
