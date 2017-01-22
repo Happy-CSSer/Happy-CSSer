@@ -1,0 +1,62 @@
+%flex_col_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%flex_row_center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container {
+  width: 90vw;
+  background-color: white;
+  border-radius: 2vw;
+  padding-top: 8vw;
+  padding: 0 5vw;
+  .poke__name {
+    font-size: 10vw;
+    color: #44696C;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.box__hp {
+  @extend %flex_col_center;
+  .bar__hp {
+    $hpHeight: 2vw;
+    width: 60vw;
+    height: $hpHeight;
+    background-color: #89EFC4;
+    border-radius: $hpHeight / 2;
+  }
+  .hp__detail {
+    font-size: 4vw;
+    font-weight: bold;
+    margin: 3vw 0;
+  }
+}
+
+.box__poke_detail {
+  @extend %flex_row_center;
+  .detail {
+    flex: 1;
+    @extend %flex_col_center;
+    span {
+      &:first-child {
+        color: #44696C;
+        font-size: 6vw;
+      }
+      &:last-child {
+        color: #95AAAB;
+        font-size: 3vw;
+      }
+    }
+  }
+  &.poke__type {
+    width: 50vw;
+  }
+}
