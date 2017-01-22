@@ -17,17 +17,20 @@ header {
 }
 
 $circle__size: 85vw;
+$padding__dot: 8px;
 %circle__base {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
-  width: calc( #{$circle__size} - 5px);
-  height: calc( #{$circle__size} - 5px);
+  margin: auto;
+  width: calc( #{$circle__size} - #{$padding__dot});
+  height: calc( #{$circle__size} - #{$padding__dot});
   border-radius: 50%;
 }
 
 $exp_border_width: 5px;
-$exp_dot__size: 10px;
+$exp_dot__size: 14px;
 @mixin exp_border($bg__color) {
   box-sizing: border-box;
   border-top: #{$exp_border_width} solid #{$bg__color};
@@ -64,8 +67,8 @@ $exp_dot__size: 10px;
       background-color: white;
       border-radius: 50%;
       position: absolute;
-      bottom: ( $exp_border_width - $exp_dot__size + 5px);
-      right: ( $exp_border_width - $exp_dot__size + 10px) / 2;
+      bottom: ( $exp_border_width - $exp_dot__size + $padding__dot);
+      right: ( $exp_border_width - $exp_dot__size + $padding__dot) / 2;
     }
     &:after {
       @extend %be_af_block;
