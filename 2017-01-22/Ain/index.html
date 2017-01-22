@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Go UI</title>
+    <style type="text/css">
+       body {
+           color: #466062;
+       }
+       .container {
+           width: 350px;
+           margin: 0 auto;
+           border-width: 7px;
+           border-style: solid;
+           border-color: #56C5B2;
+           padding-bottom: 25px;
+           text-align: center;
+           position: relative;
+           background-color: #F5FFF4;
+       }
+       .item {
+           display: block;
+           font-weight: bold;
+       }
+       .prop {
+           float: left;
+           
+           position: relative;
+       }
+       .delete {
+           float: right;
+           width: 27px;
+           width: 30px;
+       }
+       .feather {
+           padding-top: 40px;
+           border-bottom: 2px solid #EDF2EE;
+       }
+
+       .properImg {
+           width: 95px;
+           height: 104px;
+       }
+
+       .propNum {
+           background-color: #E5F0E2;
+           padding: 1px 4px;
+           font-weight: bold;
+           position: absolute;
+           top: 75px;
+           left: 15px;
+           border-radius: 20% 20% 20% 20% / 30% 30% 30% 30%;
+       }
+       .description {
+           text-align: justify;
+           width: 250px;
+           box-sizing: border-box;
+           padding: 10px;
+       }
+       .propName {
+           float: right;
+           width: 62%;
+           margin-bottom: 0px;
+           font-size: 20px;
+           
+       }
+       .properties {
+           background-color: #F5FFF4;
+           text-align: left;
+       }
+
+       .clearfix {
+           clear: both;
+       }
+       
+       .closeBtn {
+           width: 68px;
+           position: absolute;
+           position: absolute;
+           bottom: 35px;
+           left: calc(50% - 34px);
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="feather">
+            <span class="item">ITEMS</span>
+            <span class="">525/550</span>
+        </div>
+        <div class="properties">
+            <div class="prop">
+                <img src="images/greatBall.png" alt="properties" class="properImg">
+                <span class="propNum">x44</span>
+            </div>
+                <img src="images/trashcan.png" alt="trashcan" class="delete">
+                <h3 class="propName">Great Ball</h3>
+            <span class="description">
+                A good, high-permance Pokémon 
+                Ball that provides a higher catch
+                 rate than a than a standard Poké Ball.</span>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="properties">
+            <div class="prop">
+                <img src="images/ultraBall.png" alt="properties" class="properImg">
+                <span class="propNum">x332</span>
+            </div>
+                <img src="images/trashcan.png" alt="trashcan" class="delete">
+                <h3 class="propName">Ultra Ball</h3>
+            <span class="description">
+                A ultra-high performance Pokémon 
+                Ball that provides a higher catch
+                 rate than a than a Great Ball.</span>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="properties">
+            <div class="prop">
+                <img src="images/razzBerry.png" alt="properties" class="properImg">
+                <span class="propNum">x53</span>
+            </div>
+                <img src="images/trashcan.png" alt="trashcan" class="delete">
+                <h3 class="propName">Razz Berry</h3>
+            <span class="description">
+                Feed this to Pokémon to make it 
+                easier to catch.</span>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="properties">
+            <div class="prop">
+                <img src="images/camera.png" alt="properties" class="properImg">
+                <span class="propNum">x??</span>
+            </div>
+                <img src="images/trashcan.png" alt="trashcan" class="delete">
+                <h3 class="propName">Camera</h3>
+            <span class="description">
+                When you counter Pokémon in
+                the wild, you can use your camera
+                to photograph them.</span>
+        </div>
+
+        <img src="images/btn_close_normal_dark.png" alt="close button" class="closeBtn">
+
+    </div>
+
+</body>
+</html>
