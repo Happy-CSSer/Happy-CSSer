@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Pokédex
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+  link(rel="stylesheet", href="poke-radar.css")
+body
+  -
+    var state = {
+      types: (function() {
+        var _n = ~~(Math.random() * 9);
+
+        return {
+          'nearby': _n,
+          'sightings': 3 * (3 - Math.ceil(_n / 3))
+        };
+      })()
+    };
+
+  mixin pokeMap(type)
+    - type = type || 'nearby';
+
+    if (state.types[type])
+      h2.pokeMap__title(data-type=type)
+      ul.pokeMap__box
+        each $ in Array(state.types[type])
+          li.map__item
+            .map__item__rings
+
+  .app
+  .pokeMap
+    +pokeMap
+    +pokeMap('sightings')
+
+  .fab
+    .close-btn
