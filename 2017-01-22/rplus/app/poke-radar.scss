@@ -1,0 +1,188 @@
+$c-white: #fff;
+$c-black: #000;
+
+$debug: false;
+$debug: true;
+
+@if $debug == true {
+  // $bgi-src: 'Professor.png';
+}
+
+@mixin fill($dir: 'full', $type: absolute) {
+  position: $type;
+  @if $dir != 'bottom' {top: 0; }
+  @if $dir != 'right' {left: 0; }
+  @if $dir != 'left' {right: 0; }
+  @if $dir != 'top' {bottom: 0; }
+}
+
+.pokeMap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90vmin;
+  max-width: 90vmin;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5vmin 0 25vmin;
+  border-radius: 2vmin 2vmin 0 0;
+  background-color: $c-white;
+  text-align: center;
+
+  @media (orientation: landscape) {
+    font-size: .8rem;
+    width: 65vmin;
+    padding-top: 5vmin;
+    padding-bottom: 15vmin;
+  }
+}
+
+.pokeMap__title {
+  position: relative;
+  margin-bottom: 1.5em;
+  padding-top: 1em;
+  text-transform: uppercase;
+  font-weight: 100;
+  line-height: 2;
+  font-size: 1.25em;
+  letter-spacing: .5vmin;
+
+  &::before {
+    content: attr(data-type);
+  }
+
+  &::after {
+    content: "";
+    @include fill('bottom');
+    width: 5em;
+    height: .1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    background-color: $c-black;
+  }
+}
+
+.pokeMap__box {
+  display: grid;
+  grid-template-columns: 19vmin 19vmin 19vmin;
+  grid-gap: 7vmin 10vmin;
+  padding: 0 7vmin;
+
+  @media (orientation: landscape) {
+    grid-template-columns: 12.5vmin 12.5vmin 12.5vmin;
+    grid-gap: 5vmin 7vmin;
+  }
+}
+
+.map__item {
+  position: relative;
+  border-radius: 50%;
+  padding: .4em;
+  background-image: var(--item-bgi, linear-gradient(rgba(#000, .3), #000));
+  background-clip: content-box;
+
+  // placeholder
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  // avatar
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: inherit;
+    background-image: var(--item-avatar, linear-gradient(#ccc, rgba(#000, .6)));
+  }
+}
+
+[data-type="nearby"] + .pokeMap__box .map__item__rings {
+  @include fill;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px rgba($c-black, .3);
+
+  &::before,
+  &::after {
+    content: "";
+    @include fill;
+    opacity: 0;
+    border-radius: inherit;
+    box-shadow: inherit;
+  }
+
+  &::before {
+    animation-delay: -.3s;
+  }
+
+  @keyframes ring-scale {
+    from {
+      transform: scale(.9);
+      opacity: .7;
+    }
+
+    to {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+}
+
+[data-type="nearby"] + .pokeMap__box .map__item:first-child .map__item__rings {
+  &::before,
+  &::after {
+    animation: ring-scale 1s infinite;
+  }
+}
+
+.fab {
+  @include fill('bottom', fixed);
+  padding-bottom: 3vmin;
+}
+
+.close-btn {
+  width: 3rem;
+  height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+// reset forcely
+
+:root {
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #ccc;
+  background-image: linear-gradient(transparent, rgba($c-black, .5));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}

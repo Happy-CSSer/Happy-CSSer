@@ -1,0 +1,11 @@
+@import './normalize.css';
+@import './_header.scss';
+@import './_detail.scss';
+body {
+  background-image: linear-gradient( #4DA084 0%, #AFD46D 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 5vw;
+}
