@@ -1,0 +1,303 @@
+$c-white: #fff;
+$c-black: #000;
+
+$c-b1: #e4ecff;
+$c-b2: #d6ebf0;
+$c-b3: #93d8ff;
+$c-b4: #58a8e5;
+$c-b5: #0378d5;
+
+$debug: false;
+$debug: true;
+
+@if $debug == true {
+  // $bgi-src: 'Professor.png';
+}
+
+@mixin fill($dir: 'full', $type: absolute) {
+  position: $type;
+  @if $dir != 'bottom' { top: 0; }
+  @if $dir != 'right' { left: 0; }
+  @if $dir != 'left' { right: 0; }
+  @if $dir != 'top' { bottom: 0; }
+}
+
+.nav {
+  @include fill('top');
+  z-index: 10;
+  padding: 1rem 10%;
+  display: flex;
+  justify-content: space-between;
+  color: $c-white;
+  transform: .3s;
+}
+
+.nav__title {
+  // margin-left: auto;
+  // margin-right: auto;
+  order: 1;
+  transition: .3s;
+}
+
+.nav__search {
+  // margin-left: auto;
+  order: 2;
+  max-width: 0;
+  transition: .3s;
+  opacity: 0;
+  display: none;
+
+  &:focus {
+    display: block;
+    max-width: 100%;
+    opacity: 1;
+
+    & + .nav__title {
+      // display: none;
+      flex-shrink: 1;
+      max-width: 0;
+      overflow: hidden;
+      color: red;
+      opacity: 0;
+    }
+  }
+}
+
+.nav__action--searchLabel {
+  order: 2;
+}
+
+.main {
+  padding-bottom: 2rem;
+}
+
+.card {
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: .3rem .5rem 1rem rgba($c-black, .2);
+  transition: transform .3s;
+}
+
+%card__panel--show {
+  opacity: 1;
+  visibility: visible;
+}
+
+%card__panel--hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.card__panel--back,
+.readmore:checked ~ .main .card__panel--front {
+  @extend %card__panel--hide;
+}
+
+.card__panel--front,
+.readmore:checked ~ .main .card__panel--back {
+  @extend %card__panel--show;
+}
+
+.readmore:checked ~ .main .card {
+  transform: translateY(-1em);
+}
+
+.readmore:checked ~ .nav {
+  opacity: 0;
+  transform: translateY(-1em);
+}
+
+.readmore:checked ~ .main .card__cover {
+  transform: translateY(-1rem) scale(.9, .3);
+}
+
+.card__panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+  border-radius: .5rem;
+  // overflow: hidden;
+  background-color: $c-white;
+  transition: .3s;
+}
+
+.card__cover {
+  margin: 0;
+  padding-bottom: 150%;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  background: no-repeat 50% / cover;
+  transition: transform .3s;
+  transform-origin: 50% 0;
+}
+
+.card__header {
+  font-size: .9em;
+  padding-top: 1.5rem;
+  color: lighten($c-black, 30%);
+  text-align: center;
+
+  &::first-line {
+    font-size: larger;
+  }
+}
+
+// .card__panel--back
+// .card__panel--front {
+//   display: none;
+// }
+
+.card__panel--back {
+  @include fill;
+}
+
+.card__preview {
+  position: relative;
+  left: 5%;
+  top: -1rem;
+  width: 90%;
+  border-radius: .25rem;
+  background-color: #000;
+}
+
+.card__intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 1rem;
+  padding: .5em 10%;
+  font-size: 14px;
+  line-height: 1;
+
+  > * {
+    flex-grow: 1;
+    max-width: 60%;
+    min-width: 30%;
+
+    &:nth-child(even) {
+      text-align: right;
+    }
+  }
+}
+
+.card__intro__imdb {
+  font-family: serif;
+  font-size: 1.5em;
+  white-space: nowrap;
+  color: $c-b5;
+
+  &::after {
+    content: '/ 10';
+    margin-left: .5rem;
+    font-size: 14px;
+    opacity: .75;
+  }
+}
+
+.card__btn {
+  position: absolute;
+  bottom: -1em;
+  left: 50%;
+  width: 8rem;
+  transform: translateX(-50%);
+  padding: 1em 1.5em;
+  border: unset;
+  border-radius: .25rem;
+  background: $c-b2;
+  font-size: smaller;
+  // text-transform: capitalize;
+  text-align: center;
+  color: $c-b5;
+  box-shadow: .1rem .5rem 1rem rgba($c-black, .2);
+}
+
+.app {
+  position: relative;
+  width: 20rem;
+  // height: 30rem;
+  padding-top: 4rem;
+  background-color: $c-b4;
+  background-image: linear-gradient(to left bottom, $c-b3, $c-b4);
+  font-family: sans-serif;
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/// reset
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  // font-size: 20px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.4;
+  background-color: $c-b1;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  padding-top: .5em;
+  color: $c-white;
+  text-shadow: 1px 1px 4px $c-b4;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  border-bottom: 1px dashed rgba($c-black, .5);
+  text-align: center;
+  opacity: .8;
+
+  small {
+    display: block;
+    opacity: .5;
+    font-style: italic;
+    text-transform: none;
+  }
+}
+
+.info {
+  margin: 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
+
+.sr-only {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

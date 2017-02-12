@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Movie Card
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+  link(rel="stylesheet", href="movie-card.css")
+body
+  -
+    var state = {
+      types: (function() {
+        var _n = ~~(Math.random() * 9);
+
+        return {
+          'nearby': _n,
+          'sightings': 3 * (3 - Math.ceil(_n / 3))
+        };
+      })()
+    };
+
+  mixin pokeMap(type)
+    - type = type || 'nearby';
+
+    if (state.types[type])
+      h2.pokeMap__title(data-type=type)
+      ul.pokeMap__box
+        each $ in Array(state.types[type])
+          li.map__item
+            .map__item__rings
+
+  title Movie Card
+  h1.intro Movie Card
+
+  .box
+    .app
+      input#readmore.readmore.sr-only(type="checkbox")
+      nav.nav
+        a.nav__action--goBack <
+        input#search.nav__search(type="search", name="q")
+        div.nav__title popular
+        label.nav__action--searchLabel(for="search") Q
+      main.main
+        article.card
+          .card__panel.card__panel--front
+            figure.card__cover(style="background-image: url('cover.jpg'); background-position-y: 0%;")
+            header.card__header
+              | The Shawshank
+              br
+              | Redemption
+          .card__panel.card__panel--back
+            video.card__preview
+            section.card__intro
+              .card__intro__title The Shawshank Redemption (1994)
+              .card__intro__imdb 6.4
+              .card__intro__movieLv R
+              .card__intro__movieCat Crime, Drama
+              .card__intro__movieLength 2h 22min
+              time.card__intro__moviePub 10 March 1995 (Taiwan)
+          label.card__btn(for="readmore") Read more
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/crisssamson") crisssamson
+    | 's dribbble:
+    br
+    a(href="https://dribbble.com/shots/2906530-Alice-Through-the-Looking-Glass") Alice Through the Looking Glass
+
