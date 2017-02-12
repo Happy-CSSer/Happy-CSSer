@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>HappyCsser 2017-02-12</title>
+	<link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="scss/stylesheets/screen.css">
+</head>
+<body>
+	<header>
+		<ul>
+			<li><a href="#">&#10094;</a></li>
+			<li>Popular</li>
+			<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+		</ul>
+	</header>
+	<div id="main" class="middleContent active">
+		<img src="img/john_wick_chapter_two_ver4.jpg" alt="moivePost">
+		<div class="movieInfo">
+			<h2>John wick 2</h2>
+			<p>He is back !!</p>
+		</div>
+		<button class="btn">Read More</button>
+	</div>
+	<div id="content" class="middleContent ">
+		<div class="movieTrailer">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/XGk2EfbD_Ps" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class="movieInfo">
+			<ul>
+				<li class="movieName">John wick 2(2017)</li>
+				<li><h1>8.7</h1>/10</li>
+			</ul>
+			<ul>
+				<li><p>R</p></li>
+				<li><p>Action, Crime, Thriller</p></li>
+			</ul>
+			<ul>
+				<li><p>2h 2min</p></li>
+				<li><p>10 February 2017 (Taiwan)</p></li>
+			</ul>
+		</div>
+		<div class="aboutMovie">
+			After returning to the criminal underworld to repay a debt, John Wick discovers that a large bounty has been put on his life.
+		</div>
+		<button class="btn">Buy</button>
+	</div>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script>
+  	$(function(){
+  		$('.btn').click(function(){
+  			if($('#main').hasClass('active')){
+  				$('#content').addClass('active').siblings('.middleContent').removeClass('active');
+  			}else{
+  				$('#main').addClass('active').siblings('.middleContent').removeClass('active');
+  			}
+  			
+  		});
+  	});
+  </script>
+</body>
+</html>

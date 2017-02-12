@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	<title>pokemonDemo</title>
+  <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="infoWrap">
+<div class="infoWrap">
   <div class="monsterData">
     <span>cp</span>
     <h2>294</h2>
+    <div class="circleWrap">
+      <div class="frontCircle"></div>
+      <div class="backCircle"></div>
+    </div>
   </div>
   <div class="monsterInfo">
-      <img src="https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/Pokemon%20Models%20(PNG%20Format)/133%20-%20HtUZ8Bl.png?raw=true" alt="pokeMon" class="pokemon" />
+      <img src="img/Eevee.png" alt="pokeMon" class="pokemon" />
     <div class="pokemonLevel">
-      <h2 class="greenWord pokemonName">Eevee</h2>
+      <h2 class="greenWord pokemonName ">Eevee <i class="fa fa-pencil"></i></h2>
       <div class="levelBar"></div>
       <div class="HP">
         <span>55</span>/<span>55</span>HP
@@ -36,14 +43,32 @@
       </div>
     </div>
     <div class="itemBox-50">
-       <h3  class="greenWord stardust">111834</h3>
+       <h3  class="greenWord stardust">11181029</h3>
       <span  class="grayWord">STARDUST</span>
     </div>
     <div class="itemBox-50">
-      <h3  class="greenWord eeveecandy">1388</h3>
+      <h3  class="greenWord"><i class="eeveecandy"></i>1388</h3>
       <span  class="grayWord">EEVEE CANDY</span>
+    </div>
+    <div class="roundBox">
+      <button class="upgradeBtn">POWER UP</button>
+      <ul class="upgradelist text-right">
+        <li class="stardust">1300</li>
+        <li><i class="eeveecandy"></i>2</li>
+      </ul>
+    </div>
+    <div class="roundBox">
+      <button class="upgradeBtn">EVOLVE</button>
+       <ul class="upgradelist text-right">
+        <li><i class="eeveecandy"></i>25</li>
+      </ul>
+    </div>
+    <input type="button" class="confirmBtn">
+    <div class="circleMenuWrap">
+      <div class="ic_action"></div>
     </div>
   </div>
 </div>
+
 </body>
 </html>

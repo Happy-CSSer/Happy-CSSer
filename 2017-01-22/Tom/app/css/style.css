@@ -3,30 +3,41 @@ h3{
 }
 body,html{
   font-family:Helvetica;
+  margin:0;
+  padding:0;
+
+}
+body{
+  background: url('../img/details_type_bg_normal.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+ul li{
+  list-style:none;
 }
 .infoWrap {
   width: 100%;
   height: 100%;
-  background: url('https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/details_type_bg_normal.png?raw=true');
+  /*background: url('https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/details_type_bg_normal.png?raw=true');
   background-repeat:no-repeat;
-  background-size:cover;
-  box-sizing:border-sizing;
+  background-size:cover;*/
 }
 .monsterData{
   text-align:center;
   color:#fff;
   height:250px;
-  padding-top:20px;
+  padding-top:30px;
 }
 .monsterData span{
   font-size:20px; 
 }
 .monsterData h2{
   display:inline;
+  font-size:30px; 
   font-weight:100;
 }
 .monsterInfo {
-  width: 500px;
+  max-width: 500px;
   height: 500px;
   border-radius: 10px;
   margin: auto;
@@ -35,10 +46,62 @@ body,html{
   position: relative;
   vertical-align: top;
 }
+.circleWrap{
+  width:100%;
+  max-width:402px;
+  margin:5px auto;
+  height:200px;
+  position:relative;
+  overflow:hidden;
+}
+.circleWrap div{
+  width:100%;
+  max-width:400px;
+  height:400px;
+  border:5px solid #fff;
+  /*box-shadow:0 0 1px 1px #fff inset;*/
+  border-radius:50%;
+  position:absolute;
+  box-sizing: border-box;
+}
+.frontCircle{
+  opacity:1;
+  transform:rotate(-45deg);
+  -ms-transform:rotate(-45deg);
+  -webkit-transform:rotate(-45deg);
+  z-index:0;
+  clip:rect(0px,402px,202px,0px);
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+}
+.circleWrap:hover .frontCircle{
+  transform:rotate(0deg);
+  -ms-transform:rotate(0deg);
+  -webkit-transform:rotate(0deg);
+}
+.frontCircle::after{
+  content:"";
+  display:inline-block;
+  float:right;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background-color:#fff;
+  position:absolute;
+  right: -7px;
+  top: 48%;
+  z-index:2;
+}
+
+.backCircle{
+  opacity:0.2;
+  clip:rect(0px,400px,200px,0px);
+}
 .pokemon{
   width:150px;
   position: relative;
-/*   top:-100px; */
   margin-top:-100px;
 }
 .greenWord{
@@ -54,7 +117,7 @@ body,html{
   background-color:#ccc;
   border-radius:50% 50%;
   margin:auto;
-  text-algin:center;
+  text-align:center;
 }
 .grayCircle:after{
   content:"";
@@ -71,7 +134,6 @@ body,html{
   width:150px;
   margin:45px auto;
   line-height:1px;
-/*   height:200px; */
 }
 .levelBar{
   width:100%;
@@ -83,22 +145,14 @@ body,html{
   margin-top:10px;
 }
 .pokemonName{
-/*   margin-bottom:10px; */
   position: relative;
 }
-.pokemonName:after{
-  content:"";
-  width:20px;
-  height:20px;
-  background-image:url("https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/pencil.png?raw=true");
-  background-repeat:no-repeat;
-  background-size:cover;
 
-  display:inline-block;
-/*   float:right; */
+.pokemonName i{
   position: absolute;
   right:10px;
   top:-10px;
+  color:#ccc;
 }
 .HP{
   font-size:10px;
@@ -130,14 +184,135 @@ body,html{
   display:inline-block;
   width:20px;
   height:20px;
-  background:url("https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/stardust_vector.png?raw=true");
+  background:url("../img/stardust_vector.png");
   background-size:cover;
 }
-.eeveecandy:before{
-  content:"";
+
+.eeveecandy{
   display:inline-block;
   width:20px;
   height:20px;
-  background:url("https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/stardust_vector.png?raw=true");
+  background-color:#cc9962;
+  border-radius:50%;
+  position:relative;
+  margin-right: 6px;
+}
+.eeveecandy:before{
+  content:"";
+  width:100%;
+  height:100%;
+  background-image:url('../img/candy_painted_secondary_color.png');
+  background-repeat:no-repeat;
   background-size:cover;
+  position:absolute;
+  left:0;
+}
+.eeveecandy:after{
+  content:"";
+   width:100%;
+  height:100%;
+  background-image:url('../img/candy_painted_highlight.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  position:absolute;
+  left:0;
+}
+.roundBox{
+  background-color:#e8f0e1;
+  width: calc(100% - 50px);
+  height:50px;
+  margin:10px auto;
+  text-align:left;
+  /*border-radius:50% 0 0 50%;*/
+}
+.upgradeBtn{
+  width:30%;
+  height:100%;
+  /*border-radius:40%;*/
+  color:#e8f0e1;
+  font-size:16px;
+  display:inline-block;
+  border:0;
+  line-height:2;
+  background:linear-gradient(90deg, #a2db95, #24ccaa);
+  /*background:#24ccaa;*/
+  position:relative;
+  left:5px;
+}
+.upgradeBtn:before{
+  content:"";
+  display:inline-block;
+  height:100%;
+  width: 40px;
+  border-radius: 50%;
+  position: absolute;
+  left: -16px;
+  top: 0;
+  background-color:#a2db95;
+  clip:rect(0px,20px,50px,0px);
+}
+.upgradeBtn:after{
+  content: "";
+  display:inline-block;
+  height:100%;
+  width: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top:0;
+  right:-18px;
+  background-color: #24ccaa;
+  clip:rect(0px,40px,50px,20px);
+}
+.text-right{
+  text-align:right;
+}
+.upgradelist{
+  float:right;
+  width:60%;
+  padding:0;
+}
+.upgradelist li{
+  /*float:left;*/
+  display:inline-block;
+  font-size:18px;
+  width: 48%;
+  text-align: left;
+}
+.confirmBtn{
+  position:absolute;
+  width:80px;
+  height:80px;
+  background-image:url('../img/btn_ok_normal_dark.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  margin:auto;
+  left:0;
+  right:0;
+  border:0;
+  background-color:transparent;
+}
+.circleMenuWrap{
+  width:80px;
+  height:80px;
+  position:absolute;
+  bottom:10px;
+  right:2%;
+  background-color:#1c8796;
+  border-radius:50%;
+  text-align:center;
+  line-height:2;
+  cursor:pointer;
+}
+.ic_action{
+    width: 82%;
+    height: 82%;
+    border-radius: 50%;
+    background-image: url(../img/ic_action.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #e8f0e1;
+    display: inline-block;
+    margin-top: 6px;
 }

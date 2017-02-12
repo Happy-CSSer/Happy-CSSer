@@ -1,0 +1,23 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-family: Helvetica;
+  font-size: 16px;
+  vertical-align: baseline; }
+
+h3 {
+  margin: 0; }
+
+.box50 {
+  width: 50%;
+  height: 100px;
+  display: inline-block;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -ms-border-radius: 5px; }
+
+/*# sourceMappingURL=style.css.map */
