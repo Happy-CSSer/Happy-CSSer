@@ -8,4 +8,4 @@ Try to make a Pokemon Go like UI in web-tech.
 
 ## [Pokemon Go UI] Component: Dialog
 
-codepen: http://codepen.io/Rplus/pen/wgapbw
+codepen: http://codepen.io/GoreWang/pen/VPbMGo
