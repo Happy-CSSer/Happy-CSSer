@@ -1,0 +1,146 @@
+$box__radius: 2vmin;
+$shadow__color: rgba(0, 0, 0, 0.3);
+$btn__height: 12vmin;
+%box__movie {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: 130vmin;
+  box-shadow: 3vmin 3vmin 5vmin $shadow__color;
+  border-radius: $box__radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: calc( #{$btn__height} * 2 / 3);
+  transition: opacity 0.5s ease-out;
+  box-sizing: border-box;
+}
+
+%detail__second {
+  font-size: 3vmin;
+  color: #62AEE9;
+}
+
+#checkbox__confirm {
+  display: none;
+  &:checked {
+    &~header {
+      margin: 6vmin 0;
+      opacity: 0;
+    }
+    &~.movie {
+      &>.movie__cover {
+        opacity: 0;
+      }
+      &>.movie__intro {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.movie {
+  position: relative;
+  width: 100%;
+  height: calc( 130vmin + #{$btn__height} * 2 / 3);
+  display: flex;
+  flex-direction: column;
+  &__btn {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: calc( #{ - $btn__height} / 3);
+    width: 60%;
+    line-height: $btn__height;
+    color: #66B2EC;
+    font-size: 4vmin;
+    border-radius: 1.5vmin;
+    text-align: center;
+    background-color: #D6EBF0;
+    box-shadow: 0 3vmin 6vmin $shadow__color;
+    &:hover {
+      color: gray;
+    }
+  }
+  &__cover {
+    @extend %box__movie;
+    text-align: center;
+    .cover__img {
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+      object-position: 52% 50%;
+      border-top-left-radius: $box__radius;
+      border-top-right-radius: $box__radius;
+    }
+    .cover__detail {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h2 {
+        font-size: 4.5vmin;
+        margin: 0 0 3vmin 0;
+      }
+      span {
+        font-size: 3vmin;
+      }
+    }
+  }
+  &__intro {
+    opacity: 0;
+    pointer-events: none;
+    @extend %box__movie;
+    .intro__vedio {
+      position: relative;
+      top: -3vmin;
+      display: inline-block;
+      object-fit: cover;
+      object-position: center;
+      width: 92%;
+      height: 40vw;
+      border-radius: 1.5vmin;
+    }
+    .intro__detail {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 10vmin;
+      .detail__box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin: 1.2vmin 0;
+        &:first-of-type {
+          margin: 4vmin 0;
+        }
+        .title {
+          color: #54666F;
+          font-size: 3.6vmin;
+        }
+        .score {
+          font-size: 4vmin;
+          color: gray;
+          span {
+            color: #62AEE9;
+            font-size: 7vmin;
+          }
+        }
+        .contentRating,
+        .types,
+        .duration,
+        .date {
+          @extend %detail__second;
+        }
+      }
+      .detail__summary_text {
+        color: gray;
+        margin-top: 8vmin;
+        font-size: 3vmin;
+        line-height: 4.5vmin;
+      }
+    }
+  }
+}
