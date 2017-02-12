@@ -1,0 +1,130 @@
+body, html {
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+.hide {
+  display: none;
+}
+.background {
+  font-family: Arial;
+  text-align: center;
+  background: linear-gradient(to bottom left, #d3e7f8, #3795e1);
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 30px 40px;
+  span {
+    padding: 15px;
+  }
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.card {
+  width: 80%;
+  height: 440px;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 5px 8px 20px rgba(13, 55, 89, 0.5);
+}
+
+.container {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.alice-img {
+  width: 120%;
+  height: 400px;
+  background-image: url("images/alice_background.jpg");
+  margin-left: -10%;
+  margin-top: -40px;
+  background-position: center;
+  background-size: cover;
+}
+
+.movie-img {
+  width: 90%;
+  height: 200px;
+  background-image: url("images/movie.jpg");
+  background-size: cover;
+  position: relative;
+  z-index: 9;
+  top: -15px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  color: #3d737c;
+  padding: 30px;
+  p.desc {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  p.intro {
+    color: #d9d9d9;
+    font-size: 12px;
+    margin-top: 30px;
+    text-align: left;
+  }
+  table {
+    width: 100%;
+    color: #5aa8e6;
+    font-size: 12px;
+    td {
+      padding: 2px;
+    }
+    .title {
+      color: #3d737c;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .left {
+      text-align: left;
+    }
+    .right {
+      text-align: right;
+    }
+    .num1 {
+      font-size: 24px;
+    }
+    .num2 {
+      color: #d9d9d9;
+    }
+  }
+}
+
+.details {
+  margin-top: 25px;
+  padding: 15px;
+  width: 240px;
+  background-color: #bde3eb;
+  border: 0;
+  border-radius: 10px;
+  color: #5aa8e6;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
+  transition: 1s;
+  &:hover {
+    background-color: #d8eff3;
+  }
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,31 @@
+.background
+  .header
+    span &lt;
+    span Popular
+    img(src="images/search.png", alt="images")
+  .card.hide#secondpage
+    .movie-img
+    .content
+      table
+        tr
+          td.left.title Alice 2 - 2016
+          td.right
+            span.num1 6.4 
+            span.num2 / 10
+        tr
+          td.left PG
+          td.right Adventure, Family, Fantansy
+        tr
+          td.left 1hr 53min
+          td.right 27 May 2016 (Taiwan)
+      p.intro Alice returns to the magical world of underland only to find the Hatter in a horrible state. With the help of her friends, Alice must travel through time to save the Mad Hatter and Underland's fate from the evil dutches of the Red Queen and a clock like creature, known as Time.
+      button.details(onClick="back()") Buy Now
+  .card#firstpage
+    .container
+      #parallax
+        .layer(data-depth="0.6")
+          .alice-img
+    .content
+      h3 Alice
+      p.desc Through the Looking Glass
+      button.details(onClick="showDetails()") Read More
