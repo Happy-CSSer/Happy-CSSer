@@ -8,6 +8,13 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.title_layout{
+  display:block;
+  text-align:center;
+  padding-top:20px;
+  font-size:1em;
+  color:brown;
+}
 .container {
  
 }
@@ -20,7 +27,7 @@ body{
     margin: 10px;
     padding: 0px;
     position:relative;
-    background-image:url("http://i.imgur.com/2S7BI6v.png?2");
+    background-image:url("http://i.imgur.com/FCu223g.png");
     
   
 }
@@ -43,7 +50,7 @@ body{
     margin-right:auto;
     margin-top:40px;
     width: 300px;
-    background:radial-gradient(greenyellow,green);
+    background:lightgoldenrodyellow;
 }
 .outer_circle {
   border-style:solid;
