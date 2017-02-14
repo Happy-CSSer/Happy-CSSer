@@ -1,0 +1,31 @@
+.icon
+{
+	display: inline-block;
+	background-position: center center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+.szMed
+{
+	width: 22px;
+	height: 22px;
+}
+
+.szLarg
+{
+	width: 32px;
+	height: 32px;
+}
+
+
+
+.lastStep
+{
+	background-image: url('../assets/icons/chevLeft.svg');
+}
+
+.magnifier
+{
+	background-image: url('../assets/icons/search.svg');
+}

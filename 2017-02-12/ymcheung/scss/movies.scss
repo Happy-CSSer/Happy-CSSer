@@ -1,0 +1,234 @@
+// Normalize
+@import 'normalize';
+
+
+// Colors
+$white: rgba( 245, 245, 250, 1);
+
+$dim-red: rgba( 70, 10, 15, 1);
+$light-gray: rgba( 150, 150, 152, 1);
+$medium-gray: rgba( 62, 60, 60, 1);
+$dim-gray: rgba( 32, 32, 35, 1);
+
+
+// Icons
+@import 'icons';
+
+// Buttons
+@import 'buttons';
+
+
+// 
+// Typography
+// 
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+// Default Font
+body 
+{
+	font-family: 'Oxygen', '思源黑體', 'PingFangTC-Regular', '微軟正黑體', sans-serif;
+}
+
+// Animations
+@keyframes onLoadTrans 
+{
+    0% 
+    {
+        opacity: 0;
+    }
+    100% 
+    {
+        opacity: 1;
+    }
+}
+
+
+
+// 
+// Layout
+// 
+body 
+{
+	color: $white;
+	// background-color: $medium-gray;
+	background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(19,19,19,1) 100%);
+}
+
+header,
+.listContent
+{
+	display: flex;
+}
+
+
+// Header
+header
+{
+	justify-content: space-between;
+	align-items: center;
+	height: 12vh;
+}
+
+// Calculate Icon's hole
+$headerSideWidth: calc( 12vw + 22px);
+
+.goBack
+{
+	flex-basis: $headerSideWidth;
+	text-align: right;
+}
+
+.pageTitle
+{
+	flex-basis: auto;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.goSearch
+{
+	flex-basis: $headerSideWidth;
+	text-align: left;
+}
+
+.goBack,
+.goSearch
+{
+	a 
+	{
+		display: inline-block;
+		margin-right: -4px;
+	}
+}
+
+
+
+// Content
+.listContent
+{
+	position: relative;
+	height: 75vh;
+	padding: 0 12vw;
+}
+
+.theMovie
+{
+	width: 100%;
+	overflow: hidden;
+	border-radius: .5rem;
+	box-shadow: 0 8px 4px -4px rgba(0,0,0,0.36);
+}
+
+
+.moviePoster
+{
+	height: 70%;
+	background-image: url('../assets/cover/categoryPreview.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.movieShortIntro
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 30%;
+	background-color: $white;
+}
+
+.movieName
+{
+	margin: 0 0 .5rem;
+	padding-top: 1rem;
+	color: $medium-gray;
+	font-size: 1.125rem;
+}
+
+.movieTime
+{
+	color: $light-gray;
+	font-size: .875rem;
+}
+
+.movieName,
+.movieTime
+{
+	text-align: center;
+}
+
+.movieContent
+{
+	position: relative;
+	height: 100vh;
+	margin-top: 5rem;
+	padding: 0 12vw;
+}
+
+.theDetail
+{
+	width: 100%;
+	// height: 60%;
+	background-color: $white;
+	border-radius: .5rem;
+}
+
+.movieTrailer
+{
+	overflow: hidden;
+	height: 33vh;
+	padding: 1rem 0;
+	background-image: url('../assets/cover/trailer.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 4px;
+}
+
+.detailInfo
+{
+	color: $light-gray;
+}
+
+.movieTrailer,
+.detailInfo,
+.readmoreDetail
+{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.readmoreDetail
+{
+	color: $medium-gray;
+	line-height: 1.25em;
+}
+
+
+// Footer
+footer 
+{
+	height: 10vh;
+	padding-top: 1rem;
+}
+
+.pageNavigator
+{
+	display: flex;
+	justify-content: center;
+	padding: 0;
+}
+
+.pageNavItem
+{
+	list-style: none;
+	a 
+	{
+		margin: 0 .25rem;
+		color: $white;
+		opacity: .6;
+		font-size: 1.25rem;
+		text-decoration: none;
+	}
+}

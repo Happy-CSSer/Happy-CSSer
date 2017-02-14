@@ -1,0 +1,22 @@
+.button
+{
+	display: inline-block;
+	line-height: 3em;
+	border-radius: 4px;
+}
+
+.readmore
+{
+	position: absolute;
+	bottom: -1rem;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	width: 60%;
+	margin: 0 auto;
+	color: $white;
+	text-decoration: none;
+	text-align: center;
+	background-color: $dim-gray;
+	box-shadow: 0 8px 4px -4px rgba(0,0,0,0.2);
+}

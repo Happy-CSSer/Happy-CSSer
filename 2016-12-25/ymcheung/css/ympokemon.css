@@ -3658,6 +3658,7 @@ body {
 
 .itemCountText {
   display: inline-block;
+  vertical-align: middle;
   color: #40666B;
   font-size: 1.5rem;
   font-weight: 400;
@@ -3693,14 +3694,18 @@ body {
 .icon.pokeball {
   width: 80px;
   height: 80px;
-  background-image: url("../assets/icon/pokeball.png"); }
+  background-image: url("../assets/icon/pokeball.png");
+  border-radius: 50%;
+  box-shadow: 0 16px 60px 0 rgba(0, 0, 0, 0.75); }
 
 .icon.potion {
+  vertical-align: middle;
   width: 50px;
   height: 50px;
   background-image: url("../assets/icon/potion.png"); }
 
 .icon.food {
+  vertical-align: middle;
   width: 50px;
   height: 50px;
   background-image: url("../assets/icon/food.png"); }
