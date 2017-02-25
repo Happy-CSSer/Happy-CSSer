@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  title Music Player
+  link(rel="stylesheet", href="style.css")
+
+body.app
+  include albums.pug
+  include svg.pug
+
+  -
+    var albums = data.albums.album.filter((i,v) => v < 100).reduce((all, a) => {
+      let data = {
+        album: a.name,
+        artist: a.artist.name,
+        cover: a.image.filter(i => i.size === 'medium')[0]['#text']
+      };
+      let ii = a.name.toLowerCase().charCodeAt(0);
+      if (!all[ii]) {
+        all[ii] = [];
+      }
+      all[ii].push(data);
+      return all;
+    }, []).filter(Boolean);
+
+  mixin item({ img, album, artist } = {})
+    li.Item(data-cap=album.charAt(0))
+      if (img)
+        img(src=img).Item__img
+      .Item__info
+        .Item__title=album
+        .Item__subtitle= artist
+
+  mixin icon(id)
+    svg.icon
+      use(xlink:href=`#${id}`)
+
+  nav.Nav
+    a.Nav__action
+        +icon('icon-chevron-left')
+    form.Search
+      input.Search__input#search-input(type="text" placeholder="Search…" name="q")
+      label.Search__label(for="search-input")
+        +icon('icon-magnifying-glass')
+
+  h2 music collection
+
+  .Navigators
+    a.navigator(href="###") artists 
+    a.navigator.is-active(href="###") albums 
+    a.navigator(href="###") songs
+
+  .panels
+    each $letter, $i in albums
+      ul.items
+        each $album in albums[$i]
+          +item({
+            img: $album.cover,
+            album: $album.album,
+            artist: $album.artist
+          })
+
+  footer.footer
+    header.player-info
+      .playing-title Welcome to Earth
+      .playing-artist dolor sit amet.
+    .controlers
+      button.ctrl-btn
+        +icon('icon-heart-outlined')
+        //- +icon('icon-heart')
+      button.ctrl-btn
+        +icon('icon-controller-jump-to-start')
+      button.ctrl-btn
+        +icon('icon-controller-play')
+        //- +icon('icon-controller-paus')
+      button.ctrl-btn
+        +icon('icon-controller-next')
+      button.ctrl-btn(disabled)
+        +icon('icon-shuffle')
+
+  //- script(src="//cdnjs.cloudflare.com/ajax/libs/svg4everybody/2.1.4/svg4everybody.min.js")
+  //- blockquote.info
+    | inspired from
+    a(href="https://dribbble.com/crisssamson") crisssamson
+    | 's dribbble:
+    br
+    a(href="https://dribbble.com/shots/2906530-Alice-Through-the-Looking-Glass") Alice Through the Looking Glass
+
+//- http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=480c70c74027e057876fb1256ef008ea&artist=Cher&album=Believe&format=json
+
