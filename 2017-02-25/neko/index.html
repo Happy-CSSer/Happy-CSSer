@@ -1,0 +1,181 @@
+<!DOCTYPE html><!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7 ">
+<![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8 ">
+<![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9 ">
+<![endif]--><!--[if gt IE 8]><!-->
+<html lang="zh-TW"><!--<![endif]-->
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/images/favicon-152.png">
+    <meta name="msapplication-TileColor" content="#24BBEA">
+    <meta name="msapplication-TileImage" content="/assets/images/favicon-144.png"><link rel="stylesheet" href="assets/stylesheets/all.css"/><!-- [if lt IE 9] <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> -->
+    <script>var breakpoints = {"phone":"320px","tablet":"740px","desktop":"980px","wide":"1300px"}</script>
+    <title>Happy CSSer 2</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="Happy CSSer 2" property="og:title">
+    <meta content="Happy CSSer 2" property="og:site_name">
+    <meta content="http://localhost:3750" property="og:url">
+    <meta content="http://localhost:3750/images/og-image.png" property="og:image">
+    <meta content="" property="og:description">
+    <meta content="website" property="og:type">
+  </head>
+  <body>
+    <div class="music-player">
+      <div class="navbar">
+        <div class="prev"></div>
+        <div class="search"></div>
+      </div>
+      <h1 class="page-title">Music Collection</h1>
+      <input id="tab1" type="radio" name="tabs">
+      <input id="tab2" type="radio" name="tabs" checked>
+      <input id="tab3" type="radio" name="tabs">
+      <div class="menu">
+        <label class="menu-item" for="tab1">Artists</label>
+        <label class="menu-item is-active" for="tab2">Albums</label>
+        <label class="menu-item" for="tab3">Songs</label>
+      </div>
+      <div class="tab-content content" id="tab-content1">
+        <ul class="music-list" data-index="A">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/1">
+            <div class="info">
+              <div class="title">Act V: Hymn with the Devil Confessional</div>
+              <div class="artist">The Dear Hunter</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/2">
+            <div class="info">
+              <div class="title">Alive 2007</div>
+              <div class="artist">Daft Punk</div>
+            </div>
+          </li>
+        </ul>
+        <ul class="music-list" data-index="B">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/3">
+            <div class="info">
+              <div class="title">The Beautiful Game</div>
+              <div class="artist">Vulfpeck</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/4">
+            <div class="info">
+              <div class="title">Best of Not Real</div>
+              <div class="artist">Stealing Sheep</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/5">
+            <div class="info">
+              <div class="title">Beyond Magic and Imagination</div>
+              <div class="artist">Fabian Luttenberger</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content content" id="tab-content2">
+        <ul class="music-list" data-index="A">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/6">
+            <div class="info">
+              <div class="title">Act VI: Hymn with the Devil Confessional</div>
+              <div class="artist">The Dear Hunter</div>
+            </div>
+          </li>
+        </ul>
+        <ul class="music-list" data-index="B">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/7">
+            <div class="info">
+              <div class="title">Alive 2007</div>
+              <div class="artist">Daft Punk</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/8">
+            <div class="info">
+              <div class="title">The Beautiful Game</div>
+              <div class="artist">Vulfpeck</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/9">
+            <div class="info">
+              <div class="title">Best of Not Real</div>
+              <div class="artist">Stealing Sheep</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/10">
+            <div class="info">
+              <div class="title">Beyond Magic and Imagination</div>
+              <div class="artist">Fabian Luttenberger</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content content" id="tab-content3">
+        <ul class="music-list" data-index="A">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/11">
+            <div class="info">
+              <div class="title">Act VII: Hymn with the Devil Confessional</div>
+              <div class="artist">The Dear Hunter</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/12">
+            <div class="info">
+              <div class="title">Alive 2007</div>
+              <div class="artist">Daft Punk</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/13">
+            <div class="info">
+              <div class="title">The Beautiful Game</div>
+              <div class="artist">Vulfpeck</div>
+            </div>
+          </li>
+        </ul>
+        <ul class="music-list" data-index="B">
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/14">
+            <div class="info">
+              <div class="title">Best of Not Real</div>
+              <div class="artist">Stealing Sheep</div>
+            </div>
+          </li>
+          <li class="music-item"><img class="cover" src="https://placeimg.com/64/64/any/15">
+            <div class="info">
+              <div class="title">Beyond Magic and Imagination</div>
+              <div class="artist">Fabian Luttenberger</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="player">
+        <div class="player-wave-1"></div>
+        <div class="player-wave-2"></div>
+        <div class="player-wave-3"></div>
+        <div class="player-content">
+          <div class="info">
+            <div class="title">Knight Moves</div>
+            <div class="artist">Chilly Gonzales</div>
+          </div>
+          <div class="control">
+            <div class="favorite">
+              <input id="favorite-status" type="checkbox">
+              <label class="favorite-button" for="favorite-status"></label>
+            </div>
+            <div class="track-prev"></div>
+            <div class="play"></div>
+            <div class="track-next"></div>
+            <div class="shuffle">
+              <input id="shuffle-status" type="checkbox">
+              <label class="shuffle-button" for="shuffle-status"></label>
+            </div>
+          </div>
+        </div>
+        <div class="process-bar"></div>
+      </div>
+    </div><script src="assets/javascripts/global.js"></script>
+    <!-- - var ga_code = getData('info').ga_code-->
+  </body>
+</html>
