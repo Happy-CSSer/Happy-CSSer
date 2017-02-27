@@ -1,0 +1,140 @@
+* {
+    font-size: 20px;
+}
+.container {
+    width: 80%;
+    height: 100vh;
+}
+.content {
+    margin: 5% 10%;
+}
+.icon-medium {
+    font-size: 350%;
+}
+
+.previous {
+    color: rgb(188, 188, 188);
+    margin-right: 80%;
+}
+.magnification {
+    color: rgb(188, 188, 188);
+}
+
+.heading {
+    font-size: 450%;
+    margin-bottom: 3vh;
+}
+
+.feature {
+    margin-top: 7vh;
+    margin-bottom: 4vh;
+}
+nav {
+    margin-bottom: 9vh;
+}
+
+
+.nav-items:link,
+.nav-items:visited {
+    text-decoration: none;
+    font-size: 350%;
+    margin-right: 3%;
+    color: rgb(188, 188, 188);
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+
+a.nav-items.active:link, 
+a.nav-items.active:visited {
+    color: #000 !important;
+/*    text-transform: capitalize;*/
+}
+
+
+.thumbnails {
+    width: 10vh;
+    height: 10vh;
+}
+
+
+.list-items {
+    margin-bottom: 4vh;
+    
+}
+
+.item-content {
+    display: inline-block;
+    vertical-align: top;
+}
+.item-content > h3 {
+    font-size: 250%;
+}
+
+.description {
+    color: rgb(188, 188, 188);
+    font-size: 200%;
+}
+
+.playing {
+    transform: translateX(30%);
+    margin-bottom: 5vh;
+    text-align: justify;
+}
+.subtitle {
+    padding: 1.5%;
+}
+
+.songPlaying {
+    font-size: 250%;
+}
+h3.white {
+    color: #FF6EA5!important;
+    margin-bottom: 3vh;
+}
+
+div.other:before {
+    content: " ";
+    
+}
+
+div.A-first:before {
+    content: "A";
+    font-size: 350%;
+    color: rgb(188, 188, 188);
+    margin-left: -6.5%;
+    margin-right: 2%;
+    vertical-align: top;
+}
+div.B-first:before {
+    content: "B";
+    font-size: 350%;
+    color: rgb(188, 188, 188);
+    margin-left: -6.5%;
+    margin-right: 2%;
+    vertical-align: top;
+}
+
+i.funcBtn {
+    font-size: 350%;
+    color: #FF6EA5!important;
+}
+.statebar {
+    display: inline;
+}
+.love {
+    margin-left: 0;
+    margin-right: 25%;
+    border-bottom: 4px solid #FF6EA5;
+}
+
+
+.panelBtn {
+    padding: 0 3%;
+}
+.panelBtn:first-child {
+    padding-left: 0;
+}
+.random {
+    margin-left: 30%;
+}

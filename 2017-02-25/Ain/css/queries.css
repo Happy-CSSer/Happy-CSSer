@@ -1,0 +1,72 @@
+@media screen and (max-width: 480px) {
+    .container {
+        width: 80%;
+        height: 100vh;
+    /*    border: 5px solid #1691eb;*/
+    }
+    .icon-medium {
+        font-size: 80%;
+    }
+    .heading {
+        font-size: 100%;
+        margin-bottom: 3vh;
+    }
+    .feature {
+        margin-top: 3vh;
+        margin-bottom: 1vh;
+    }
+    nav {
+        margin-bottom: 2vh;
+    }
+
+
+    .nav-items:link,
+    .nav-items:visited {
+        text-decoration: none;
+        font-size: 80%;
+        margin-right: 3%;
+        color: rgb(188, 188, 188);
+    }
+    
+    .thumbnails {
+        width: 7vh;
+        height: 7vh;
+    }
+    
+    div.A-first:before {
+        font-size: 80%;
+        margin-left: -8.5%;
+        margin-right: 2%;
+    }
+    div.B-first:before {
+        font-size: 80%;
+        margin-left: -8.5%;
+        margin-right: 2%;
+    }
+    
+    .item-content > h3 {
+        font-size: 40%;
+    }
+
+    .description {
+        font-size: 50%;
+    }
+    .list-items {
+        margin-bottom: 1vh;
+    }
+    
+    .songPlaying {
+        font-size: 70%;
+    }
+    h3.white {
+        color: #FF6EA5!important;
+        margin-bottom: 0.5vh;
+    }
+    i.funcBtn {
+        font-size: 80%;
+        color: #FF6EA5!important;
+    }
+    
+
+
+}
