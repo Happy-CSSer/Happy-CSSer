@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="2296px" height="380px" viewBox="0 0 2296 190" version="1.1">
+    <style>
+      .style0{
+        fill:	none;
+        fill-rule:	evenodd;
+      }
+      .wave2{
+        fill:	#7C51DE;
+      }
+    </style>
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs />
+    <g sketch:type="MSPage" class="style0">
+        <g sketch:type="MSArtboardGroup">
+
+            <!--wave2-->
+            <g sketch:type="MSLayerGroup">
+                <path d="
+                M0 229 
+                C172.1 228.6, 452.9 213.8, 646 151 
+                C942 79.9, 908 48, 1149 44 
+                L1149 281 
+                L0.7 281
+                C0.7 281, -91.3 244.2, 0 244 
+                Z" 
+                sketch:type="MSShapeGroup" class="wave2" />
+
+            </g>
+
+            <g sketch:type="MSLayerGroup">
+                <path d="
+                  M2296 229 
+                  C2123.9 228.6, 1823.1 213.8, 1650 151 
+                  C1354 79.9, 1388 48, 1147 44
+                  L1147 281 
+                  L2295.3 281 
+                  C2295.3 281, 2387.3 244.2, 2296 244 
+                  Z" 
+                  sketch:type="MSShapeGroup" 
+                  class="wave2" />
+
+            </g>
+
+        </g>
+    </g>
+</svg>

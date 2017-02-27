@@ -1,0 +1,299 @@
+@import './_normalize.scss';
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: gray;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title__ui {
+  color: white;
+  width: 30rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.box_view {
+  background-color: white;
+  height: 50rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+$header__height: 12rem;
+$ctrl__height: 9rem;
+$container__padding: 3.5rem;
+header {
+  height: $header__height;
+  padding: 0 $container__padding;
+  .nav__header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    i {
+      color: gray;
+    }
+  }
+  h1 {
+    margin: 2rem 0;
+    font-size: 1.8rem;
+  }
+  .nav__filter {
+    color: gray;
+    font-weight: bold;
+    .active {
+      color: black;
+    }
+  }
+}
+
+.view__container {
+  height: 50rem - $header__height - $ctrl__height;
+  padding: 0 $container__padding 0 0;
+  overflow-y: scroll;
+}
+
+.nav__filter {
+  margin-bottom: 1rem;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  li {
+    min-width: 5rem;
+    list-style: none;
+  }
+}
+
+$li_music_h: 5rem;
+$music__detail__margin: 1rem;
+.music__byName {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  .box__music {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  @at-root .music__detail {
+    margin: $music__detail__margin 0;
+    height: $li_music_h;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .detail__cover {
+      width: $li_music_h;
+      height: $li_music_h;
+      object-fit: cover;
+      margin-right: 2rem;
+    }
+    .detail__text {
+      flex: 1;
+      min-width: 0; // best css hack ever!! Thanks Rplus~
+      .album,
+      .artist {
+        display: block;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin: 0.5rem 0;
+      }
+      .album {
+        font-size: 1.3rem;
+      }
+      .artist {
+        font-size: 1.2rem;
+        color: gray;
+      }
+    }
+  }
+  .first_word {
+    font-size: 1.5rem;
+    color: gray;
+    min-width: $container__padding;
+    margin-top: calc( #{ $li_music_h / 2 } + #{ $music__detail__margin / 2 });
+    text-align: center;
+    top: $music__detail__margin;
+    position: sticky;
+  }
+}
+
+.box__ctrl {
+  position: relative;
+  input {
+    display: none;
+  }
+  #btn__play:checked {
+    &~.ctrl__body {
+      .fa-play {
+        display: none;
+      }
+      .fa-pause {
+        display: block;
+      }
+      .box__btn {
+        &:after {
+          animation: none;
+          opacity: 0;
+        }
+      }
+    }
+    &~.ctrl__wave {
+      .wave {
+        animation: ani_wave_negative 6s ease-in-out infinite forwards;
+      }
+      .wave4 {
+        animation: ani_wave_positive 6s ease-in-out infinite forwards;
+      }
+    }
+  }
+  @at-root .ctrl__body {
+    padding-top: 0.5rem;
+    background-color: #FF6CA1;
+    height: $ctrl__height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    .name__song {
+      color: white;
+      font-size: 1.2rem;
+    }
+    .name__artist {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    .box__btn {
+      position: relative;
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      i {
+        color: white;
+      }
+      &>.btn {
+        flex: 1;
+      }
+      .fa-heart-o,
+      .fa-pause {
+        display: none;
+      }
+      &:after {
+        display: block;
+        content: '';
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-color: aquamarine;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        mix-blend-mode: darken;
+        animation: click_flash 1s linear infinite alternate-reverse;
+      }
+    }
+    .btn__container {
+      flex: 2;
+      flex-direction: row;
+      justify-content: space-around;
+      display: flex;
+      .btn__play {
+        cursor: pointer;
+      }
+    }
+  }
+  .ctrl__wave {
+    height: 6rem;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: calc( 100% - 0px); //for safari
+    @at-root .wave {
+      width: 90rem;
+      height: 100%;
+      background-size: 25% auto;
+      background-repeat: repeat-x;
+      background-position: -15% bottom;
+      position: absolute;
+      bottom: 0;
+      &.wave1 {
+        left: 0;
+        background-image: url('../../images/wave1.svg');
+      }
+      &.wave2 {
+        left: 0;
+        background-image: url('../../images/wave2.svg');
+      }
+      &.wave3 {
+        left: 0;
+        background-image: url('../../images/wave3.svg');
+        mix-blend-mode: multiply;
+      }
+      &.wave4 {
+        right: 0;
+        background-image: url('../../images/wave4.svg');
+        background-position: 15% bottom;
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+}
+
+@keyframes ani_wave_positive {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes ani_wave_negative {
+  from,
+  to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+}
+
+.designBy {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.svg__wave {
+  width: 100%;
+}
+
+@keyframes click_flash {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -5,7 +5,7 @@ $btn__height: 12vmin;
   position: absolute;
   background-color: white;
   width: 100%;
-  height: 130vmin;
+  min-height: 130vmin;
   box-shadow: 3vmin 3vmin 5vmin $shadow__color;
   border-radius: $box__radius;
   display: flex;
@@ -16,19 +16,14 @@ $btn__height: 12vmin;
   box-sizing: border-box;
 }
 
-%detail__second {
-  font-size: 3vmin;
-  color: #62AEE9;
-}
-
 #checkbox__confirm {
   display: none;
   &:checked {
     &~header {
-      margin: 6vmin 0;
       opacity: 0;
     }
     &~.movie {
+      transform: translateY(-5vmin);
       &>.movie__cover {
         opacity: 0;
       }
@@ -46,6 +41,7 @@ $btn__height: 12vmin;
   height: calc( 130vmin + #{$btn__height} * 2 / 3);
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease-out;
   &__btn {
     position: absolute;
     margin: auto;
@@ -67,25 +63,27 @@ $btn__height: 12vmin;
   &__cover {
     @extend %box__movie;
     text-align: center;
-    .cover__img {
-      width: 100%;
-      height: 50vh;
-      object-fit: cover;
-      object-position: 52% 50%;
-      border-top-left-radius: $box__radius;
-      border-top-right-radius: $box__radius;
-    }
-    .cover__detail {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      h2 {
-        font-size: 4.5vmin;
-        margin: 0 0 3vmin 0;
+    @at-root .cover {
+      &__img {
+        width: 100%;
+        height: 90vmin;
+        object-fit: cover;
+        object-position: 52% 50%;
+        border-top-left-radius: $box__radius;
+        border-top-right-radius: $box__radius;
       }
-      span {
-        font-size: 3vmin;
+      &__detail {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h2 {
+          font-size: 4.5vmin;
+          margin: 0 0 3vmin 0;
+        }
+        span {
+          font-size: 3vmin;
+        }
       }
     }
   }
@@ -107,39 +105,43 @@ $btn__height: 12vmin;
       box-sizing: border-box;
       width: 100%;
       padding: 0 10vmin;
-      .detail__box {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin: 1.2vmin 0;
-        &:first-of-type {
-          margin: 4vmin 0;
-        }
-        .title {
-          color: #54666F;
-          font-size: 3.6vmin;
-        }
-        .score {
-          font-size: 4vmin;
-          color: gray;
-          span {
+      @at-root {
+        .detail__box {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: baseline;
+          margin: 1.2vmin 0;
+          &:first-of-type {
+            margin: 4vmin 0;
+          }
+          .title {
+            color: #54666F;
+            font-size: 3.8vmin;
+          }
+          .score {
+            font-size: 3.5vmin;
+            color: gray;
+            white-space: nowrap;
+            span {
+              color: #62AEE9;
+              font-size: 7vmin;
+            }
+          }
+          .contentRating,
+          .types,
+          .duration,
+          .date {
+            font-size: 3vmin;
             color: #62AEE9;
-            font-size: 7vmin;
           }
         }
-        .contentRating,
-        .types,
-        .duration,
-        .date {
-          @extend %detail__second;
+        .detail__summary_text {
+          color: gray;
+          margin-top: 8vmin;
+          font-size: 3vmin;
+          line-height: 4.5vmin;
         }
-      }
-      .detail__summary_text {
-        color: gray;
-        margin-top: 8vmin;
-        font-size: 3vmin;
-        line-height: 4.5vmin;
       }
     }
   }
