@@ -1,0 +1,85 @@
+:root{
+  --background:red;
+  --ruler: green;
+  --logo: white;
+}
+body {
+  background: var(--background);
+  
+}
+.outer{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  height: 100vh;
+}
+.switch-logo{
+  display:inline-flex;    
+  box-sizing: border-box;   
+  padding: 0;
+  height: 160px;
+  width: 160px;
+  border: solid var(--ruler) 1px; 
+  animation:  mov 0.21s linear 0.45s;
+}
+.left-part {
+  position:relative;
+  margin:0 ;
+  padding 0;
+  border-radius: 40px 0 0 40px;
+  height: 140px;
+  width: 60px;
+  border: solid var(--logo) 10px; 
+}
+.right-part {
+  position: relative;
+  margin-left: 20px;
+  padding:0;
+  border-radius:  0 40px 40px 0;
+  height: 140px;
+  width: 40px;
+  background: var(--logo);
+  border: solid var(--logo) 10px;
+  animation:  first-mov 0.40s linear;
+ 
+}
+.left-wh-ball{
+  transform-origin: top left;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--logo);
+  top: 30px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  border: solid  var(--logo);  
+}
+.right-wh-ball{
+  transform-origin: top left;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--background);
+  top: 60px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  border: solid var(--background); 
+}
+
+@keyframes mov {
+  25% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes first-mov {
+  0%, 50%{
+    transform: translateY(-50%);
+  }
+  70% { 
+     transform: translateY(-55%); 
+  }
+  100% { 
+    transform: none; 
+  }
+}
