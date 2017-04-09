@@ -1,15 +1,11 @@
 ---
 name: Rplus
-date: 2017-02-25
-title: Music Player
+date: 2017-04-09
+title: CSS Animation Logo
 ---
 
-UI inspired from:  
-Daily UI Challenge #09 - Music Player by Guillaume Parra  
-https://dribbble.com/shots/3305368-Daily-UI-Challenge-09-Music-Player
+logo from: Nintendo Switch  
+http://www.nintendo.com/switch/
 
-Albums data source:  
-http://www.last.fm/api/show/tag.getTopAlbums
-
-icon: Entypo  
-http://entypo.com/
+codepen demo:  
+http://codepen.io/Rplus/details/xqvKWv/
