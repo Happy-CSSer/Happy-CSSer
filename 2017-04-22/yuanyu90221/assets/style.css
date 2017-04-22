@@ -1,0 +1,139 @@
+:root {
+  --circle-radius: 100px;
+  --small-circle: 20px;
+  --smallest-circle: 40px;
+  --side: 200px;
+  --offset-b1: 50px;
+  --offset-b2: -50px;
+  --left-color: black;
+  --right-color: white;
+}
+body {
+  padding: 0;
+  margin : 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#FFAAFF;
+}
+.container {
+  border: solid red;
+  padding: 0;
+  margin: 0;
+  height: var(--side);
+/*   box-sizing: border-box; */
+}
+.logo-outer{
+  height: var(--side);
+  width: var(--side);
+
+  padding: 0;
+  margin: 0;
+  border-radius: 50%; 
+  display: inline-flex;  
+  /* 設定旋轉的圓心   */
+  transform-origin: 50% 50%;
+  animation: 3s rolling linear infinite;
+}
+
+.left-circle {
+  height: var(--side);
+  width: var(--circle-radius);
+  background:var(--left-color);
+  border-radius:  var(--circle-radius) 0 0 var(--circle-radius) ;
+  position:relative;
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  
+}
+.right-circle {
+  position:relative;
+  height: var(--side);
+  width: var(--circle-radius);
+  background:var(--right-color);
+  border-radius: 0 var(--circle-radius)  var(--circle-radius) 0;
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  
+}
+
+.upper-circle {
+  position: absolute;
+  height: var(  --small-circle);
+  width: var(  --small-circle);
+  position: absolute;
+  border: solid  var(--left-color) var(--smallest-circle);
+  border-radius: 50%;
+  background:  var(--right-color);
+  left: var(--offset-b1);
+/*   top: 0px; */
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  /*設定變化中心為頂部*/
+  transform-origin: 50% 0%;
+  animation: right_change 6s linear infinite;
+
+}
+
+.down-circle {
+  position:absolute;
+  height: var(  --small-circle);
+  width: var(  --small-circle);
+  position: absolute;
+  border: solid var(--right-color) var(--smallest-circle);
+  border-radius: 50%;
+  background: var(--left-color);  
+  left: var(--offset-b2);
+  bottom :0;
+  margin: 0;
+  padding: 0;
+  /*設定變化中心為底部*/
+  transform-origin: 50% 100%;
+  animation: left_change 6s linear infinite;
+
+}
+  /*旋轉的keyframe*/
+@keyframes rolling {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes left_change{
+  0%{
+    transform:scale(1);
+  }
+  25%{
+    transform: scale(2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes right_change {
+  0%{
+    transform: scale(1);
+  }
+  25%{
+   transform:  scale(0) ;
+  }
+  50%{
+    transform:  scale(1) ;
+  }
+  75%{
+    transform:  scale(2) ;
+  }
+  100%{
+     transform:  scale(1);
+  }
+}
