@@ -1,0 +1,143 @@
+$oo-size: 200px;
+$c-white: #fff;
+$c-black: #000;
+$dot-ratio: .25;
+$duration--rotating: 4s;
+$duration--sizing: $duration--rotating;
+$sizing-ratio: .1;
+
+@mixin fill($dir: 'full', $type: absolute) {
+  position: $type;
+  @if $dir != 'bottom' { top: 0; }
+  @if $dir != 'right' { left: 0; }
+  @if $dir != 'left' { right: 0; }
+  @if $dir != 'top' { bottom: 0; }
+}
+
+.oo {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  font-size: $oo-size;
+  border-radius: 50%;
+  background-image: linear-gradient($c-white 50%, $c-black 0);
+  animation: rotating $duration--rotating linear infinite;
+
+  &::before,
+  &::after {
+    content: '';
+    @include fill;
+    border-radius: inherit;
+    border: .5em * (1 - $dot-ratio) solid var(--c1, $c-black);
+    background-color: var(--c2, $c-white);
+    animation: sizing $duration--sizing ease-in-out infinite;
+  }
+
+  &::before {
+    transform-origin: 0% 50%;
+  }
+
+  &::after {
+    --c1: $c-white;
+    --c2: $c-black;
+    animation-delay: $duration--sizing / -2;
+    transform-origin: 100% 50%;
+  }
+
+  &.small {
+    font-size: $oo-size / 2;
+  }
+
+  & + .oo {
+    margin-left: .5em;
+  }
+
+  &:hover {
+    &,
+    &::before,
+    &::after {
+      animation-play-state: paused;
+    }
+  }
+
+  &:active {
+    &,
+    &::before,
+    &::after {
+      animation-play-state: running;
+    }
+  }
+}
+
+@keyframes rotating {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes sizing {
+  0%, 100% { transform: scale(1 - $sizing-ratio); }
+  50% { transform: scale($sizing-ratio); }
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/// reset
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.4;
+  color: $c-white;
+  background-color: #333;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  padding-top: .5em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  border-bottom: 1px dashed rgba($c-white, .5);
+  text-align: center;
+
+  small {
+    display: block;
+    opacity: .5;
+    font-style: italic;
+    text-transform: none;
+  }
+}
+
+.info {
+  margin: 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
