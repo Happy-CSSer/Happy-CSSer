@@ -1,0 +1,168 @@
+$yin-yang-size: 210px;
+$bagua-size: $yin-yang-size / 3;
+$gap: $bagua-size / 4;
+$c-white: #fff;
+$c-black: #000;
+$dot-ratio: .25;
+
+$bagua-strike-ratio: 7;
+$bagua-strike-pos-base: 100% / ($bagua-strike-ratio - 1);
+$part: 100% / $bagua-strike-ratio;
+$c-bagua: $c-white;
+
+// ref: https://en.wikipedia.org/wiki/Bagua
+$bagua-order: (
+  (1 1 1) // ☰ 乾 天
+  (0 1 1) // ☱ 兌 澤
+  (1 0 1) // ☲ 離 火
+  (0 0 1) // ☳ 震 雷
+  (0 0 0) // ☷ 坤 地
+  (1 0 0) // ☶ 艮 山
+  (0 1 0) // ☵ 坎 水
+  (1 1 0) // ☴ 巽 風
+);
+
+@function c-bagua-gap($n) {
+  @return #{'rgba(' red($c-bagua), green($c-bagua), blue($c-bagua), calc(var(--i#{$n})) ')'};
+}
+
+@mixin fill($dir: 'full', $type: absolute) {
+  position: $type;
+  @if $dir != 'bottom' { top: 0; }
+  @if $dir != 'right' { left: 0; }
+  @if $dir != 'left' { right: 0; }
+  @if $dir != 'top' { bottom: 0; }
+}
+
+.wuji {
+  position: relative;
+  width: $yin-yang-size * 2;
+  height: $yin-yang-size * 2;
+}
+
+.bagua {
+  position: absolute;
+  top: calc(50% - .5em);
+  left: calc(50% - .5em);
+  width: 1em;
+  height: 1em;
+  font-size: $bagua-size;
+  transform: rotate(var(--rotate-deg)) translateY(-#{$gap + ($yin-yang-size + $bagua-size) / 2});
+  color: $c-bagua;
+  background-image:
+    linear-gradient(90deg, $c-bagua $part*3, c-bagua-gap(1) 0, c-bagua-gap(1) $part*4, $c-bagua $part*4),
+    linear-gradient(90deg, $c-bagua $part*3, c-bagua-gap(2) 0, c-bagua-gap(2) $part*4, $c-bagua $part*4),
+    linear-gradient(90deg, $c-bagua $part*3, c-bagua-gap(3) 0, c-bagua-gap(3) $part*4, $c-bagua $part*4);
+  background-size: 100% $part;
+  background-position-y:
+    $bagua-strike-pos-base * 1,
+    $bagua-strike-pos-base * 3,
+    $bagua-strike-pos-base * 5;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 8 {
+    &:nth-of-type(#{$i}) {
+      --rotate-deg: (1 - $i) * 360deg / 8;
+      $bagua-order-row: nth($bagua-order, $i);
+
+      @for $j from 1 through 3 {
+        --i#{$j}: nth($bagua-order-row, $j);
+      }
+    }
+  }
+}
+
+.yin-yang {
+  position: absolute;
+  top: calc(50% - .5em);
+  left: calc(50% - .5em);
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-image: linear-gradient(90deg, $c-white 50%, $c-black 0);
+  font-size: $yin-yang-size;
+
+  &::before,
+  &::after {
+    content: '';
+    @include fill;
+    border: .5em*(1 - $dot-ratio) solid var(--c2, $c-white);
+    background-color: var(--c1, $c-black);
+    border-radius: inherit;
+    transform: scale(.5);
+  }
+
+  &::before {
+    transform-origin: 50% 0%;
+  }
+
+  &::after {
+    --c1: $c-white;
+    --c2: $c-black;
+    transform-origin: 50% 100%;
+  }
+}
+
+.box {
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/// reset
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.4;
+  color: $c-white;
+  background-color: #333;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  padding-top: .5em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  border-bottom: 1px dashed rgba($c-white, .5);
+  text-align: center;
+
+  small {
+    display: block;
+    opacity: .5;
+    font-style: italic;
+    text-transform: none;
+  }
+}
+
+.info {
+  margin: 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
