@@ -1,0 +1,169 @@
+/* color: #202020; */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #e7e7e7;
+}
+.circle {
+  position: relative;
+  width: 100px;
+  height:100px;
+  /* border: 1px solid #202020; */
+  background-color: #202020;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: 4s rotateAllTheTime linear  infinite;
+}
+.left {
+  
+  width: 50px;
+  height: 100px;
+  overflow: hidden;
+  background-color: #fff;
+  
+}
+
+.left-semi-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  right: 50%;
+  transform: translateX(50%);
+/*   top: 50px; */
+  bottom: 0;
+  border-radius: 50%;
+  
+  animation: 4s expand linear infinite;
+  
+  /* border: 1px solid #001eff; */
+}
+.left-middle-circle {
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: #202020;
+    /* border: 1px solid #001efff; */
+    position: absolute;
+}
+.right-semi-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #202020;
+  right: 50%;
+  transform: translateX(50%);
+  top: 0;
+  border-radius: 50%;
+  animation: 4s expandBlack linear infinite;
+}
+.right-middle-circle {
+   border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+/*     border: 1px solid #001efff; */
+    position: absolute;
+}
+
+@keyframes rotateAllTheTime {
+  from {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes expand {
+  from {
+    height: 50px;
+    width: 50px;
+  }
+  10% {
+    width: 60px;
+    height: 60px;
+/*     left: 20px; */
+  }
+  
+  25% {
+    height: 100px;
+    width: 100px;
+/*     top: 0px; */
+/*     left: 0px; */
+  }
+  26% {
+    height: 90px;
+    width: 90px;
+/*     top: 10px; */
+  }
+  50% {
+    width: 50px;
+    height: 50px;
+/*     top: 50px; */
+  }
+  51% {
+    width: 40px;
+    height: 40px;
+/*     top: 40px; */
+  }
+  75% {
+    width: 0px;
+    height: 0px;
+/*     top: 0px; */
+  }
+  76% {
+    width: 10px;
+    height: 10px;
+  }
+  to {
+    height: 50px;
+    height: 50px;
+/*     top: 0px; */
+
+  }
+}
+
+@keyframes expandBlack {
+  from {
+    width: 50px;
+    height: 50px;
+  }
+  10% {
+    width: 40px;
+    height: 40px;
+
+  }
+  25% {
+    width: 0px;
+    height: 0px;
+  }
+  26% {
+    width: 10px;
+    height: 10px;
+  }
+  50% {
+    width: 50px;
+    height: 50px;
+  }
+  51% {
+    width: 60px;
+    height: 60px;
+  }
+  75% {
+    width: 100px;
+    height: 100px;
+  }
+  76% {
+    width: 90px;
+    height: 90px;
+  }
+  to {
+    height: 50px;
+    width: 50px;
+  }
+}
