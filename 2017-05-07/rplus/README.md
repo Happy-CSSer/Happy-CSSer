@@ -1,7 +1,7 @@
 ---
 name: Rplus
 date: 2017-05-07
-title: CSS Animation: Dot Inversion ◨
+title: CSS Animation`:` Dot Inversion ◨
 ---
 
 codepen demo:
