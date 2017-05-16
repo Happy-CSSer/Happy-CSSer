@@ -1,0 +1,151 @@
+$middle: 2rem;
+$dot_size: 500vw;
+
+$time_circle: 6s;
+
+.catch{
+  background-color: red;
+  border-radius:50%;
+  position: absolute;
+  width: $middle;
+  height: $middle;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+body{
+  width: 100vw;
+  overflow: hidden;
+}
+.box{
+  width: 100vw;   
+  height: 100vh;
+  position: absolute;
+  top:0;
+  &:after{
+    content:'';
+    position:absolute;
+    width: $dot_size;
+    height: $dot_size;
+    border-radius: 50%;
+  }
+}
+.right{
+  z-index:1;
+  background: #508CE0;
+  left: 50%;
+  overflow: hidden;
+  animation: rightBox $time_circle ease-in $time_circle infinite;
+  &:after{
+    background-color: white;
+    top:50%;
+    left:0;
+    transform-origin: center;
+    transform: translate(-50%,-50%) scale(0);
+    animation: zoomIn $time_circle cubic-bezier(.99,0,1,0) $time_circle infinite;
+  }
+}
+.left{
+  left:0;
+  background: white;
+  animation: leftBox $time_circle ease-in $time_circle infinite;
+  width: 100vw;
+  &:after{
+    background-color: #508CE0;
+    top:50%;
+    right:50vw;
+    transform-origin: center;
+    transform: translate(0.5%,-50%) scale(1);
+    animation: zoomOut $time_circle cubic-bezier(0,.99,0,.99) $time_circle infinite;
+  }
+}
+
+@keyframes rightBox{
+  form{
+    background: #508CE0;
+  }
+  25%{
+    
+  }
+  49.9%{
+    background: #508CE0;
+  }
+  50%{
+    background: white;
+  }
+  75%{
+    
+  }
+  99.9%{
+    background: white;
+  }
+  to{
+    background: #508CE0;
+  }
+}
+
+@keyframes leftBox{
+  form{
+    background: white;
+  }
+  25%{
+    
+  }
+  50.9%{
+    background: white;
+  }
+  51%{  
+    background: #508CE0;
+  }
+  75%{
+    
+  }
+  99.9%{
+    background: #508CE0;
+  }
+  to{
+    background: white;
+  }
+}
+
+@keyframes zoomIn{
+  form{
+    transform: translate(-50%,-50%) scale(0);
+    background-color: white;
+  }
+  25%,49.9%{
+    transform: translate(-0.5%,-50%) scale(1);
+    background-color: white;
+  }
+  50%{
+    transform: translate(-50%,-50%) scale(0);
+    background-color: #508CE0;
+  }
+  75%,to{
+    transform: translate(-0.5%,-50%) scale(1);
+    background-color: #508CE0;
+  }
+}
+
+@keyframes zoomOut{
+  from,25%{
+    transform: translate(5%,-50%) scale(1);
+    background-color: #508CE0;
+  }
+  49.9%{
+    transform: translate(49%,-50%) scale(0);
+    background-color: #508CE0;
+  }
+  50%,74.9%,75%{
+    transform: translate(5%,-50%) scale(1);
+    background-color: white;
+  }
+  99.9%{
+    transform: translate(49%,-50%) scale(0);
+        background-color: white;
+  }
+}
