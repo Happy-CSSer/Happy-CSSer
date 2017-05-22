@@ -1,0 +1,57 @@
+$b_r: 40px;
+$h: 0.5rem;
+$gap: 50px;
+$w: 100* $h; 
+$center_cl: white;
+$light_br: 30px;
+$particle_size: 4px;
+body{  
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background: currentcolor;
+}
+.bar {
+  height: $h;
+  width: $w;
+  filter: blur(1px);
+  background: radial-gradient($center_cl 10%, blue);
+  border-radius: 50%;
+  display:inline-flex;
+  justify-content: center;
+  align-items:center;
+  position:relative;
+  box-shadow: 0 0 $light_br white;
+}
+.ball{
+  height: $b_r;
+  width: $b_r;
+  box-shadow: 0 0 $light_br white;
+  border-radius: 50%;
+  filter: blur(6px) contrast(3);
+  
+  margin: 0 $gap; 
+  background: radial-gradient($center_cl 10%, blue);
+  animation: slide 1.5s ease-in infinite;
+  // 旋轉最後一顆
+  &:last-child{    
+    animation-name: flip;
+    /* 移動 旋轉中心到重心點*/
+    transform-origin: (-(2*$gap + $b_r/2));   
+  }
+}
+
+@keyframes slide{
+  to{
+    transform: translatex(2*$gap+$b_r);
+  }
+}
+
+@keyframes flip {  
+  to {
+    transform: rotate(180deg);
+  }
+}

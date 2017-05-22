@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: currentcolor;
+}
+
+.bar {
+  height: 0.5rem;
+  width: 50rem;
+  filter: blur(1px);
+  background: radial-gradient(#ffffff 10%, #0000ff);
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 0 30px white;
+}
+
+.ball {
+  height: 40px;
+  width: 40px;
+  box-shadow: 0 0 30px white;
+  border-radius: 50%;
+  filter: blur(6px) contrast(3);
+  margin: 0 50px;
+  background: radial-gradient(#ffffff 10%, #0000ff);
+  animation: slide 1.5s ease-in infinite;
+}
+.ball:last-child {
+  animation-name: flip;
+  /* 移動 旋轉中心到重心點*/
+  transform-origin: -120px;
+}
+
+@keyframes slide {
+  to {
+    transform: translatex(140px);
+  }
+}
+@keyframes flip {
+  to {
+    transform: rotate(180deg);
+  }
+}
