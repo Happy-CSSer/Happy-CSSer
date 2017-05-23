@@ -1,0 +1,66 @@
+$size: 20px;
+$gap: 30px;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: black;
+}
+
+.container {
+  width: 100%;
+}
+
+ol {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-image: radial-gradient(#fff 10%, blue);
+  border-radius: 50%;
+  background-size: 50% 15%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+li {
+  list-style: none;
+  background: yellow;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  margin: 0 $gap;
+  animation: linear move 1s infinite;
+  background: radial-gradient(#fff 30%, blue);
+  box-shadow: 0 0 $size*2 white;
+  
+  
+  &:last-child {
+    transform-origin: -$gap*2 -($size/2); 
+    animation: linear turnback 1s infinite;
+  }
+}
+
+@keyframes move {
+  to {
+    transform: translate($gap*2 + $size, 0);
+  }
+}
+
+@keyframes turnback {
+  0% {
+    transform: rotate(0deg);
+  }  
+  50% {
+    transform: translate($gap + ($size/2), 0);
+  }
+  50.01% {
+    transform: rotate(0deg); 
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
