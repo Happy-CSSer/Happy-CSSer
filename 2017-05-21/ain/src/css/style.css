@@ -1,0 +1,154 @@
+* {
+  border: solid 1px #bbb;
+}
+
+html, body {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.load-bar {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 0px;
+  border: none;
+  background-image: -webkit-radial-gradient(40% 7px, #afd2ff 50%, #0ebeff 60%, #000000);
+  background-image: radial-gradient(40% 7px, #afd2ff 50%, #0ebeff 60%, #000000);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ball {
+  font-size: initial;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 100%;
+  background-image: -webkit-radial-gradient(circle, #afd2ff 35%, #0b0e89 60%);
+  background-image: radial-gradient(circle, #afd2ff 35%, #0b0e89 60%);
+  mix-blend-mode: screen;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  margin: 0 30px;
+  -webkit-animation: 2s ease-out moveToRight infinite;
+          animation: 2s ease-out moveToRight infinite;
+}
+
+.ball:last-of-type {
+  -webkit-animation: 2s ease-in-out semi-sphere-rotate infinite;
+          animation: 2s ease-in-out semi-sphere-rotate infinite;
+  -webkit-animation-timing-function: semi-sphere-rotate step-end;
+          animation-timing-function: semi-sphere-rotate step-end;
+  -webkit-animation-duration: -1s;
+          animation-duration: -1s;
+}
+
+@-webkit-keyframes moveToRight {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(90px);
+            transform: translateX(90px);
+  }
+}
+
+@keyframes moveToRight {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(90px);
+            transform: translateX(90px);
+  }
+}
+@-webkit-keyframes semi-sphere-rotate {
+  0% {
+    -webkit-transform-origin: -75px center;
+            transform-origin: -75px center;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: -75px center;
+            transform-origin: -75px center;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+@keyframes semi-sphere-rotate {
+  0% {
+    -webkit-transform-origin: -75px center;
+            transform-origin: -75px center;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: -75px center;
+            transform-origin: -75px center;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+@-webkit-keyframes semi-sphere-rotate-another {
+  0% {
+    -webkit-transform-origin: -135px center;
+            transform-origin: -135px center;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform-origin: -135px center;
+            transform-origin: -135px center;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50.1% {
+    -webkit-transform: translateX(-270px);
+            transform: translateX(-270px);
+  }
+  100% {
+    -webkit-transform: translateX(-90px);
+            transform: translateX(-90px);
+  }
+}
+@keyframes semi-sphere-rotate-another {
+  0% {
+    -webkit-transform-origin: -135px center;
+            transform-origin: -135px center;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform-origin: -135px center;
+            transform-origin: -135px center;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50.1% {
+    -webkit-transform: translateX(-270px);
+            transform: translateX(-270px);
+  }
+  100% {
+    -webkit-transform: translateX(-90px);
+            transform: translateX(-90px);
+  }
+}
