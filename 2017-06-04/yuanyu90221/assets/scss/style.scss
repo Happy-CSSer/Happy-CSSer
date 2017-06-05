@@ -1,0 +1,68 @@
+//變數設定
+$font-size: 50vmin;
+$bg-color: green;
+$ring-color: white;
+$mask-shift: -$font-size/10;
+$mask-height: $font-size + $font-size/5 + $font-size/5;
+$mask-width: $font-size/2 + $font-size/5;
+$ring-width: $font-size/10;
+$ring-radius:  $font-size/2 + $font-size/10 ; 
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $bg-color;
+  font-size: $font-size;  
+}
+.outer {
+  height: $font-size + $font-size/5;
+  width: $font-size+ $font-size/5;
+  box-sizing:border-box;
+}
+.circle-out {
+  height: inherit;
+  width: inherit;
+  box-sizing:border-box;
+  position: relative;
+  &::before, &::after { // before , after共用特性
+    animation: angle-shift 3s infinite ; 
+    position: absolute;
+    content: '';
+  }
+  &::before {
+    top: 0;
+    left: 0;
+    // 利用 font-size控制ring-size
+    height: 1em;
+    width: .5em;
+    background: $bg-color;
+    border: solid $ring-width $ring-color; 
+    // 半圓 border設定
+    border-radius: 1em 0 0 1em;
+    // 去除右變 border
+    border-right: 0;
+    // 設定 ring 旋轉中心
+    transform-origin:$ring-radius $ring-radius;
+    animation-delay: 0.5s;
+  }
+  &::after {
+    // 因為特別把 mask 長寬加長 $font-size/10 所以需要 shift回來
+    top: $mask-shift;
+    left: $mask-shift;
+    height: $mask-height;
+    width: $mask-width;
+    background: $bg-color;
+    // 設定 mask 旋轉中心
+    transform-origin: $mask-width $mask-width;
+  }
+}
+// mask與原本半圓的旋轉動畫
+@keyframes angle-shift{
+  from {
+    transform: rotate(10deg);
+  }
+  to {
+    transform: rotate(370deg);
+  }
+}
