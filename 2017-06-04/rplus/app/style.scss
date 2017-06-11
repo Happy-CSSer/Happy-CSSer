@@ -1,0 +1,128 @@
+@import 'trigonometry';
+
+$c-white: #fff;
+$c-black: #000;
+$c-theme: $c-white;
+
+$corner: 6;
+
+$angle: 180deg * ($corner - 2) / $corner;
+$dot-size: 1em;
+$dot-size: 20px;
+$dot-size: 2vmin;
+$dot-count: 8;
+$radius: $dot-size * 15;
+$length: $radius * cos($angle / 2) * 2;
+$ani-dur: .75s;
+$init-angle: $angle / -2;
+
+.loader {
+  position: absolute;
+  top: calc(50% - #{$radius});
+  left: calc(50% - #{$radius});
+  z-index: 1;
+  width: $radius * 2;
+  height: $radius * 2;
+  border-radius: 50%;
+  background-color: rgba(#fff, .1);
+  transform: rotate($init-angle);
+  animation: steps-rotate ($ani-dur * $corner) steps($corner) infinite;
+
+  @keyframes steps-rotate {
+    to {
+      transform: rotate($init-angle - 360deg);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - .5em);
+    left: calc(50% - .5em);
+    width: $length + $dot-size;
+    height: $dot-size;
+    background-image: radial-gradient($dot-size at ($dot-size / 2) ($dot-size / 2), $c-theme 50%, transparent 0);
+    background-size: calc((100% - #{$dot-size}) / #{$dot-count - 1}) $dot-size;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    transform-origin: ($dot-size / 2) 50%;
+    font-size: $dot-size;
+    color: $c-theme;
+    transform:
+      translateX(-$radius)
+      rotate(-$angle / 2);
+    animation: scaning $ani-dur infinite;
+
+    @keyframes scaning {
+      to {
+        transform: translateX(-$radius) rotate($angle / 2);
+      }
+    }
+  }
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.4;
+  color: $c-white;
+  background-color: #000;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+  border-bottom: 1px dashed rgba($c-white, .5);
+
+  small {
+    display: block;
+    text-align: right;
+    opacity: .5;
+    font-style: italic;
+    text-transform: none;
+    border-top: 1px dashed rgba($c-white, .75);
+  }
+}
+
+.info {
+  margin: 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+      color: inherit;
+  }
+}
