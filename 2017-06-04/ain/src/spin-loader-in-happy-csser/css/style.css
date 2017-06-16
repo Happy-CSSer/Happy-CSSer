@@ -1,0 +1,93 @@
+body, html {
+  background-color: #22CECB;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 120px;
+  height: 120px;
+  background-color: #22CECB;
+  border: solid 1px #e7e7e7;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.spin-loader {
+  width: 60px;
+  height: 120px;
+  background-color: #22CECB;
+  position: relative;
+}
+.spin-loader::before, .spin-loader::after {
+  content: " ";
+  background-color: #22CECB;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation-delay: -0.5s;
+  animation: 2s spin-rotate infinite;
+}
+.spin-loader::before {
+  border: solid 21.6px #fff;
+  border-radius: 60px 0 0 60px;
+  border-right: none;
+  transform-origin: right center;
+  animation-delay: 0.6s;
+}
+.spin-loader::after {
+  background-color: #22CECB;
+  transform-origin: right center;
+  transform: rotate(180deg);
+}
+
+.loader2 {
+  box-sizing: border-box;
+  width: 60px;
+  height: 1em;
+  background-color: #fff;
+  font-size: 120px;
+  border-radius: 60px 0 0 60px;
+  position: relative;
+  transform-origin: right center;
+  animation-delay: 0.6s;
+}
+.loader2::before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 21.6px;
+  width: calc(38.4px);
+  height: calc(76.8px);
+  background-color: #22CECB;
+  border-radius: 38.4px 0 0 38.4px;
+}
+.loader2::after {
+  content: " ";
+  background-color: #22CECB;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: right center;
+  transform: rotate(180deg);
+}
+
+.loader2, .loader2:after {
+  animation: 2s spin-rotate infinite;
+}
+
+@keyframes spin-rotate {
+  0% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(330deg);
+  }
+}
