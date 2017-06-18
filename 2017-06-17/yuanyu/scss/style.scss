@@ -1,0 +1,142 @@
+$radius_2: 1em;
+$o_color: #FFD198;
+$container_color: #8fd7fd;
+$ratio: 1.7;
+$width: $ratio*$radius_2;
+$bg-color: #21314e;
+$size: 20vmin;
+$checked_color: white;
+$unchecked_color: #799cd4;
+$moon_color: #FFE7B6;
+$night_color: #799cd4;
+$margin_ratio: .1;
+$cloud_color: white;
+body {
+  height: 100vh;
+  background-color: $bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  font-size: $size;
+  position: relative;
+  height: $radius_2;
+  width: $width;
+  box-sizing: border-box;
+  border-radius: $width;
+  background-color: $container_color;
+  &::after {
+    content:'';
+    position: absolute;
+    color: $moon_color;
+    background-color: $moon_color;
+    height: 2vmin;
+    width: 2vmin;
+    border-radius: 100%;
+    
+    top: 15%;
+    left: 20%;
+    // 利用 box-shadow產生 原本div的陰影 而陰影顏色來自於color,可以產生多個
+    box-shadow: 8vmin -1.3vmin 0 -.5vmin, -5vmin 5vmin 0 -.5vmin,2.6vmin 7vmin 0 -.5vmin,-2vmin 12vmin, 8vmin 14vmin 0 -.5vmin;
+    opacity: 0;
+  }
+  &::before {
+    content: '';
+    position:absolute;
+    background-color: $cloud_color;
+    height: 1vmin;
+    width: 17vmin;
+    color: $cloud_color;
+    border-radius: 2vmin;
+    top: 15%;
+    left: 25%;
+    box-shadow: .3em .3em;
+  }
+}
+.o {
+  position: relative;
+  height: $radius_2;
+  width: $radius_2;
+  border-radius: 50%;
+  background-color: $o_color;
+  border: solid $radius_2/20 transparent;
+  // 預設是 border-box 部會顯示效果, padding-box則是在border內顯示background-color
+  background-clip: padding-box;
+  box-sizing: border-box;
+  
+  &::before{
+    content: '';
+    position: absolute;
+    height: 5vmin;
+    width: 5vmin;
+    border-radius: 50%;
+    background: black;  
+    color: black;
+    top: 14%;
+    right: 25%;
+    box-shadow: -.4em .2em 0 -2vmin, -.1em .5em 0 -1vmin;
+    opacity: 0;
+  } 
+  &::after {
+    content: '';
+    position:absolute;
+    background-color: $cloud_color;
+    height: 1vmin;
+    width: 12vmin;
+    // z-index: 1;
+    color: $cloud_color;
+    border-radius: 2vmin;
+    top: 30%;
+    left: 45%;
+    
+  }
+}
+.am {
+  font-size: 10vmin;
+  color: $checked_color;
+  position: absolute;
+  //利用相對位置定位在固定 距離右方125%相對於父元素
+  right: 100%*(1+$margin_ratio);
+  top: 50%;
+  transform: translatey(-50%);
+}
+.pm {
+  font-size: 10vmin;
+  color: $unchecked_color;
+  position: absolute;
+  //利用相對位置定位在固定 距離右方125%相對於父元素
+  left: 100%*(1+$margin_ratio);
+  top: 50%;
+  transform: translatey(-50%);
+}
+.switch{
+  display: none;
+}
+.switch:checked{
+  & + .container > .o{
+    transform: translatex(($ratio - 1)* $radius_2);
+    background-color: $moon_color;
+    &::before{
+      opacity: 0.5;
+    }
+    &::after{
+      opacity: 0;
+    }
+  }
+  & + .container{
+    &::after{
+      opacity: 1;
+    }
+    &::before{
+      opacity: 0;
+    }
+    background-color: $night_color;
+    .am  {
+      color: $unchecked_color;
+    }
+    .pm  {
+      color: $checked_color;
+    }
+  }  
+}
