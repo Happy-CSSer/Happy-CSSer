@@ -1,0 +1,110 @@
+root {
+  --i: 1;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-size: 5vmin;
+  box-sizing: border-box;
+  background: #00a8ff;
+  perspective: 400px;
+  transform-style: preserve-3d;
+}
+
+.slop-container {
+  --i: 1;
+  position: relative;
+  display: inline-block;
+  top: 50%;
+  width: 18.4em;
+  height: 1.8em;
+  left: calc(50% - 9.6em);
+  box-shadow: inset 0 0 0 3px white;
+  text-align: center;
+  border-radius: 1em;
+  color: white;
+  transform: rotateY(0deg);
+  animation: slop-rotate-y .5s;
+  overflow: hidden;
+  font-size: 1em;
+}
+.slop-container > div {
+  position: absolute;
+  height: 1em;
+  line-height: 1em;
+  padding: .4em .8em;
+  border-radius: 1em;
+}
+.slop-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(calc(50% * (var(--i) / -1)));
+  width: 16em;
+  height: 1em;
+  padding: .4em .8em;
+  background: white;
+  z-index: 1;
+  transition: all .5s;
+  border-radius: 1em;
+}
+.slop-container .left, .slop-container .right {
+  top: 0;
+  width: 8em;
+  z-index: 4;
+}
+.slop-container .left {
+  left: 0;
+  color: #00a8ff;
+}
+.slop-container .right {
+  left: 8.8em;
+}
+
+#slop {
+  display: none;
+}
+
+#slop:checked + .slop-container {
+  --i: -1;
+  animation: slop-rotate-n .5s;
+}
+#slop:checked + .slop-container .left {
+  color: white;
+}
+#slop:checked + .slop-container .right {
+  color: #00a8ff;
+}
+
+@keyframes slop-rotate-y {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: rotateY(calc(45deg * var(--i)));
+  }
+}
+@keyframes slop-rotate-n {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: rotateY(calc(45deg * var(--i)));
+  }
+}
+@keyframes left-slop {
+  0% {
+    color: #00a8ff;
+  }
+  35% {
+    color: #00a8ff;
+  }
+  65% {
+    color: white;
+  }
+  100% {
+    color: white;
+  }
+}
