@@ -1,0 +1,127 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #21314e;
+}
+
+.container {
+	cursor: pointer;
+	width: 200px;
+	height: 111.11111px;
+	background-color: #8fd7fd;
+	border-radius: 111.11111px;
+	position: relative;
+	transition: all .5s;
+}
+
+.container::before {
+	content: '';
+	position: absolute;
+	top: 30%;
+	left: 40%;
+	background-color: white;
+	height: .4em;
+	width: 4em;
+	border-radius: .5em;
+	box-shadow: 0.9em -1.3em white, 2em 1.2em 0 0em white;
+	z-index: 1;
+	transition: opacity .3s;
+}
+
+.container::after {
+	top: 35%;
+	left: 25%;
+	content: '';
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	background-color: white;
+	color: white;
+	border-radius: .5em;
+	box-shadow: -1.7em .5em 0 -.4em , -0.2em 1.6em 0 -0.2em, 1em -1em 0 -0.3em, 2em .5em 0 -.3em, 3em 3em 0 -.3em;
+	opacity: 0;
+}
+
+.o {
+	position: relative;
+	width: 111.11111px;
+	height: 111.11111px;
+	background-color: #FFD198;
+	background-clip: padding-box;
+	border-radius: 100%;
+	border: solid 5px transparent;
+	box-sizing: border-box;
+	transition: transform .5s;
+}
+
+.o::after {
+	content: "";
+	position: absolute;
+	top: 20%;
+	left: 55%;
+	border-radius: 50%;
+	width: 1em;
+	height: 1em;
+	color: #e5cda7;
+	font-size: 27.77778px;
+	background-color: currentColor;
+	box-shadow: -1.7em .5em 0 -0.3em, -0.2em 1.6em 0 -0.2em;
+	opacity: 0;
+	transition: opacity .3s;
+}
+
+.switch {
+	display: none;
+}
+
+.switch:checked + .container {
+	background: #799cd4;
+}
+
+.switch:checked + .container::before {
+	opacity: 0;
+}
+
+.switch:checked + .container::after {
+	opacity: 1;
+}
+
+.switch:checked + .container > .o {
+	transform: translateX(88.88889px);
+	background-color: #FFE7B6;
+}
+
+.switch:checked + .container > .o::after {
+	opacity: 1;
+}
+
+.switch:checked + .container .am {
+	color: #799cd4;
+}
+
+.switch:checked + .container .pm {
+	color: white;
+}
+
+.am {
+	position: absolute;
+	top: 50%;
+	left: -75%;
+	font-size: 50px;
+	transform: translate(0, -50%);
+	color: white;
+}
+
+.pm {
+	position: absolute;
+	top: 50%;
+	right: -75%;
+	font-size: 50px;
+	transform: translate(0, -50%);
+	color: #799cd4;
+}

@@ -1,0 +1,128 @@
+$size: 200px;
+$ratio: 1.8;
+$dx: $size/$ratio * 0.9;
+$o-color: #FFD198;
+$o-hover-color: #FFE7B6;
+$f-color: #799cd4;
+$c-bg: #8fd7fd;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #21314e;
+}
+.container {
+    cursor: pointer;
+    width: $size;
+    height: $size/$ratio;
+    background-color: $c-bg;
+    border-radius: $size/$ratio;
+    position: relative;
+    transition: all .5s;
+    //  Cloud
+    &::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 40%;
+      background-color: white;
+      height: .4em;
+      width: 4em;
+      border-radius: .5em;
+      box-shadow: 0.9em -1.3em white, 2em 1.2em 0 0em white;
+      z-index: 1;
+      transition: opacity .3s;
+    }
+    // Stars
+    &::after {
+      top: 35%;
+      left: 25%;
+      content: '';
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      background-color: white;
+      color: white;
+      border-radius: .5em;
+      box-shadow: -1.7em .5em 0 -.4em , -0.2em 1.6em 0 -0.2em, 1em -1em 0 -0.3em, 2em .5em 0 -.3em, 3em 3em 0 -.3em;
+      opacity: 0;
+      
+    }
+}
+.o {
+    position: relative;
+    width: $size/$ratio;
+    height: $size/$ratio;
+    background-color: $o-color;
+    background-clip: padding-box;
+    border-radius: 100%;
+    border: solid 5px rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    transition: transform .5s;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 55%;
+        border-radius: 50%;
+        width: 1em;
+        height: 1em;
+        color: #e5cda7;
+        font-size: $size / $ratio / 4;
+        background-color: currentColor;
+        box-shadow: -1.7em .5em 0 -0.3em, -0.2em 1.6em 0 -0.2em;
+        opacity: 0;
+        transition: opacity .3s;
+    }
+}
+.switch {
+    display: none;
+}
+.switch:checked {
+    & + .container {
+        background: $f-color;
+        
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          opacity: 1;
+        } 
+    }
+  
+    & + .container > .o {
+        transform: translateX($size - $size/$ratio);
+        background-color: $o-hover-color;
+      
+      &::after {
+        opacity: 1;
+      }
+    }
+    & + .container {
+      .am { color: $f-color; }
+      .pm { color: white; }
+    }
+}
+.am {
+    position: absolute;
+    top: 50%;
+    left: -75%;
+    font-size: $size * .25;
+    transform: translate(0, -50%);
+    color: white;
+}
+.pm {
+    position: absolute;
+    top: 50%;
+    right: -75%;
+    font-size: $size * .25;
+    transform: translate(0, -50%);
+    color: $f-color;
+}

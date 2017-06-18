@@ -1,0 +1,100 @@
+
+// Variable
+$fontSize: 1.8rem;
+$height: $fontSize * 2.5;
+$timingFn: cubic-bezier(.55,.18,.85,.69);
+$blue: #00a8ff;
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $blue;
+  perspective: 650px;
+  padding: 3rem;
+}
+
+// 外框容器
+#outer {
+  display: inline-block;
+  background: inherit;
+  border: 1px solid #fff;
+  border-radius: $fontSize * 2; 
+  height: $height;
+  width: $height * 8;
+  transition: transform linear .3s;
+  position: relative;
+}
+// 文字
+.txt {
+  font-size: $fontSize;
+  color: white;
+  line-height: $height;
+  letter-spacing: $fontSize * 0.2;
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.6s $timingFn;  
+}
+// 白色麻糬
+#white {
+  display: inline-block;
+  position: absolute;
+  width: 50%;
+  left: 0;
+  height: 100%;
+  background-color: white;
+  border-radius: $fontSize * 2;
+  z-index: 0;
+  transition: all 0.6s $timingFn;
+  
+}
+// Unchecked
+#checkbox {
+  display: none;
+  
+  & + #outer {
+    animation: rotate-left 0.6s $timingFn ;
+    
+    span:nth-of-type(1) {
+      color: $blue;
+    }
+  }
+  
+}
+
+// Checked
+#checkbox:checked {
+  & + #outer {
+    animation: rotate-right 0.6s $timingFn ;
+
+    span:nth-of-type(1) {
+      color: #fff;
+    }
+    
+    #white {
+      transform: translateX(100%);
+    }
+    span:nth-of-type(3) {
+      color: $blue;
+    }
+    
+  }
+}
+
+
+// Animation
+@keyframes rotate-right {
+  0% {transform: rotateY(0deg);}
+  50% {transform: rotateY(45deg);}
+  100% {transform: rotateY(0deg);}
+}
+@keyframes rotate-left {
+  0% {transform: rotateY(0deg);}
+  50% {transform: rotateY(-45deg);}
+  100% {transform: rotateY(0deg);}
+}
