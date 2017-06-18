@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(rel="stylesheet", href="style.css")
+
+body.app
+  title [CSS] 3D Switcher Vll Plus
+  h1.intro [CSS] 3D Switcher Vll Plus
+    small click to toggle
+
+  .box
+    input#io.Switcher__checkbox.sr-only(type="checkbox" checked)
+    label.Switcher(for="io")
+      .Switcher__trigger(data-value="SALE") SALE
+      .Switcher__trigger(data-value="RENT") RENT
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/shots/2286747-Switcher-Vll-Plus") Switcher Vll Plus
+    |  by 
+    a(href="https://dribbble.com/Volorf") Oleg Frolov
