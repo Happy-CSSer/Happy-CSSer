@@ -1,0 +1,143 @@
+$size: 200px
+$ratio: 1.8
+$dx: $size/2 * 0.9
+$o-color: #FFD198
+$o-hover-color: #FFE7B6
+$f-color: #799cd4
+$c-color: #8fd7fd
+$b-color: #21314e
+$cloud-width: 45px
+$cloud-height: $size *.02
+$crater-color: #E6CEA5
+html, body
+  margin: 0
+  padding: 0
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $b-color
+
+.container
+  width: $size
+  height: $size/$ratio
+  background-color: $c-color
+  border-radius: $size/$ratio
+  position: relative
+  z-index: 0
+  &:before, &:after
+    position: absolute
+    content: ''
+    width: $cloud-width
+    height: $cloud-height
+    background-color: white
+    border-radius: $size
+    transition: width .5s,height .5s
+  &:before
+    top: 20%
+    left: 40%
+    background-color: white
+  &:after
+    top: 48%
+    left: 44.5%
+  
+.cloud
+  position: absolute
+  top: 33%
+  left: 35.5%
+  width: $cloud-width
+  height: $cloud-height
+  background-color: white
+  border-radius: $size
+  transition: width  .5s, height .5s
+  z-index: 3
+  font-size: $size / $ratio / 4
+  color: white
+  
+.o
+  width: #{$size/$ratio}
+  height: #{$size/$ratio}
+  background-color: $o-color
+  /* background-origin */
+  background-clip: padding-box
+  /* 定義背景圖在哪個範圍 */
+  border-radius: 100%
+  border: solid 5px rgba(0, 0, 0, 0)
+  box-sizing: border-box
+  transition: transform .5s
+  position: relative
+  z-index: 1
+  &:after
+    content: ' '
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    border-radius: 100%
+    box-shadow: 0.4px 1px 6px 0 lighten(black, 30)
+    
+    
+.switch
+  display: none
+  & + .container > .am
+    color: $f-color 
+  & + .container > .pm
+    color: #fff
+    
+.switch:checked
+  & + .container
+    background-color: $f-color
+    &:before, &:after
+      position: absolute
+      content: ' '
+      width: $size * .01
+      height: $size* .01
+    &:before
+      transform: translateX($size * 0.03)
+    &:after
+      transform: translateX(- $size * 0.03)
+      
+  & + .container > .o
+    transform: translateX($size - $size/$ratio)
+    background-color: $o-hover-color   
+    &:before
+      content: ' '
+      position: absolute
+      top: 20%
+      right: 20%
+      border-radius: 100%
+      width: 1em
+      height: 1em
+      font-size: $size / $ratio / 4
+      background-color: currentColor
+      box-shadow: -0.2em 1.5em 0 -0.2em, -1.4em 0.5em 0 -0.34em
+      color: $crater-color
+    &:after
+      box-shadow: -1px 3.5px 6px 0  lighten(black, 40)
+  
+  & + .container > .cloud
+    font-size: $size / $ratio / 4
+    width: .35em
+    height: .35em
+    left: 33.5%
+    box-shadow: -1.3em 1.5em 0 -0.03em, -1.9em 0.2em 0 -0.1em, 1.1em 2em 0 -0.1em
+    
+  & + .container > .pm
+    color: #799cd4
+    
+  & + .container > .am
+    color: #fff
+    
+.am
+  position: absolute
+  top: 50%
+  right: 125%
+  transform: translate(0, -50%)
+  font-size: $size * 0.25
+.pm
+  position: absolute
+  top: 50%
+  left: 125%
+  transform: translate(0, -50%)
+  font-size: $size * 0.25

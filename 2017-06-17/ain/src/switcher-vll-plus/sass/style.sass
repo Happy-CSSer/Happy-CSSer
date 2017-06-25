@@ -1,0 +1,102 @@
+$color: #00A8FF
+$width: 300px
+$height: 50px
+$bit: 1
+$transition-time: .8s
+$angle: 30deg
+$perspective: 300px
+
+@mixin font-change($bit)
+  @if $bit == 1
+    color: $color
+    font-weight: bold
+  @else if $bit == -1
+    color: #fff
+    font-weight: normal
+
+html, body
+  box-sizing: border-box
+  background-color: #00A8FF
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  font-family: sans-serif
+  // perspective-origin: 0% 50%
+body
+  //設定呈現3d效果
+  // transform-style: preserve-3d
+  //設定視線原點與平面距離
+  perspective: $perspective
+#sw
+  display: none
+.switcher
+
+  $bit: 1
+  position: relative
+  width: $width
+  height: $height
+  // background-color: #fff
+  // border: solid 1px #fff
+  animation: $transition-time screw-right ease-in-out forwards
+  box-shadow: 0px 0px 0 1px white 
+  border-radius: $height/2
+  overflow: hidden
+  display: flex
+  &:before, &:after
+    width: 50%
+    height: 100%
+    z-index: 2
+    text-align: center
+    line-height: $height
+    position: relative
+    transition: $transition-time color 
+    animation: $transition-time screw ease-in-out forwards
+  &:before
+    +font-change($bit)
+    content: 'SALE'
+  &:after
+    +font-change(- 1 * $bit)
+    content: 'RENT'
+.white
+  position: absolute
+  width: 100%
+  height: 100%
+  transform: translateX(-50%)
+  background-color: #fff
+  border-radius: $width
+  transition: $transition-time transform
+  
+#sw:checked
+  $bit: -1
+  & + .switcher
+    animation: $transition-time screw ease-in-out forwards  
+    &:before
+      +font-change($bit)
+      // animation: $transition-time screw ease-in-out forwards
+    &:after
+      +font-change(-$bit)
+    .white
+      transform: translateX(50%)
+      
+      
+    
+@keyframes screw
+  0%
+    transform: rotateY(0deg)
+  50%
+    @if $bit == 1
+      transform: rotateY($angle)
+    @else if $bit == -1
+      transform: rotateY(-$angle)
+  100%
+    transform: rotateY(0deg)
+  
+  
+@keyframes screw-right
+  0%
+    transform: rotateY(0deg)
+  50%
+    transform: rotateY(-$angle)
+  100%
+    transform: rotateY(0deg)

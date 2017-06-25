@@ -1,0 +1,151 @@
+@charset "UTF-8";
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #21314e;
+}
+
+.container {
+  width: 200px;
+  height: 111.11111px;
+  background-color: #8fd7fd;
+  border-radius: 111.11111px;
+  position: relative;
+  z-index: 0;
+}
+.container:before, .container:after {
+  position: absolute;
+  content: "";
+  width: 45px;
+  height: 4px;
+  background-color: white;
+  border-radius: 200px;
+  transition: width 0.5s, height 0.5s;
+}
+.container:before {
+  top: 20%;
+  left: 40%;
+  background-color: white;
+}
+.container:after {
+  top: 48%;
+  left: 44.5%;
+}
+
+.cloud {
+  position: absolute;
+  top: 33%;
+  left: 35.5%;
+  width: 45px;
+  height: 4px;
+  background-color: white;
+  border-radius: 200px;
+  transition: width 0.5s, height 0.5s;
+  z-index: 3;
+  font-size: 27.77778px;
+  color: white;
+}
+
+.o {
+  width: 111.11111px;
+  height: 111.11111px;
+  background-color: #FFD198;
+  /* background-origin */
+  background-clip: padding-box;
+  /* 定義背景圖在哪個範圍 */
+  border-radius: 100%;
+  border: solid 5px transparent;
+  box-sizing: border-box;
+  transition: transform 0.5s;
+  position: relative;
+  z-index: 1;
+}
+.o:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 100%;
+  box-shadow: 0.4px 1px 6px 0 #4d4d4d;
+}
+
+.switch {
+  display: none;
+}
+.switch + .container > .am {
+  color: #799cd4;
+}
+.switch + .container > .pm {
+  color: #fff;
+}
+
+.switch:checked + .container {
+  background-color: #799cd4;
+}
+.switch:checked + .container:before, .switch:checked + .container:after {
+  position: absolute;
+  content: " ";
+  width: 2px;
+  height: 2px;
+}
+.switch:checked + .container:before {
+  transform: translateX(6px);
+}
+.switch:checked + .container:after {
+  transform: translateX(-6px);
+}
+.switch:checked + .container > .o {
+  transform: translateX(88.88889px);
+  background-color: #FFE7B6;
+}
+.switch:checked + .container > .o:before {
+  content: " ";
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  border-radius: 100%;
+  width: 1em;
+  height: 1em;
+  font-size: 27.77778px;
+  background-color: currentColor;
+  box-shadow: -0.2em 1.5em 0 -0.2em, -1.4em 0.5em 0 -0.34em;
+  color: #E6CEA5;
+}
+.switch:checked + .container > .o:after {
+  box-shadow: -1px 3.5px 6px 0 #666666;
+}
+.switch:checked + .container > .cloud {
+  font-size: 27.77778px;
+  width: 0.35em;
+  height: 0.35em;
+  left: 33.5%;
+  box-shadow: -1.3em 1.5em 0 -0.03em, -1.9em 0.2em 0 -0.1em, 1.1em 2em 0 -0.1em;
+}
+.switch:checked + .container > .pm {
+  color: #799cd4;
+}
+.switch:checked + .container > .am {
+  color: #fff;
+}
+
+.am {
+  position: absolute;
+  top: 50%;
+  right: 125%;
+  transform: translate(0, -50%);
+  font-size: 50px;
+}
+
+.pm {
+  position: absolute;
+  top: 50%;
+  left: 125%;
+  transform: translate(0, -50%);
+  font-size: 50px;
+}
