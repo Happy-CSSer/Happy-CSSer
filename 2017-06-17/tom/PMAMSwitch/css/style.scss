@@ -1,0 +1,150 @@
+$size:150px;
+body{
+  width:100%;
+  height:100%;
+  background:#20304f;
+}
+.am ,.pm{
+  padding:1em;
+  font-size:1.5em;
+  font-weight:600;
+  position: absolute;
+  top:0;
+}
+.am{
+  color:#fff;
+  right:200px;
+}
+.pm{
+  color:#789bd6;
+  left:200px;
+}
+.container{
+  min-width:500px;
+  height:500px;
+  display: -webkit-flex;
+  display:flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.switchWrap{
+  width:$size+50;
+  height:$size/2;
+  border-radius:$size/2;
+  background:#8cd7ff;
+  padding:5px;
+  transition: all 1s;
+  position: relative;
+}
+.switchWrap:before{
+   content:'\xE2';
+   display:block;
+   position: absolute;
+   left:20px;
+   top:30px;
+   width:5px;
+   height:5px;
+   font-size:25px;
+   text-indent:10px;
+   line-height:10px;
+   background: #fff;
+   border-radius:50%;
+   color:#fff;
+   box-shadow: 35px -10px 1px 2px #fff,20px 20px 1px,40px 35px 1px;
+   opacity:0;
+   transition: all 1s;
+}
+.switchWrap:after{
+  content:"";
+  display:block;
+  position: absolute;
+  right:45px;
+  bottom:20px;
+  width:60px;
+  height:15px;
+  border-radius:10px;
+  background:#ccc;
+  color:#ccc;
+  box-shadow:15px -10px 1px 2px;
+  opacity:0;
+  transition: all 1.5s;
+}
+#switch{
+  width:$size;
+  height:$size/2;
+   visibility: hidden;
+  z-index:1;
+  position:absolute;
+}
+.switchCircle{
+  position:relative;
+  // bottom:$size/2+5px;
+  left:0;
+  display:block;
+  width:$size/2;
+  height:$size/2;
+  border-radius:50%;
+  background:#ffd097;
+  transition: all 1s;
+  z-index:1;
+}
+.switchCircle:before{
+   content:"";
+   display:block;
+   width:1em;
+   height:1em;
+   background:#e6cea5;
+   border-radius:50%;
+   position: absolute;
+   top:15px;
+   left:30px;
+   font-size:8px;
+   color:#e6cea5;
+   box-shadow: -5px 25px 0px 2px,20px 15px 1px 5px;
+   opacity:0;
+}
+.switchCircle:after{
+  font-family: icons;
+  content:'\xE2';
+  display:block;
+  background: #fff;
+  width:2em;
+  height:1em;
+  position: absolute;
+  border-radius:50%;
+  line-height:1px;
+  text-indent:30px;
+  bottom:20px;
+  left:45px;
+  color:#fff;
+  font-size:15px;
+  box-shadow:-5px 10px 1px 1px,5px 10px 1px 2px,30px 10px 1px 2px;
+  opacity:1;
+  transition: all 0.5s;
+}
+#switch:checked + .switchWrap .switchCircle{
+   left:$size/2+50;
+   background:#ffe6b5;
+  &:before{
+     opacity:1;
+  }
+   &:after{
+     opacity:0;
+  }
+}
+#switch:checked + .switchWrap{
+  background:#789bd6;
+  .pm{
+    color:#fff;
+  }
+  .am{
+     color:#789bd6;
+  }
+  &:before,&:after{
+    opacity:1;
+  }
+}
+
