@@ -1,0 +1,139 @@
+$c-white: #fff;
+$c-black: #000;
+
+$count: 10;
+$size: 200px;
+$width: $size * .7;
+$height: $size;
+$ani-dur: 10s;
+
+@mixin fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin digi {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  text-align: center;
+  overflow: hidden;
+  background-color: $c-white;
+}
+
+.i {
+  @include fill;
+  counter-increment: i ii;
+  transform-style: preserve-3d;
+  font-size: 12em;
+  text-align: center;
+  animation: r $ani-dur infinite;
+
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $ani-dur * ($i - $count) / $count;
+      z-index: $count - $i;
+    }
+  }
+
+  &:nth-of-type(#{$count}) {
+    counter-reset: ii -1;
+  }
+
+  &::before {
+    content: counter(i);
+    @include digi;
+    top: 0;
+    line-height: $height;
+  }
+
+  &::after {
+    content: counter(ii);
+    @include digi;
+    bottom: 0;
+    line-height: 0;
+    transform: rotateX(180deg);
+    transform-origin: 50% 0;
+    transform: rotateX(180.1deg);
+  }
+
+  @keyframes r {
+    0% {
+      transform: rotateX(0deg);
+    }
+    10%,
+    19% {
+      transform: rotateX(-180deg);
+    }
+    91%,
+    100% {
+      transform: rotateX(-360deg);
+    }
+  }
+}
+
+.box {
+  position: absolute;
+  top: calc(50% - #{$width / 2});
+  left: calc(50% - #{$height / 2});
+  width: $width;
+  height: $height;
+  counter-reset: i -1;
+  perspective: 400px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  color: $c-black;
+  background-color: $c-white;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin: 0;
+  line-height: 1.4;
+  color: #fff;
+  background-color: #190c40;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+  border-bottom: 1px dashed rgba(#fff, .5);
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+      color: inherit;
+  }
+}
