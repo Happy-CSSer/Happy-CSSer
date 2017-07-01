@@ -16,21 +16,19 @@ $ani-dur: 10s;
 }
 
 @mixin digi {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 50%;
-  text-align: center;
-  overflow: hidden;
+  @include fill;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12em;
   background-color: $c-white;
+  backface-visibility: hidden;
 }
 
 .i {
   @include fill;
   counter-increment: i ii;
   transform-style: preserve-3d;
-  font-size: 12em;
-  text-align: center;
   animation: r $ani-dur infinite;
 
   @for $i from 1 through $count {
@@ -40,6 +38,9 @@ $ani-dur: 10s;
     }
   }
 
+  &:nth-of-type(1) {
+  }
+
   &:nth-of-type(#{$count}) {
     counter-reset: ii -1;
   }
@@ -47,17 +48,13 @@ $ani-dur: 10s;
   &::before {
     content: counter(i);
     @include digi;
-    top: 0;
-    line-height: $height;
+    clip: rect(0, $width, $height / 2, 0);
   }
 
   &::after {
     content: counter(ii);
     @include digi;
-    bottom: 0;
-    line-height: 0;
-    transform: rotateX(180deg);
-    transform-origin: 50% 0;
+    clip: rect($height / 2, $width, $height, 0);
     transform: rotateX(180.1deg);
   }
 
@@ -80,14 +77,18 @@ $ani-dur: 10s;
   position: absolute;
   top: calc(50% - #{$width / 2});
   left: calc(50% - #{$height / 2});
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: $width;
   height: $height;
-  counter-reset: i -1;
-  perspective: 400px;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
   color: $c-black;
   background-color: $c-white;
+  perspective: 400px;
+  transform-style: preserve-3d;
+  counter-reset: i -1;
 }
 
 /// reset
