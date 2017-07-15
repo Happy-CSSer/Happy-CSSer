@@ -1,0 +1,215 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: green;
+}
+
+.container {
+  position: relative;
+  width: 10em;
+  height: 15em;
+  overflow: hidden;
+  background: orange;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.container:before {
+  content: '0';
+  font-size: 10em;
+  line-height: 0;
+  position: relative;
+  top: 50%;
+}
+
+.box,
+.init_box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.box:before,
+.box:after,
+.init_box:before,
+.init_box:after {
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  display: block;
+  font-size: 10em;
+  line-height: 1.5em;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  background: orange;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.box:before,
+.init_box:before {
+  top: 0;
+  overflow: hidden;
+  content: attr(data-numTop);
+  background: #a26900;
+  height: 50%;
+  transform-origin: center bottom;
+  z-index: 1;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.box:after,
+.init_box:after {
+  top: 50%;
+  content: attr(data-numBottom);
+  transform-origin: center top;
+  border-radius: 0 0 1rem 1rem;
+  color: transparent;
+  text-shadow: 0 -.75em 0 black;
+}
+
+.init_box:before {
+  transform: rotateX(90deg);
+}
+
+.box:before {
+  animation-name: flipCardTop;
+}
+
+.box:after {
+  transform: rotateX(-90deg);
+  animation-name: flipCardBtm;
+}
+
+.box:nth-child(12):before {
+  animation-delay: 0s;
+}
+
+.box:nth-child(2):after {
+  animation-delay: 1s;
+}
+
+.box:nth-child(11):before {
+  animation-delay: 2s;
+}
+
+.box:nth-child(3):after {
+  animation-delay: 3s;
+}
+
+.box:nth-child(10):before {
+  animation-delay: 4s;
+}
+
+.box:nth-child(4):after {
+  animation-delay: 5s;
+}
+
+.box:nth-child(9):before {
+  animation-delay: 6s;
+}
+
+.box:nth-child(5):after {
+  animation-delay: 7s;
+}
+
+.box:nth-child(8):before {
+  animation-delay: 8s;
+}
+
+.box:nth-child(6):after {
+  animation-delay: 9s;
+}
+
+.box:nth-child(7):before {
+  animation-delay: 10s;
+}
+
+.box:nth-child(7):after {
+  animation-delay: 11s;
+}
+
+.box:nth-child(6):before {
+  animation-delay: 12s;
+}
+
+.box:nth-child(8):after {
+  animation-delay: 13s;
+}
+
+.box:nth-child(5):before {
+  animation-delay: 14s;
+}
+
+.box:nth-child(9):after {
+  animation-delay: 15s;
+}
+
+.box:nth-child(4):before {
+  animation-delay: 16s;
+}
+
+.box:nth-child(10):after {
+  animation-delay: 17s;
+}
+
+.box:nth-child(3):before {
+  animation-delay: 18s;
+}
+
+.box:nth-child(11):after {
+  animation-delay: 19s;
+}
+
+.box:nth-child(2):before {
+  animation-delay: 20s;
+}
+
+.box:nth-child(12):after {
+  animation-delay: 21s;
+}
+
+.box:nth-child(1):before {
+  animation-delay: 22s;
+}
+
+.box:nth-child(13):after {
+  animation-delay: 23s;
+}
+
+.box:nth-child(2):before {
+  animation: none;
+}
+
+.box:nth-child(12):after {
+  animation: none;
+}
+
+@keyframes flipCardTop {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes flipCardBtm {
+  from {
+    transform: rotateX(-90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
