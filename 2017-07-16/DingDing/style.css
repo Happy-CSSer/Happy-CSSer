@@ -1,0 +1,114 @@
+#container{
+    border: solid 1px;
+    width: 610px;
+    height: 610px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.block{
+    width:300px;
+    height: 300px;
+    border: solid 1px greenyellow;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.small_block{
+    width: 120px;
+    height: 120px;
+    background-color: rgba(209, 211, 212, 1);
+}
+
+
+.hidden_block{
+    position: absolute;
+    right: -300px;
+    left: 0px;
+    bottom: 0px;
+    background-color: transparent;
+    /*background-color: rgba(209, 211, 212, 1);*/
+    height: 100%;
+    display: none;
+    flex-wrap: nowrap;
+
+}
+
+.left{
+    width: 300px;
+    height: 100%;
+    /*background-color: transparent;*/
+    position: relative;
+}
+.right{
+    width: 0;
+    height: 100%;
+    background-color: #dedede;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.gray{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(209, 211, 212, 1);
+}
+
+.aa{
+    animation: exp_gray 0.5s;
+    animation-iteration-count: 1;
+
+    /*不知道為何，加入這行可以讓css動畫停在最後面。*/
+    animation-fill-mode: forwards; 
+}
+@keyframes exp_gray{
+    0% {
+        width:0%;
+        height: 0%;
+    }
+    100%{
+        width:100%;
+        height: 100%;
+    }
+}
+
+.bb{
+    animation: exp_table 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes exp_table{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 300px;
+    }
+}
+
+.cancel{
+    position: absolute;
+    top:3px;
+    right: 3px;
+    background-color: red;
+}
+.bar{
+    width: 80%;
+    height: 5%;
+    /*border: solid 1px;*/
+    background-color: #9c9292;
+}
+
+.cancel{
+    cursor: pointer;
+}
