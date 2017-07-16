@@ -1,0 +1,139 @@
+$ratio: 1.5
+$w: 90px * $ratio
+$h: 120px * $ratio
+$bgc: #FF553B
+$card-bgc: #321A18
+$num: 0
+$count: 10
+$animation-time: 1.2s
+html, body
+  margin: 0
+  width: 100vw
+  height: 100vh
+  font-size: 10px
+  box-sizing: border-box
+  background-color: $bgc
+  display: flex
+  justify-content: center
+  align-items: center
+  transform-style: perserve-3d
+  perspective: -100px
+
+  /* transform-style: preserve-3d */
+.box
+  width: $w
+  height: $h
+  /* border: solid 1px blue */
+.counter
+  width: $w
+  height: $h
+  border: solid 1px $card-bgc
+  background-color: $card-bgc
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  .upper
+    position: absolute
+    top: 0
+    width: 100%
+    height: 50%
+    overflow: visible
+    .num
+      width: $w
+      height: $h/2
+      position: absolute
+      text-align: center
+      font-size: 15em
+      // top: 0
+      // overflow: hidden
+      clip: rect(0, $w, $h/2, 0)
+      background-color: $card-bgc
+      transform-origin: center bottom
+      animation: flip-upper  $animation-time * 20 
+      
+      animation-fill-mode: forwards
+      z-index: 0
+    
+    .num:first-of-type
+      animation: none
+.bottom
+  position: absolute
+  top: $h/2
+  width: 100%
+  height: 50%
+  overflow: visible
+  background-color: $card-bgc
+  .num
+    width: $w
+    height: $h/2
+    text-align: center
+    position: absolute
+    top: -4px
+    font-size: 15em
+    line-height: 0
+    background-color: $card-bgc
+    //clip: rect($h/2, $w, $h, 0)
+    overflow: hidden
+    z-index: 0
+    transform: rotateX(-90deg)
+    transform-origin: center top
+    animation: (10 * $animation-time)  flip-bottom  
+    //animation-iteration-count: infinite
+    animation-fill-mode: forwards
+    //border: solid 1px
+    &:first-of-type
+      transform: rotateX(0deg)
+      animation: none
+      
+@for $i from  1 through $count+1
+  .upper .num:nth-of-type(#{$i})
+    z-index: $i
+    animation-delay: 2 * ($count - ($i - 1)) * $animation-time
+    
+    &:after
+      z-index: $i
+  .bottom .num:nth-of-type(#{$i})
+    z-index: $i
+    @if $i != 1
+      animation-delay:  ( 2 * ($i - 1) - 1) * $animation-time
+
+  span
+    color: #fff
+    font-size: 15em
+    &:before
+      width: $w
+      height: $h/2
+      content: $num+1
+      position: absolute
+      background-color: pink
+  .line
+    position: absolute
+    width: $w
+    height: 5px
+    background-color: #000
+    
+    
+@keyframes card-flip
+  0%
+    transform: rotateX(0deg)
+  
+  100%
+    transform: rotateX(180deg)
+  
+@keyframes flip-upper
+  0%
+    transform: rotateX(0deg)
+  5%
+    transform: rotateX(90deg)
+  5.1%,100%
+    transform: rotateX(90deg)
+  
+@keyframes flip-bottom
+  0%
+    transform: rotateX(-90deg)
+  5%
+    transform: rotateX(0deg)
+  5.1%, 100%
+    transform: rotateX(0deg)
+  
