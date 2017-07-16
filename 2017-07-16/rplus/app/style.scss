@@ -1,0 +1,166 @@
+$c-white: #fff;
+$c-black: #000;
+
+$grid-gap: 1em;
+$t-dur: .3s;
+
+$debug: true;
+$debug: false;
+
+// Redacted-Font
+@import url("./Redacted-Font-old-sources/fonts/web/stylesheet.css") print;
+
+@mixin fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $grid-gap;
+  overflow: hidden;
+}
+
+.tileGroup {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  @if $debug == true {
+    box-shadow: inset 0 0 0 3px red;
+    opacity: .1;
+    &:nth-of-type(1) {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.tile {
+  @include fill;
+  z-index: 0;
+  transform: scale(.5 - 1 / 30);
+  transition-property: transform, z-index;
+  transition-duration: $t-dur;
+  transition-delay: $t-dur;
+  transition-timing-function: ease, step-end;
+
+  &:active,
+  &.is-active {
+    z-index: 1;
+    transform: none;
+    transition-delay: 0s;
+    transition-timing-function: ease, step-start;
+  }
+
+  &:nth-of-type(1) {transform-origin: 0% 0%; }
+  &:nth-of-type(2) {transform-origin: 100% 0%; }
+  &:nth-of-type(3) {transform-origin: 0% 100%; }
+  &:nth-of-type(4) {transform-origin: 100% 100%; }
+
+  @if $debug == true {
+    opacity: .1;
+    &:nth-of-type(4) {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.article__cover {
+  @include fill;
+  z-index: 1;
+  background: url(hqdefault.jpg) no-repeat 100% 50% / cover;
+}
+
+.article__info {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  bottom: 0;
+  width: calc(100% + #{$grid-gap});
+  // width: 100%;
+  padding: $grid-gap;
+  overflow: auto;
+  background-color: #eee;
+  font: normal 1em/1.6 "Redacted Script Bold";
+  color: lighten($c-black, 50%);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform $t-dur, opacity $t-dur;
+  transition-delay: 0s;
+
+  .tileGroup:nth-of-type(even) & {
+    left: unset;
+    right: 100%;
+    transform: translateX(100%);
+  }
+
+  .tile:active &,
+  .tile.is-active & {
+    opacity: 1;
+    transform: none;
+    transition-delay: $t-dur;
+  }
+}
+
+.article__title {
+  margin-top: 0;
+}
+
+.workspace {
+  max-width: 31rem;
+  margin: 0 auto;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  line-height: 1.4;
+  background-color: $c-white;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+  border-bottom: 1px dashed rgba($c-black, .5);
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+      color: inherit;
+  }
+}

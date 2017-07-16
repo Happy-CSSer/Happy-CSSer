@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(rel="stylesheet", href="style.css")
+  link(rel="stylesheet", href="https://cdn-ftfish.rhcloud.com/redactedjs/css/redacted-script-bold.css")
+
+body.app
+  title Card Interaction
+
+  .workspace
+    h1.intro Card Interaction
+
+    .wall
+      each $, i in Array(4)
+        .tileGroup
+          each $$, j in Array(4)
+            article.tile
+              .article__cover(style=`background-image: url(//images.weserv.nl/?url=unsplash.it/200/300?image=${i * 20 + j * 5 + 20}&il)`)
+              .article__info
+                h3.article__title article title
+                p.article__desc Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque pariatur facilis epellendus saepe, illo deserunt nesciunt.
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/shots/1908087-Card-Interaction") Card Interaction
+    |  by 
+    a(href="https://dribbble.com/JonathanHowell") Jonathan Howell
