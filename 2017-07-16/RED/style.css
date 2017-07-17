@@ -1,0 +1,122 @@
+body {
+  font-size:0;
+  padding:0;
+  margin:0;
+  font-family:"Helvetica Neue", "Arial";
+  background-color:#ec594e;
+}
+
+.main {
+  width:509px;
+  margin:15px auto;
+  padding:33px 66px;
+  background:white;
+  box-sizing:border-box;
+}
+
+h1 {
+  text-align:center;
+  color:#333;
+  font-size:22px;
+}
+
+.content {
+  width:377px;
+  display:inline-block;
+  background:white;
+}
+
+.splitBox {
+  width:179px;
+  height:187px;
+  display:inline-block;
+  position:relative;
+  margin-bottom:19px;
+}
+
+.splitBox:nth-child(odd) {
+  margin-right:19px;
+}
+
+.splitCell {
+  width:80px;
+  height:84px;
+  position:absolute;
+  transition:all 0.5s;
+}
+
+.splitCell:nth-child(1) {
+  top:0;
+  left:0px;
+  background-position:0 0;
+}
+
+.splitCell:nth-child(2) {
+  top:0;
+  right:0;
+  background-position:-99px 0;
+}
+
+.splitCell:nth-child(3) {
+  bottom:0;
+  left:0;
+  background-position:0 -103px;
+}
+
+.splitCell:nth-child(4) {
+  bottom:0;
+  right:0;
+  background-position:-99px -103px;
+}
+
+.splitCard {
+  width:0;
+  height:187px;
+  position:absolute;
+  background:#73b0e2;
+  top:0;
+  left:179px;
+  transition:all 0.5s;
+  z-index:3;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+/*
+.splitBox:nth-child(even) .splitCard {
+  left:-80px;
+  background:red;
+}
+*/
+.splitContent {
+  width:198px;
+  height:187px;
+}
+
+.splitCard p {
+  font-size:14px;
+  color:#333;
+  text-align:center;
+  width:188px;
+  margin:15px auto;
+}
+
+.splitCell {
+  /*background-image:url('http://krmfla.byethost12.com/cdn/bg.jpg');*/
+  background-color:#CCC;
+  background-repeat:no-repeat;
+}
+
+.splitBox.active .splitCell {
+  width:100%;
+  height:100%;
+  background-position:0 0;
+}
+
+.splitCard.active {
+  width:198px;
+}
+
+.hide {
+  display:none;
+}
+
