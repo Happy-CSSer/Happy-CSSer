@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="style.css")
+    link(rel="stylesheet", href="https://cdn-ftfish.rhcloud.com/redactedjs/css/redacted-script-bold.css")
+
+body.app
+	input(type="radio", id="switch-outside", name="switch")
+	.container
+	  - for (var i = 0; i < 16; i++)
+	    input(type="radio", id="switch" + (i + 1), name="switch")
+	    .card
+	      label(for="switch" + (i + 1), class="photo")
+	      .info
+	        label(class="cancel", for="switch-outside")
+	          span ×
