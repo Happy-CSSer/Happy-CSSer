@@ -1,0 +1,129 @@
+$animateTime: 0.4s;
+body {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100vh;
+	font-size: 16px;
+}
+* {
+	box-sizing: border-box;
+}
+#container {
+	padding: 0em 1em;
+	transition: transform $animateTime $animateTime;
+	height: calc(100% - 5em);
+	& > img {
+		width: 100%;
+	}
+	&.open {
+		transform: translateY(-5em);
+		transition: transform $animateTime;
+	}
+}
+
+#menu {
+	position: absolute;
+	width: 100%;
+	height: 4em;
+	background-color: #fff;
+	bottom: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	#plus {
+		width: 2em;
+		height: 2em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:after {
+			height: 0.15em;
+			width: 100%;
+			display: block;
+			content: "";
+			background-color: #99a;
+		}
+		#submenu {
+			overflow: hidden;
+			position: absolute;
+			width: calc(100% - 2em);
+			height: 2em;
+			background-color: #99a;
+			max-width: 0.15em;
+			transition: max-width $animateTime,
+				height $animateTime $animateTime,
+				transform $animateTime $animateTime;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			& > div {
+				padding: 0.5em;
+				opacity: 0;
+				transition: opacity $animateTime;
+				background-color: white;
+				width: 2.5em;
+				height: 2.5em;
+			}
+		}
+	}
+	img {
+		opacity: 0.65;
+		width: 100%;
+	}
+	& > img {
+		width: 1.5em;
+		height: 1.5em;
+		display: block;
+		transition: opacity $animateTime;
+	}
+	&.open {
+		#plus {
+			#submenu {
+				height: 5em;
+				transform: translateY(-4em);
+				max-width: 100vh;
+				transition: max-width $animateTime $animateTime,
+					height $animateTime,
+					transform $animateTime;
+				& > div {
+					opacity: 1;
+					transition: opacity $animateTime $animateTime;
+				}
+			}
+		}
+		& > img {
+			opacity: 0;
+		}
+	}
+}
+
+#frame {
+	position: relative;
+	transform:scale(0.9);
+	width: 374px;
+	height: 667px;
+	&:before{
+		background-image:url(https://github.com/wl00887404/Im-a-happy-front-end-beginner/blob/master/src/img/iphone.png?raw=true);
+		background-size:cover;
+		display:block;
+		z-index:-1;
+		width:430px;
+		top:50%;
+		left:50%;
+		height:876px;
+		transform: translate(-50%,-50%);
+		position:absolute;
+		content:"";
+	}
+	&>div{
+		width:100%;
+		height:100%;
+		overflow: hidden;
+	}
+}
+
+.ps__scrollbar-y-rail{
+	display:none !important;
+}

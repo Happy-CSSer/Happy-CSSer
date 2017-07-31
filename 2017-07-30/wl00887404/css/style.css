@@ -1,0 +1,121 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  padding: 0em 1em;
+  transition: transform 0.4s 0.4s;
+  height: calc(100% - 5em);
+}
+#container > img {
+  width: 100%;
+}
+#container.open {
+  transform: translateY(-5em);
+  transition: transform 0.4s;
+}
+
+#menu {
+  position: absolute;
+  width: 100%;
+  height: 4em;
+  background-color: #fff;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#menu #plus {
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#menu #plus:after {
+  height: 0.15em;
+  width: 100%;
+  display: block;
+  content: "";
+  background-color: #99a;
+}
+#menu #plus #submenu {
+  overflow: hidden;
+  position: absolute;
+  width: calc(100% - 2em);
+  height: 2em;
+  background-color: #99a;
+  max-width: 0.15em;
+  transition: max-width 0.4s, height 0.4s 0.4s, transform 0.4s 0.4s;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#menu #plus #submenu > div {
+  padding: 0.5em;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background-color: white;
+  width: 2.5em;
+  height: 2.5em;
+}
+#menu img {
+  opacity: 0.65;
+  width: 100%;
+}
+#menu > img {
+  width: 1.5em;
+  height: 1.5em;
+  display: block;
+  transition: opacity 0.4s;
+}
+#menu.open #plus #submenu {
+  height: 5em;
+  transform: translateY(-4em);
+  max-width: 100vh;
+  transition: max-width 0.4s 0.4s, height 0.4s, transform 0.4s;
+}
+#menu.open #plus #submenu > div {
+  opacity: 1;
+  transition: opacity 0.4s 0.4s;
+}
+#menu.open > img {
+  opacity: 0;
+}
+
+#frame {
+  position: relative;
+  transform: scale(0.9);
+  width: 374px;
+  height: 667px;
+}
+#frame:before {
+  background-image: url(https://github.com/wl00887404/Im-a-happy-front-end-beginner/blob/master/src/img/iphone.png?raw=true);
+  background-size: cover;
+  display: block;
+  z-index: -1;
+  width: 430px;
+  top: 50%;
+  left: 50%;
+  height: 876px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  content: "";
+}
+#frame > div {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ps__scrollbar-y-rail {
+  display: none !important;
+}
