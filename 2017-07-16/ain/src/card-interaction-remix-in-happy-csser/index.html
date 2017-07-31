@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Card Interaction remix in Happy CSSer</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+<div class="container">
+  <h1 class="theme">Card Interaction</h1>
+  <div class="blockgroup" v-for="imgBlock in imgList">
+    <div class="block" v-for="imgData in imgBlock">
+      <div class="cover" :style="`background-image: url(${imgData.url})`"></div>
+      <div class="article">
+        <h3>{{imgData.title}}</h3>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, expedita sequi commodi laborum reiciendis architecto?</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

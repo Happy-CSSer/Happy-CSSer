@@ -1,0 +1,10 @@
+.container
+  h1.theme Card Interaction
+  
+  .blockgroup(v-for="imgBlock in imgList")
+    .block(v-for="imgData in imgBlock")
+      .cover( :style="`background-image: url(${imgData.url})`")
+      .article
+        h3 {{imgData.title}}
+        p  Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, expedita sequi commodi laborum reiciendis architecto?
+  

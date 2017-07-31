@@ -1,0 +1,12 @@
+.window
+  .o
+  input.outside(type="radio" name="sw" id="outside")
+  .content
+    -for(var i=0;i<16;i++) {
+      input(type="radio" id="sw" + (i+1) name="sw")
+      .sqc
+        label.sq(for="sw" + (i+1))
+        .pop-window
+          label.canceal-btn(for="outside") x
+    -}
+  

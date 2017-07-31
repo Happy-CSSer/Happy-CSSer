@@ -1,0 +1,161 @@
+$interval: 1%;
+$debug: false;
+// $debug: true;
+$select: 2;
+$ratio: 0.4795;
+$transition-time: .65s;
+$font: sans-serif;
+  
+@mixin fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.container {
+  width: 40rem;
+  height: 40rem;
+  margin: 0 auto;
+}
+
+.theme {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+
+.blockgroup {
+    float: left;
+    width: (100% - $interval * 4) / 2;
+    height: (100% - $interval * 2) / 2;
+    margin-bottom: $interval * 2;
+    margin-right: $interval * 2;
+    position: relative;
+    float: left;
+    // border: solid 1px #e7e7e7;
+    &:nth-of-type(1) .article {
+      transform-origin: 0% 0%;
+    }
+    &:nth-of-type(2) .article {
+      transform-origin: 100% 0%;
+    }
+    &:nth-of-type(3) .article {
+      transform-origin: 0% 100%;
+    }
+    &:nth-of-type(4) .article{
+      transform-origin: 100% 100%;
+    }
+    &:nth-of-type(1),
+    &:nth-of-type(3) {
+      &:active .article {
+        transform: translateX(calc(100% + var(--interval) * 2));  
+      }
+    }
+  
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
+      &:active .article {
+        transform: translateX( calc(-100% - var(--interval) * 2));
+      }
+    }
+    
+    --interval: ($interval)；
+}
+
+.block {
+  @include fill;
+  z-index: 3;
+  transform: scale($ratio);
+  transition: $transition-time;
+  transition-property: z-index, transform;
+  
+  
+  &:nth-of-type(4n + 1) {
+    transform-origin: 0% 0%;  
+  }
+  
+  &:nth-of-type(4n + 2) {
+    transform-origin: 100% 0%
+  }
+  &:nth-of-type(4n + 3) {
+    transform-origin: 0% 100%
+  }
+  &:nth-of-type(4n + 4) {
+    transform-origin: 100% 100%
+  }
+  &:active, 
+  &.is-active .cover {
+    transform: scale(1);
+    z-index: 9;
+  }
+  & .article{
+    --interval: $interval * 2;
+    @include fill;
+    padding: 20px;
+    text-align: left;
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+    background-color: #e7e7e7;
+    transform: translateX(0%);
+    transition: $transition-time;
+    transition-delay: $transition-time;
+    transition-property: transform, z-index, opacity;
+    & h3 {
+      text-transform: Uppercase;
+    }
+  }
+  &:active .article {
+    z-index:  2;
+    opacity: 1;
+  }
+}
+
+
+
+
+.cover {
+  @include fill;
+  background-position: center;
+  background: no-repeat  100% 100% /cover;
+  z-index: 3;
+  &:active {
+    z-index: 9;
+  }
+}
+
+.article {
+  --interval: $interval * 2;
+  position: absolute;
+  @include fill;
+  // opacity: 0;
+  background-color: #e7e7e7;
+  // transform: translateX(calc(100% + var(--interval) * 2));
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  // height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: $font;
+}
+
+@if $debug == true {
+  .block{
+    opacity: 0.1;
+    &:nth-of-type(4n + #{$select}) {
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+}
