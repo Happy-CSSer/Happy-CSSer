@@ -1,0 +1,220 @@
+$nav-height: 4rem;
+$subnav-height: $nav-height;
+$gap: .5rem;
+
+$panel-ani-dur: .3s;
+$panel-ani-delay: $panel-ani-dur;
+
+$color-nav-theme: #aab1be;
+
+.nav {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+
+  img {
+    &:hover,
+    .is-active > & {
+      transition-delay: 0s;
+      opacity: .7;
+      cursor: pointer;
+    }
+  }
+}
+
+.nav__item {
+  --color-link: lighten(#aab1be, 5%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: $nav-height * .75;
+  color: var(--color-link);
+
+  &.js-expand {
+    --color-link: $color-nav-theme;
+
+    position: relative;
+    flex-grow: 1.5;
+    height: $nav-height;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $nav-height;
+      height: 4px;
+      background-color: currentColor;
+      transform: translate(-50%, -50%) scaleX(.5);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-90deg) scaleX(.5);
+      transition: transform $panel-ani-dur;
+      transition-delay: $panel-ani-delay;
+
+      .app.is-expanded & {
+        transition-delay: 0s;
+        transform: translate(-50%, -50%) rotate(-90deg) translateX(100%);
+      }
+    }
+  }
+
+  img {
+    width: 1.4em;
+    opacity: .2;
+    transition: opacity, visibility;
+    transition-duration: $panel-ani-dur;
+    transition-delay: $panel-ani-delay;
+
+    .app.is-expanded & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.subnav {
+  position: absolute;
+  bottom: 100%;
+  display: flex;
+  width: 100%;
+  height: $subnav-height;
+  padding: 0 15%;
+  visibility: hidden;
+  transform: translateY($nav-height);
+  transition-property: visibility, transform;
+  transition-duration: $panel-ani-dur;
+  transition-delay: $panel-ani-delay;
+
+  .app.is-expanded & {
+    visibility: visible;
+    transform: none;
+    transition-delay: $panel-ani-delay, 0s;
+  }
+
+  &__item {
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity $panel-ani-dur;
+    background: linear-gradient(#fff, #fff) no-repeat 50%;
+    background-size: $subnav-height * .65 $subnav-height * .65;
+
+    .app.is-expanded & {
+      transition-delay: $panel-ani-delay;
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 1.2em;
+    opacity: .3;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 45%;
+    bottom: 0;
+    width: 10%;
+    background-color: $color-nav-theme;
+    transform: scaleX(0);
+    transition: transform $panel-ani-dur;
+
+    .app.is-expanded & {
+      transition-delay: $panel-ani-delay;
+      transform: scaleX(10);
+    }
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 700px;
+  max-height: 95vh;
+  margin: 2vh auto 3vh;
+  overflow: hidden;
+  box-shadow:
+    0 10px 10px rgba(#000, .1),
+    0 30px 100px rgba(#000, .5);
+
+  @media (max-height: 600px) {
+    max-height: unset;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  font-size: 1.5em;
+  flex-shrink: 0;
+  text-align: center;
+  color: #666;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(#000, .1);
+}
+
+.main {
+  flex-grow: 1;
+  transition: transform $panel-ani-dur;
+  transition-delay: $panel-ani-delay;
+  overflow: auto;
+
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: .5em;
+  }
+
+  .app.is-expanded & {
+    transition-delay: 0s;
+    transform: translateY(-$subnav-height - $gap);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}

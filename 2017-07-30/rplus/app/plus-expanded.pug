@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title [CSS] Plus Expanded (mobile layout)
+    link(rel="stylesheet", href="style.css")
+
+body
+  -
+    var icons = {
+      home: 'https://image.flaticon.com/icons/svg/462/462983.svg',
+      search:　'https://image.flaticon.com/icons/svg/463/463033.svg',
+      bell: 'https://image.flaticon.com/icons/svg/462/462944.svg',
+      people: 'https://image.flaticon.com/icons/svg/463/463058.svg',
+      share: 'https://image.flaticon.com/icons/svg/463/463034.svg',
+      '+1': 'https://image.flaticon.com/icons/svg/463/463045.svg',
+      '-1': 'https://image.flaticon.com/icons/svg/463/463044.svg'
+    };
+
+  .app
+    header.header Plus Expanded
+    main.main
+      each $, i in Array(10)
+        img(src="http://images.weserv.nl/?url=unsplash.it/400/200?image="+ (i + 20) +"&il")
+    footer.nav
+      .nav__item
+        img(src=icons.home)
+      .nav__item
+        img(src=icons.search)
+      .nav__item.js-expand
+      .nav__item
+        img(src=icons.bell)
+      .nav__item
+        img(src=icons.people)
+
+      .subnav
+        .subnav__item
+          img(src=icons['+1'])
+        .subnav__item
+          img(src=icons.share)
+        .subnav__item
+          img(src=icons['-1'])
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/lobanovskiy") Eddie Lobanovskiy
+    | 's 
+    a(href="https://dribbble.com/shots/3208361-Plus-expanded") Plus expanded
+
+  script.
+    let $ = document.querySelector.bind(document);
+    let $$ = document.querySelectorAll.bind(document);
+    let $app = $('.app');
+    let targetBtn = $('.js-expand');
+
+    targetBtn.addEventListener('click', () => {
+      $app.classList.toggle('is-expanded');
+    });
