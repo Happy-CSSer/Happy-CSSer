@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  position: relative;
+}
+
+body {
+  margin-top: -6.5%;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone {
+  position: relative;
+  width: 480px;
+  height: 800px;
+  background-color: #f1f1f1;
+  padding-bottom: 1%;
+  border-radius: 5px;
+  overflow: hidden;
+  transform: rotate(23deg);
+  box-shadow: 0px 0px 3px 5px #DDE0E6, 0px 62px 84px 29px rgba(0, 0, 0, 0.3);
+}
+.phone .header {
+  width: 100%;
+  height: 7%;
+  position: relative;
+  text-transform: capitalize;
+  text-align: center;
+  padding-top: 10px;
+  z-index: 5;
+  background-color: #fff;
+}
+.phone .view {
+  display: block;
+  width: 432px;
+  border: solid 1px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  margin-bottom: 2.5%;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform;
+  transition-duration: 1.2s;
+}
+.phone .view .v-frame {
+  width: 100%;
+  height: 664px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.phone .view .p {
+  width: 432px;
+  height: 432px;
+  margin: 0px 0 5px;
+  background-size: cover;
+}
+.phone .view .p:last-of-type {
+  margin: 0;
+}
+.phone.is-active .view {
+  transform: translateY(-56px);
+}
+
+.btns-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btns-wrapper .feature {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  padding-top: -1%;
+  background-color: #f1f1f1;
+}
+.btns-wrapper .feature i {
+  font-size: 1.5em;
+}
+.btns-wrapper .feature i:hover {
+  color: #1f1f1f;
+}
+
+.phone .feature.plus {
+  position: relative;
+}
+.phone .feature.plus::before, .phone .feature.plus::after {
+  position: absolute;
+  content: ' ';
+  display: inline-block;
+  width: 28px;
+  height: 4px;
+  background-color: #AAB1BE;
+}
+.phone .feature.plus::after {
+  transition: transform, opacity;
+  transition-duration: 1.2s;
+  transition-delay: 1.2s;
+  width: 33.6px;
+  transform: rotate(90deg) scaleX(1) translateX(0);
+}
+
+.window {
+  position: absolute;
+  left: 50%;
+  bottom: 61.5px;
+  transform: translateX(-50%) scaleX(0.01);
+  transition: transform, visibility;
+  transition-duration: 1.2s;
+  transition-delay: 0s;
+  width: 432px;
+  height: 67.5px;
+  visibility: hidden;
+  background-color: #AAB1BE;
+}
+
+.phone.is-active .feature.plus::after {
+  opacity: 0;
+  transition-delay: 0s, 1.2s;
+  transform: rotate(90deg) scaleX(2) translateX(-33.6px);
+}
+.phone.is-active .window {
+  transition-delay: 1.2s;
+  visibility: visible;
+  transform: translateX(-50%) scaleX(1);
+}
+.phone.is-active .feature-set {
+  transition: opacity;
+  transition-duration: 1.2s;
+  transition-delay: 2.4s;
+  opacity: 1;
+}
+
+.phone .view {
+  transition-delay: 1.2s;
+}
+
+.phone.is-active .view {
+  transition-delay: 0s;
+}
+
+.feature {
+  vertical-align: top;
+  text-align: center;
+}
+.feature i {
+  color: #bcbfc4;
+  margin-top: 6px;
+}
+
+.feature-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 61px;
+  transform: translateX(-50%);
+  width: 432px;
+  height: 67.5px;
+  opacity: 0;
+  transition: opacity;
+  transition-duration: 1.2s;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+}
+.btn:hover {
+  transition: opacity;
+  transition-duration: 0.4s;
+  opacity: 1;
+}
+.btn img {
+  width: 2em;
+  background-color: #fff;
+  padding: 8px;
+}
+
+.phone {
+  transform: rotate(0deg) scale(0.76);
+}
