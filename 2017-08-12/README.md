@@ -11,5 +11,5 @@ https://www.facebook.com/124699251255512/
 
 ### Topic: CSS Animation loader:
 
-Cube Buddies  
-https://beesandbombs.tumblr.com/post/159994014939/cube-buddies
+Bird Loader  
+https://dribbble.com/shots/2030551-Bird-Loader
