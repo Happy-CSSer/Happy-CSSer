@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #18233E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.upper-fir {
+  margin: 0;
+  padding: 0;
+  height: 15vh;
+  width: 15vh;
+  position: absolute;
+  top: 5vh;
+  left: 5vh;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 15vh 0 0 0;
+  -webkit-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: orgo-f-slide 3s linear forwards infinite;
+          animation: orgo-f-slide 3s linear forwards infinite;
+}
+
+.down-mouth {
+  height: 7.5vh;
+  width: 7.5vh;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  background-color: #F7A500;
+  top: 20vh;
+  left: 20vh;
+  border-radius: 0 0 7.5vh 0;
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  box-sizing: border-box;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: anti-orgo-slide 3s linear forwards infinite;
+          animation: anti-orgo-slide 3s linear forwards infinite;
+}
+
+.up-mouth {
+  padding: 0;
+  margin: 0;
+  height: 15vh;
+  width: 15vh;
+  position: absolute;
+  background-color: #F7CE42;
+  border-radius: 0 15vh 0 0;
+  top: 5vh;
+  left: 20vh;
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+  box-sizing: border-box;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: orgo-slide 3s linear forwards infinite;
+          animation: orgo-slide 3s linear forwards infinite;
+}
+
+.bird-outer {
+  height: 40vh;
+  width: 40vh;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.bird-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  height: 40vh;
+  width: 20vh;
+  border-radius: 20vh 0 0 20vh;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  box-sizing: border-box;
+  background: url("https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood3.jpg");
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: body-slide 3s linear forwards infinite;
+          animation: body-slide 3s linear forwards infinite;
+}
+
+.bird-eye {
+  padding: 0;
+  margin: 0;
+  height: 7.5vh;
+  width: 7.5vh;
+  background: #18233E;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 50%;
+  top: 12.5vh;
+  left: 12.5vh;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: eye-slide 3s linear forwards infinite;
+          animation: eye-slide 3s linear forwards infinite;
+}
+
+.inner-fir {
+  padding: 0;
+  margin: 0;
+  height: 30vh;
+  width: 15vh;
+  box-sizing: border-box;
+  position: absolute;
+  top: 5vh;
+  left: 5vh;
+  border-radius: 15vh 0 0 15vh;
+  background: #FFFFFF;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: body-slide 3s linear forwards infinite;
+          animation: body-slide 3s linear forwards infinite;
+}
+
+.fly-fir {
+  padding: 0;
+  margin: 0;
+  height: 15vh;
+  width: 15vh;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 0 0 0 15vh;
+  top: 20vh;
+  left: 5vh;
+  background: gray;
+  -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+  -webkit-animation-name: none;
+          animation-name: none;
+  -webkit-animation: orgo-a-slide 3s linear forwards infinite;
+          animation: orgo-a-slide 3s linear forwards infinite;
+}
+
+@-webkit-keyframes body-slide {
+  25%, 55% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes body-slide {
+  25%, 55% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes orgo-slide {
+  25%, 55% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes orgo-slide {
+  25%, 55% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes orgo-a-slide {
+  15%, 55% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes orgo-a-slide {
+  15%, 55% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes orgo-f-slide {
+  25%, 55% {
+    -webkit-transform: rotate(-270deg);
+            transform: rotate(-270deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes orgo-f-slide {
+  25%, 55% {
+    -webkit-transform: rotate(-270deg);
+            transform: rotate(-270deg);
+  }
+  75%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes anti-orgo-slide {
+  25%, 55% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  70%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes anti-orgo-slide {
+  25%, 55% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  70%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes eye-slide {
+  25%, 55% {
+    -webkit-transform: translate(7.5vh);
+            transform: translate(7.5vh);
+  }
+  75%, 100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+@keyframes eye-slide {
+  25%, 55% {
+    -webkit-transform: translate(7.5vh);
+            transform: translate(7.5vh);
+  }
+  75%, 100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
