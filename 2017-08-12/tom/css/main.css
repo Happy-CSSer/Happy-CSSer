@@ -1,0 +1,125 @@
+body {
+  background: #18233e;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.circle {
+  border-radius: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto; }
+
+.red {
+  background-image: url("http://govgrid.org/gallery3/var/resizes/Wood/GOVGRID%20WOOD%20RED%20PLAIN%20WRINKLED.jpg?m=1293766059");
+  transform: rotate(360deg);
+  animation: Redmove 2s 2s infinite;
+  clip: rect(0, 100px, 200px, 0); }
+
+.white {
+  background: #fff;
+  max-width: 75%;
+  max-height: 75%;
+  clip: rect(0, 76.92308px, 200px, 0);
+  transform: rotate(0deg);
+  animation: whitemove 2s 2s  infinite; }
+
+.orange {
+  background: #f7a500;
+  max-width: 30%;
+  max-height: 30%;
+  clip: rect(30px, 30px, 60px, 0);
+  transform: rotate(270deg);
+  animation: orangemove 2s 2s infinite; }
+
+.yellow {
+  background: #f7ce42;
+  max-width: 75%;
+  max-height: 75%;
+  clip: rect(0, 76.92308px, 76.92308px, 0);
+  transform: rotate(90deg);
+  animation: yellowmove 2s 2s  infinite; }
+
+.gray {
+  background: gray;
+  clip: rect(0, 76.92308px, 76.92308px, 0);
+  transform: rotate(-90deg);
+  animation: graymove 2s 2s  infinite; }
+
+.black {
+  width: 30px;
+  height: 30px;
+  background: #000;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  border-radius: 50%;
+  animation: blackmove 2s 2s  infinite; }
+
+.vishiiden {
+  background: #fff;
+  max-width: 75%;
+  max-height: 75%;
+  clip: rect(0, 76.92308px, 76.92308px, 0);
+  transform: rotate(90deg);
+  animation: yellowmove 2s 2s  infinite; }
+
+.wrapContent {
+  width: 200px;
+  height: 200px;
+  position: relative; }
+
+@keyframes Redmove {
+  0% {
+    transform: rotate(90deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+@keyframes orangemove {
+  0% {
+    transform: rotate(270deg); }
+  50% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(270deg); } }
+@keyframes whitemove {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-180deg); }
+  100% {
+    transform: rotate(-360deg); } }
+@keyframes blackmove {
+  0% {
+    left: 30%; }
+  50% {
+    left: 60%; }
+  100% {
+    left: 30%; } }
+@keyframes yellowmove {
+  0% {
+    transform: rotate(90deg); }
+  50% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(90deg); } }
+@keyframes graymove {
+  0% {
+    transform: rotate(-90deg); }
+  50% {
+    transform: rotate(2deg); }
+  100% {
+    transform: rotate(270deg); } }
+
+/*# sourceMappingURL=main.css.map */
