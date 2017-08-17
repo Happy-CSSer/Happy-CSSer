@@ -1,0 +1,148 @@
+body {
+  background:black;
+  font-size:0;
+}
+
+p {
+  margin:0;
+  padding:0;
+}
+
+.wrapper {
+  width:50%;
+  background-color:white;
+  margin:0 auto;
+  padding:2% 2%;
+  border-radius:2vw;
+  box-sizing:border-box;
+  border:2px solid #BBB;
+}
+
+.main {
+  width:100%;
+  padding-bottom:176%;
+  overflow:hidden;
+  position:relative;
+  border-radius:2vw 2vw 0 0;
+  box-sizing:border-box;
+}
+
+.container {
+  width:100%;
+  padding-bottom:155%;
+  position:absolute;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+
+.content {
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background-image:url('http://www.technocrazed.com/wp-content/uploads/2015/12/beautiful-wallpaper-download-11.jpg');
+  background-size:280%;
+  background-position:center center;
+  transition:transform .3s .3s;
+}
+
+.navigation {
+  width:100%;
+  height:10%;
+  transition:all .3s;
+  opacity:1;
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+
+.navBtn {
+  width:20%;
+  height:100%;
+  color:#CCC;
+  float:left;
+  position:relative;
+  text-align:center;
+}
+
+.navBtn .btnIcon{
+  font-size:3.5vw;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  opacity:1;
+  transition:opacity .3s .3s;
+}
+
+.horizontalBar {
+  width:50%;
+  height:2px;
+  background-color:#BBB;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
+.tools {
+  width:0.6%;
+  min-width:2px;
+  height:50%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0%;
+  right:0%;
+  margin: auto;
+  transition:transform .3s .3s, height .3s .3s, width .3s;
+  overflow:hidden;
+}
+
+.toolBar {
+  width:100%;
+  height:100%;
+  background-color:#BBB;
+  position:absolute;
+  z-index:2;
+  top:0;
+  left:0;
+}
+
+.toolBar i {
+  font-size:4vw;
+  color:#BBB;
+  opacity:0;
+  float:left;
+  margin:2.8% 10% 0;
+  background-color:white;
+  padding:1.5%;
+}
+
+.toolBar i:first-child {
+  margin-left:14%;
+}
+
+/* === transition === */
+.main.active .content {
+  transform:translateY(-11.5%);
+  transition:transform .3s;
+}
+
+.main.active .tools {
+  width:100%;
+  height:100%;
+  transform:translateY(-100%);
+  transition:transform .3s, height .3s, width .3s .3s;
+}
+
+.main.active .toolBar i {
+  opacity:1;
+  transition:opacity .3s .5s;
+}
+
+.main.active .btnIcon {
+  opacity:0;
+  transition:opacity .3s .3s;
+}
