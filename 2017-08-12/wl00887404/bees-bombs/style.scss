@@ -1,0 +1,111 @@
+$size: 2em;
+$number: 17;
+$time: 6s;
+
+@mixin oo() {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+body {
+	background-color: #1E1E1E;
+	background:radial-gradient(center,lighten(#1E1E1E,13%),#1E1E1E);
+	min-height: 100vh;
+	perspective: 500em;
+	transform-style: preserve-3d;
+	position: relative;
+	cursor:move;
+	overflow:hidden;
+}
+
+.scence {
+	@include oo();
+	width: 40em;
+	height: 40em;
+
+	transform-style: preserve-3d;
+	transform: rotateX(-30deg) rotateY(90deg);
+}
+
+.layout {
+	width: 100%;
+	top: 50%;
+	position: absolute;
+	transform-style: preserve-3d;
+	@for $i from 0 through ($number - 1) {
+		&:nth-child(#{$i + 1}) {
+			transform: rotateY(180 / $number * $i * -2deg);
+			.orbit {
+				animation-delay: $time / $number * $i / 2;
+			}
+		}
+	}
+}
+
+.orbit {
+	width: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	animation: rotateZ360 $time ease-in-out infinite;
+}
+
+.cube {
+	transform-style: preserve-3d;
+	position: absolute;
+	background-color: red;
+	&:nth-child(1) {
+		left: 0;
+	}
+	&:nth-child(2) {
+		right: 0;
+	}
+	& > div {
+		position: absolute;
+		width: $size;
+		height: $size;
+		&.back {
+			transform: translateZ($size * -1 / 2)
+				translateX($size * -1 / 2)
+				translateY($size * -1 / 2);
+			background-color: #1EB4E6;
+		}
+		&.front {
+			transform: translateZ($size * 1 / 2)
+				translateX($size * -1 / 2)
+				translateY($size * -1 / 2);
+			background-color: #1EB4E6;
+		}
+		&.right {
+			transform: rotateY(90deg) translateY($size * -1 / 2);
+			background-color: darken(#1EB4E6, 20%);
+		}
+		&.left {
+			transform: rotateY(90deg) translateZ($size * -1) translateY($size * -1 / 2);
+			background-color: darken(#1EB4E6, 20%);
+		}
+		&.bottom {
+			transform: rotateX(90deg) translateX($size * -1 / 2);
+			background-color: lighten(#1EB4E6, 20%);
+		}
+		&.top {
+			transform: rotateX(90deg) translateX($size * -1 / 2) translateZ($size);
+			background-color: lighten(#1EB4E6, 20%);
+		}
+	}
+}
+
+@keyframes rotateZ360 {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	40%, 50% {
+		transform: rotateZ(180deg);
+	}
+	90%, 100% {
+		transform: rotateZ(360deg);
+	}
+}

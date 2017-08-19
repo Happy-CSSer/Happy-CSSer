@@ -1,0 +1,170 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.circle {
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.half {
+    @extend .circle;
+    background-size: 50% 100%;
+}
+
+.quarter {
+    @extend .circle;
+    background-size: 50% 50%;
+}
+
+@mixin square($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin backgroun-image($color) {
+    background-image: linear-gradient(to right, $color, $color);
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #18233E;
+}
+
+#bird {
+    $durationTime: 2000ms;
+    @include square(20em);
+    overflow: hidden;
+    position: relative;
+    transition: opacity 1s;
+    &>div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .crest {
+        @extend .half;
+        @include square(100%);
+        background-image: url(./texture.png), linear-gradient(to right, #A12A15, #A12A15);
+        animation: crest $durationTime infinite linear;
+        @keyframes crest {
+            0% {
+                transform: rotate(0deg);
+            }
+            25%,
+            50% {
+                transform: rotate(180deg);
+            }
+            75%,
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .face {
+        @extend .half;
+        @include square(65%);
+        @include backgroun-image(#FFF2FF);
+        animation: face $durationTime infinite linear;
+        @keyframes face {
+            0% {
+                transform: rotate(0deg);
+            }
+            25%,
+            50% {
+                transform: rotate(-180deg);
+            }
+            75%,
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+    .cheek {
+        @extend .quarter;
+        @include square(65%);
+        @include backgroun-image(#E7E7E7);
+        animation: cheek $durationTime infinite linear;
+        @keyframes cheek {
+            0% {
+                transform: rotate(-90deg);
+            }
+            25%,
+            50% {
+                transform: rotate(-180deg);
+            }
+            75%,
+            100% {
+                transform: rotate(-450deg);
+            }
+        }
+    }
+    .upperLip {
+        @extend .quarter;
+        @include square(65%);
+        @include backgroun-image(#F7CE42);
+        animation: upperLip $durationTime infinite linear;
+        @keyframes upperLip {
+            0% {
+                transform: rotate(90deg);
+            }
+            25%,
+            50% {
+                transform: rotate(0deg);
+            }
+            75%,
+            100% {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .lowerLip {
+        @extend .quarter;
+        @include square(35%);
+        @include backgroun-image(#F7A500);
+        animation: lowerLip $durationTime infinite linear;
+        @keyframes lowerLip {
+            0% {
+                transform: rotate(180deg);
+            }
+            25%,
+            50% {
+                transform: rotate(270deg);
+            }
+            75%,
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .eye {
+        $color: #18233E;
+        @extend .circle;
+        @include square(15%);
+        background-color: $color;
+        transform: translate(-60%, -60%);
+        animation: eye $durationTime infinite linear;
+        @keyframes eye {
+            0% {
+                transform: translate(-60%, -60%);
+            }
+            25%,
+            50% {
+                transform: translate(60%, -60%);
+            }
+            75%,
+            100% {
+                transform: translate(-60%, -60%);
+            }
+        }
+    }
+}
