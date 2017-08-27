@@ -1,0 +1,270 @@
+$color-bgc: #ffcb33;
+$color-app-1: #5a399c;
+$color-app-2: #39295f;
+$color-star-1: #836da9;
+$color-star-2: #ffbd00;
+
+@mixin fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.app {
+  width: 20em;
+  height: 32em;
+  border-radius: .5em;
+  background-image: linear-gradient($color-app-1, $color-app-2);
+  line-height: 1.2;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 3em 6em -1.5em rgba(#000, .5);
+}
+
+.step {
+  height: 100%;
+}
+
+
+.step-1 {
+  height: 60%;
+  padding: 2em 2em 0;
+  transition: transform .5s .5s;
+  transform: translateY(100% * (100 - 60) / 2 / 60 - 15%);
+  // background-color: rgba(#fff, .1);
+  color: #fff;
+
+  .is-rated & {
+    transform: none;
+  }
+}
+
+.step-2 {
+  position: relative;
+  height: 40%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition:
+    opacity 1s .5s,
+    visibility .5s .5s,
+    transform .5s .5s;
+
+  .is-rated & {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
+.header {
+}
+
+.cover {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  background-color: rgba(#fff, .2);
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.title {
+  margin-bottom: .25rem;
+  font-size: 1.25em;
+}
+
+.desc {
+  margin-bottom: 1rem;
+  color: rgba(#fff, .5);
+}
+
+.rate {
+  --ani-delay-base: .05s;
+  --ani-delay-lv: 0;
+
+  display: flex;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+  direction: rtl;
+  visibility: hidden;
+
+  > * {
+    visibility: visible;
+  }
+
+  &:active .rate__label {
+    animation-name: reset !important;
+  }
+}
+
+.rate__label {
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  border-radius: 50%;
+  color: $color-star-1;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 900;
+
+  @mixin loop($level: 4, $base: $level) {
+    @if $level != 0 {
+      & ~ .rate__label {
+        --ani-delay-lv: $base - $level + 1;
+        @include loop($level - 1, $base);
+      }
+    }
+  }
+
+  &::before {
+    content: '★';
+  }
+
+  .rate__radio:checked ~ & {
+    animation: rate-ani .3s forwards;
+    animation-delay: calc(var(--ani-delay-base) * var(--ani-delay-lv));
+    @include loop(4);
+  }
+
+  @keyframes rate-ani {
+    0%   { color: $color-star-1; }
+    50%  { transform: scale(1.4); }
+    100% { color: $color-star-2; }
+  }
+}
+
+.suggestions {
+  width: 90%;
+  height: calc(100% - 2.5em);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3em 1em 1em;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  border-radius: .5rem .5rem 0 0;
+  background-color: #fff;
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 3;
+    grid-column: 1 / -1;
+    font-size: 1em;
+  }
+}
+
+.suggestion__label {
+  height: 2.25em;
+  line-height: 2.25;
+  border-radius: 10em;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  box-shadow: inset 0 0 0 1px rgba(#000, .1);
+  cursor: pointer;
+
+  .suggestion__checkbox:checked + & {
+    background-color: rgba(#000, .15);
+  }
+}
+
+.submit {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  font-size: inherit;
+  border: unset;
+  background-color: $color-star-2;
+  text-transform: uppercase;
+  line-height: 2.5;
+  letter-spacing: .2em;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.4;
+  background-color: $color-bgc;
+  color: $color-app-2;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+  border-bottom: 1px dashed rgba(#000, .5);
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

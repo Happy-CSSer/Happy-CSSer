@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Rate your Experience
+    link(rel="stylesheet", href="style.css")
+
+body
+  h1.intro Rate your Experience
+
+  -
+    var suggestions = [
+      'food quality',
+      'quality',
+      'variety',
+      'price',
+      'vendor service',
+      'other'
+    ];
+
+  .box
+    form.app
+      section.step.step-1.is-rated
+        header.header
+          .cover
+          h2.title Rate your experience
+          p.desc Help your caterer improve their serice by rating them
+
+        .rate
+          each $, i in Array(5)
+            input(class="rate__radio sr-only" type="radio" id=`rate-${i}` name="rate" value=(5 - i))
+            label(class="rate__label" for=`rate-${i}`)
+
+      section.step.step-2
+        .suggestions
+          h2.title What went well?
+          each $, i in suggestions
+            input(class="suggestion__checkbox sr-only" type="checkbox" id=`suggestion-${i}` name="suggestions" value=($))
+            label.suggestion__label(for=`suggestion-${i}`)= $
+        input.submit(type="submit" value="submit")
+
+  script.
+    let app = document.querySelector('.app');
+    let rated = () => {
+      app.classList.add('is-rated');
+      app.removeEventListener('change', rated);
+    };
+    app.addEventListener('change', rated);
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/saptarshipr") Saptarshi Prakash
+    | 's 
+    a(href="https://dribbble.com/shots/3562574-Rate-your-Experience") Rate your Experience
