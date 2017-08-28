@@ -1,0 +1,84 @@
+body {
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.wrap .content {
+  height: calc(100vh - 48px);
+  overflow-x: hidden;
+  transition: margin-top 0.5s 0.5s;
+}
+.wrap .content img {
+  width: 100%;
+}
+.wrap .function-bar {
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 32px;
+  margin: 8px 0;
+  width: 0;
+  position: fixed;
+  border: 1px solid #999;
+  background-color: #999;
+  left: 50%;
+  padding: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: left 0.5s, width 0.5s, height 0.5s 0.5s, bottom 0.5s 0.5s, padding 0.5s;
+}
+.wrap .function-bar button {
+  width: 80px;
+  height: 60px;
+  box-sizing: border-box;
+  border: 0;
+  background-color: #fff;
+  cursor: pointer;
+  color: #999;
+}
+.wrap .nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  text-align: center;
+}
+.wrap .nav li {
+  color: #999;
+  transition: opacity 0.5s 0.5s;
+  align-items: center;
+  height: 48px;
+  width: 20%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+}
+.wrap .nav .plus {
+  display: flex;
+  justify-content: space-around;
+}
+.wrap .nav .plus div {
+  width: 32px;
+  height: 0px;
+  border: 1px solid #999;
+}
+.wrap.function-bar-active .content {
+  margin-top: -116px;
+  transition: margin-top 0.5s;
+}
+.wrap.function-bar-active .function-bar {
+  left: 0;
+  height: 100px;
+  width: 100%;
+  bottom: 48px;
+  padding: 0 10%;
+  transition: left 0.5s 0.5s, width 0.5s 0.5s, height 0.5s, bottom 0.5s, padding 0.5s 0.5s;
+}
+.wrap.function-bar-active .nav li {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.wrap.function-bar-active .nav li.plus {
+  opacity: 1;
+}
