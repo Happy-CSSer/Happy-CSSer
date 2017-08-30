@@ -1,0 +1,119 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: orange;
+  perspective: 500px;
+  perspective-origin: center center;
+}
+
+$app_border_radious: 3vmin;
+$bottom_block_height: 40vmin;
+#app {
+  position: relative;
+  background: green;
+  width: 55vmin;
+  height: 90vmin;
+  background-image: linear-gradient(#6139A0 0%, #26163f 100%);
+  border-radius: 3vmin;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center; //shadow
+  &:after {
+    display: block;
+    content: '';
+    background: rgba(black, 0.5);
+    width: 100%;
+    height: 100%; //for shadow
+    position: absolute;
+    z-index: -1;
+    top: 10%;
+    border-radius: $app_border_radious;
+    transform-origin: center top;
+    transform: rotateX(-5deg);
+    box-shadow: 0 0 10vmin black;
+  }
+  &:hover {
+    .app__bottom_block {
+      height: $bottom_block_height;
+    }
+  }
+}
+
+.app__top_block {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: auto;
+    pointer-events: none;
+  }
+}
+
+.app__bottom_block {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: height 0.4s ease-out;
+}
+
+.bottom_block__form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $bottom_block_height;
+  border-radius: $app_border_radious;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: 1s linear;
+}
+
+.from__selection {
+  flex: 1;
+  background: white;
+  width: 90%;
+  border-radius: $app_border_radious $app_border_radious 0 0;
+  padding: 2vmin 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+$h_selection: 8vmin;
+.selection {
+  width: 22vmin;
+  height: $h_selection;
+  line-height: $h_selection;
+  border: 1px solid gray;
+  border-radius: 1vmin;
+  text-align: center;
+  margin: 1vmin 0;
+  border-radius: $h_selection;
+}
+
+.btn__submit {
+  background: orange;
+  width: 100%;
+  line-height: 10vmin;
+  text-align: center;
+  color: white;
+  font-size: 3.5vmin;
+}
+
+#inspired {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
