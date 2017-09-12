@@ -1,0 +1,213 @@
+$count: 12;
+$ooo-r: 25vmin;
+
+$sin-theta: 0.38268343236; // sin(360deg * 3 / ($count * 2) / 2);
+$cos-theta: 0.92387953251; // cos(360deg * 3 / ($count * 2) / 2);
+
+$ani-dur: 5.4s;
+
+$debug: false;
+
+@mixin fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.o {
+  --o-dir: 1;
+  --color-dir: 1;
+  $bgc: #{'hsl(calc((var(--i) - var(--color-dir) * var(--o-dir)) * '(360 / $count)'), 100%, 50%)'};
+  position: absolute;
+  top: calc(50% - .5em);
+  left: calc(50% - .5em);
+  width: 1em;
+  height: 1em;
+  background-color: $bgc;
+  border-radius: 50%;
+  transform: translateX(calc(var(--oo-r) * var(--o-dir)));
+  font-size: 3.5vmin;
+  overflow: hidden;
+    animation-delay: inherit;
+
+  &::before {
+    --color-dir: -1;
+    content: '';
+    @include fill;
+    background-color: $bgc;
+    animation: opacity $ani-dur linear infinite;
+    animation-delay: inherit;
+
+    @keyframes opacity {
+      0%,
+      70%,
+      100% {
+        opacity: 1;
+      }
+      20%,
+      50% {
+        opacity: 0;
+      }
+    }
+  }
+
+  & + #{&} {
+    --o-dir: -1;
+  }
+}
+
+.oo {
+  --oo-r: $ooo-r * $sin-theta;
+  color: #{'hsl(calc(var(--i) * ' (360 / $count) '), 100%, 50%)'};
+  position: absolute;
+  left: calc(var(--oo-r) * -1);
+  bottom: 0;
+  width: calc(var(--oo-r) * 2);
+  height: 0;
+  animation: rotate $ani-dur linear infinite;
+  animation-delay: calc(var(--i) * #{$ani-dur / $count / -2});
+
+  @if $debug == true {
+    box-shadow: 0 0 0 1px rgba(#ff0, .3);
+  }
+
+  @keyframes rotate {
+    20%,
+    50% { transform: rotate(180deg); }
+    70%,
+    100% { transform: rotate(360deg); }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    margin-top: -50%;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px;
+    animation: inherit;
+    animation-name: ring-opacity;
+
+    @keyframes ring-opacity {
+      0%,
+      20%,
+      50%,
+      70%,
+      100% { opacity: 0; }
+      10%,
+      60% { opacity: 1; }
+    }
+  }
+}
+
+.ooo {
+  position: relative;
+  width: $ooo-r * 2;
+  height: $ooo-r * 2;
+  border-radius: 50%;
+
+  @if $debug == true {
+    background-color: rgba(#fff, .1);
+  }
+
+  &:hover * {
+    &,
+    &::before {
+      animation-play-state: paused;
+    }
+  }
+  &:active * {
+    &,
+    &::before {
+      animation-play-state: running;
+    }
+  }
+}
+
+.axis {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: $ooo-r * $cos-theta;
+  transform-origin: 50% 0%;
+  transform: rotate(calc(var(--i) * #{- 360deg / $count}));
+
+  @if $debug == true {
+    box-shadow: 0 0 0 1px;
+  }
+
+  @for $i from 1 through $count {
+    &:nth-of-type(#{$i}) {
+      --i: $i;
+    }
+  }
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.4;
+  background-color: #000;
+  color: #fff;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+
+  small {
+    display: block;
+    text-align: right;
+    opacity: .3;
+    font-style: italic;
+    text-transform: none;
+    border-top: 1px dashed;
+  }
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
