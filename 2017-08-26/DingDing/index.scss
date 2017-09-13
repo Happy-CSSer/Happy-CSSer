@@ -1,0 +1,146 @@
+body{
+   min-height: 100vh;
+   background-color: #FECA33;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ $h_app: 90vmin;
+ .app{
+   background-color: #462C73;
+   box-shadow: 0 5em 10em -2em rgba(#000, .5);
+   // box-shadow: 0px 0px 11px 5px #A6832D;
+   width: 60vmin;
+   height: $h_app;
+   position: relative;
+   overflow: hidden;
+   border-radius: 15px;
+   
+   &:hover{
+     .info{
+       animation: info_oo 0.5s linear forwards;
+     }
+     .suggestion{
+       animation: suggestion_oo 0.5s linear forwards;
+     }
+     .submit{
+       animation: submit_oo 0.5s ease-in forwards;
+     }
+   }
+ }
+ 
+ @keyframes info_oo{
+   to{
+     transform: translateY(-85%) translateX(-50%);
+       // height: 40%;
+   }
+ }
+ .info{
+   // background-color: rgba(white, 0.5);
+   height: 50%;
+   width: 90%;
+   position: absolute;
+   top:50%;
+   transform: translateY(-50%) translateX(-50%);
+   left: 50%;
+   display: flex;
+   flex-wrap: wrap;
+   align-content: baseline;
+   
+ }
+ .logo{
+   height: 152px;
+   text-align: center;
+ }
+ .logo, .info_detail{
+   width: 100%;
+ }
+ 
+ .title{
+   font-size:22px;
+   line-height: 44px;
+   color: white;
+   text-align:center;
+ }
+ .sub-title{
+   font-size:14px;
+   color: rgba(white,0.5);
+   text-align:center;
+ }
+ .star_list{
+   margin-top:7px;
+   display: flex;
+   justify-content: center;
+ }
+ input[type='radio'] {
+   display: none;
+ }
+ label[for|='star']::before{
+   content: '★';
+   color: #856faa;
+   font-size: 29px;
+   margin-right: 15px;
+ }
+ 
+ .suggestion{
+   border-radius: 7px;
+   background-color: #fff;
+   width: 55vmin;
+   height: 40%;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   
+   
+   // transform: translateY(-10%);
+   transform: translateY(100%);
+ }
+ 
+ @keyframes suggestion_oo{
+   to{
+     transform: translateY(-10%);
+   }
+ }
+ .suggestion_title{
+     text-align: center;
+     font-size: 20px;
+     font-weight: bolder;
+     margin: 17px auto;
+ }
+ .items{
+   width: 100%;
+   display:flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+ }
+ .item{
+   border: solid 1px black;
+   width:32%;
+   text-align: center;
+   font-weight: bolder;
+   border-radius: 15px;
+   padding:5px 20px;
+   margin:5px 10px;
+ }
+ .submit{
+   background-color: #FEBF00;
+   position: absolute;
+   height:7vh;
+   width: 100%;
+   bottom:0;
+   font-size:26px;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transform: translateY(7vh);
+ }
+ 
+ @keyframes submit_oo{
+   to{
+     transform: translateY(0);
+   }
+ }
