@@ -1,0 +1,744 @@
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-o {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22em;
+  height: 22em;
+  border-radius: 22em;
+  transform-origin: center center;
+}
+
+.inner-o {
+  position: absolute;
+  width: 8.41904em;
+  height: 8.41904em;
+  border-radius: 8.41904em;
+}
+.inner-o .o:nth-child(2) {
+  left: unset;
+  right: -0.73333em;
+}
+
+.inner-o:nth-child(1) {
+  --c1: red;
+  --i: 1;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 1)) translateY(-10.16267em);
+}
+.inner-o:nth-child(1) .c {
+  --i: 0;
+  --j: 1.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -3.4776s;
+}
+.inner-o:nth-child(1) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -3.4776s;
+}
+.inner-o:nth-child(1) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(1) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -3.4776s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(1) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(1) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -3.4776s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(2) {
+  --c1: #ff8000;
+  --i: 2;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 2)) translateY(-10.16267em);
+}
+.inner-o:nth-child(2) .c {
+  --i: 1;
+  --j: 2.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -6.9552s;
+}
+.inner-o:nth-child(2) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -6.9552s;
+}
+.inner-o:nth-child(2) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(2) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -6.9552s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(2) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(2) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -6.9552s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(3) {
+  --c1: yellow;
+  --i: 3;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 3)) translateY(-10.16267em);
+}
+.inner-o:nth-child(3) .c {
+  --i: 2;
+  --j: 3.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -10.4328s;
+}
+.inner-o:nth-child(3) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -10.4328s;
+}
+.inner-o:nth-child(3) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(3) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -10.4328s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(3) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(3) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -10.4328s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(4) {
+  --c1: #80ff00;
+  --i: 4;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 4)) translateY(-10.16267em);
+}
+.inner-o:nth-child(4) .c {
+  --i: 3;
+  --j: 4.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -13.9104s;
+}
+.inner-o:nth-child(4) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -13.9104s;
+}
+.inner-o:nth-child(4) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(4) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -13.9104s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(4) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(4) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -13.9104s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(5) {
+  --c1: lime;
+  --i: 5;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 5)) translateY(-10.16267em);
+}
+.inner-o:nth-child(5) .c {
+  --i: 4;
+  --j: 5.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -17.388s;
+}
+.inner-o:nth-child(5) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -17.388s;
+}
+.inner-o:nth-child(5) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(5) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -17.388s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(5) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(5) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -17.388s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(6) {
+  --c1: #00ff80;
+  --i: 6;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 6)) translateY(-10.16267em);
+}
+.inner-o:nth-child(6) .c {
+  --i: 5;
+  --j: 6.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -20.8656s;
+}
+.inner-o:nth-child(6) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -20.8656s;
+}
+.inner-o:nth-child(6) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(6) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -20.8656s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(6) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(6) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -20.8656s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(7) {
+  --c1: cyan;
+  --i: 7;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 7)) translateY(-10.16267em);
+}
+.inner-o:nth-child(7) .c {
+  --i: 6;
+  --j: 7.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -24.3432s;
+}
+.inner-o:nth-child(7) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -24.3432s;
+}
+.inner-o:nth-child(7) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(7) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -24.3432s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(7) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(7) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -24.3432s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(8) {
+  --c1: #0080ff;
+  --i: 8;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 8)) translateY(-10.16267em);
+}
+.inner-o:nth-child(8) .c {
+  --i: 7;
+  --j: 8.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -27.8208s;
+}
+.inner-o:nth-child(8) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -27.8208s;
+}
+.inner-o:nth-child(8) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(8) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -27.8208s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(8) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(8) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -27.8208s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(9) {
+  --c1: blue;
+  --i: 9;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 9)) translateY(-10.16267em);
+}
+.inner-o:nth-child(9) .c {
+  --i: 8;
+  --j: 9.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -31.2984s;
+}
+.inner-o:nth-child(9) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -31.2984s;
+}
+.inner-o:nth-child(9) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(9) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -31.2984s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(9) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(9) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -31.2984s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(10) {
+  --c1: #8000ff;
+  --i: 10;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 10)) translateY(-10.16267em);
+}
+.inner-o:nth-child(10) .c {
+  --i: 9;
+  --j: 10.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -34.776s;
+}
+.inner-o:nth-child(10) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -34.776s;
+}
+.inner-o:nth-child(10) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(10) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -34.776s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(10) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(10) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -34.776s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(11) {
+  --c1: magenta;
+  --i: 11;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 11)) translateY(-10.16267em);
+}
+.inner-o:nth-child(11) .c {
+  --i: 10;
+  --j: 11.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -38.2536s;
+}
+.inner-o:nth-child(11) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -38.2536s;
+}
+.inner-o:nth-child(11) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(11) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -38.2536s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(11) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(11) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -38.2536s;
+  background-color: var(--cx);
+}
+
+.inner-o:nth-child(12) {
+  --c1: #ff0080;
+  --i: 12;
+  color: var(--c1);
+  transform: rotate(calc(30deg * 12)) translateY(-10.16267em);
+}
+.inner-o:nth-child(12) .c {
+  --i: 11;
+  --j: 12.5;
+  --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+  --cy: hsl(calc(30 * var(--j)), 100%, 50%);
+  opacity: 1;
+  animation: 7.56s self-rotate linear infinite;
+  animation-delay: -41.7312s;
+}
+.inner-o:nth-child(12) .c::before {
+  animation: 7.56s fade ease-in infinite;
+  animation-delay: -41.7312s;
+}
+.inner-o:nth-child(12) .c .o:nth-child(1) {
+  background-color: var(--cx);
+}
+.inner-o:nth-child(12) .c .o:nth-child(1)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change linear infinite;
+  animation-delay: -41.7312s;
+  background-color: var(--cy);
+}
+.inner-o:nth-child(12) .c .o:nth-child(2) {
+  background-color: var(--cy);
+}
+.inner-o:nth-child(12) .c .o:nth-child(2)::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+  animation: 7.56s color-change ease-in infinite;
+  animation-delay: -41.7312s;
+  background-color: var(--cx);
+}
+
+.o {
+  width: 1.46667em;
+  height: 1.46667em;
+  position: absolute;
+  top: 3.47618em;
+  left: -0.73333em;
+  border-radius: 1.46667em;
+}
+
+.c {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.c::before {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: solid 1px currentColor;
+  border-radius: 100%;
+}
+
+@keyframes self-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  20%, 50% {
+    transform: rotate(180deg);
+  }
+  70%, 100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fade-in {
+  0% {
+    border-color: var(--c1);
+  }
+  20%, 50% {
+    border-color: transparent;
+  }
+  50.1% {
+    border-color: var(--c1);
+  }
+  70%, 100% {
+    border-color: transparent;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20%, 50% {
+    opacity: 0;
+  }
+  50.1% {
+    opacity: 1;
+  }
+  70%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes color-change {
+  0% {
+    opacity: 0;
+  }
+  20%, 50% {
+    opacity: 1;
+  }
+  70%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes wait {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+}
+.outer-o:hover *, .outer-o:hover * .c, .outer-o:hover * .c::before {
+  animation-play-state: paused;
+}
+
+.outer-o:active *, .outer-o:active * .c, .outer-o:active * .c::before {
+  animation-play-state: running;
+}
+
+.tema {
+  position: absolute;
+  margin-top: 0px;
+  text-transform: capitalize;
+  top: -1%;
+  font-size: 2em;
+  font-family: sans-serif;
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #e7e7e7;
+}
+
+.source {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-family: sans-serif;
+}
+.source a {
+  color: #fff;
+}

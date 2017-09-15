@@ -1,0 +1,254 @@
+
+$cos22-5: cos(22.5deg);
+$sin22-5: sin(22.5deg);
+
+$animation-time: 5.4s * 1.4;
+
+$black: #000000;
+$R: 22em;
+$r: $R / 2;
+$component-r: $R * $sin22-5;
+$s-r: $R / 15;
+
+$ani-trigger: true;
+$debug: false;
+$debug-first: false;
+
+@mixin fill-circle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  border-radius: 50%;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer-o {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $R;
+  height: $R;
+  border-radius: $R;
+  transform-origin: center center;
+  
+  @if $debug == true {
+    border: 1px solid red;
+    // box-shadow: 0px 0px 1px 1px green;
+  }
+}
+
+.inner-o {
+  position: absolute;
+  width: $component-r;
+  height: $component-r;
+  @if $debug == true {
+    border: solid 1px #fff;
+  }
+  border-radius: $component-r;
+  
+  
+  @if $debug-first == true {
+    display: none;
+    &:nth-child(1) {
+      display: inline-block;
+    }
+  }
+  & .o:nth-child(2) {
+    left: unset;
+    right: -$s-r * 0.5;
+  }
+}
+
+@for $i from 1 through 12 {
+  .inner-o:nth-child(#{$i}) {
+    --c1: hsl(30 * $i - 30, 100%, 50%);
+    --i: $i;
+    color: var(--c1);
+    transform:  rotate(calc(30deg * #{$i})) translateY(-$r * $cos22-5);
+      & .c {
+        --i: $i - 1;
+        --j: 0.5 + $i;
+        --cx: hsl(calc(30 * var(--i)), 100%, 50%);
+        --cy: hsl(calc(30 * var(--j)) , 100%, 50%);
+        opacity: 1;
+        @if $ani-trigger == true {
+          animation: $animation-time self-rotate linear infinite;
+          animation-delay:  $animation-time * $i * -0.46;
+        }
+      }
+      & .c::before {
+        @if $ani-trigger == true {
+          animation: $animation-time fade  ease-in infinite;
+          animation-delay:  $animation-time * $i * -0.46;  
+  
+        }
+      }
+      & .c .o:nth-child(1) {
+        background-color: var(--cx);
+        &::before {
+          @include fill-circle;
+          animation: $animation-time color-change linear infinite;
+          animation-delay:  $animation-time * $i * -0.46; 
+          background-color: var(--cy);
+        }
+      }
+      & .c .o:nth-child(2) {
+        $index: 2;
+        background-color: var(--cy);
+        &::before {
+          @include fill-circle;
+          animation: $animation-time color-change ease-in infinite;
+          animation-delay:  $animation-time * $i * -0.46; 
+          background-color: var(--cx);
+        }
+      }
+  }
+}
+
+
+.o {
+  width: $s-r;
+  height: $s-r;
+  position: absolute;
+  top: ($component-r - $s-r) / 2;
+  left: -$s-r / 2;
+  border-radius: $s-r;
+  @if $debug == true {
+    &:nth-child(1) {
+      border: solid 1px yellow;   
+    }
+    &:nth-child(2) {
+      border: solid 1px blue;   
+    }
+  }
+}
+
+.c {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  
+  &::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: solid 1px currentColor;
+    border-radius: 100%;
+  }
+}
+
+@keyframes self-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  20%, 50% {
+    transform: rotate(180deg);
+
+  }
+  70%, 100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    border-color: var(--c1)
+  }
+  20%, 50% {
+    border-color: transparent;
+  }
+  50.1% {
+    border-color: var(--c1);
+  }
+  70%, 100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20%, 50% {
+    opacity: 0;
+  }
+  50.1% {
+    opacity: 1;
+  }
+  70%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    opacity: 0;
+  }
+  20%, 50% {
+    opacity: 1;
+  }
+  70%, 100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes wait {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+}
+
+ .outer-o:hover * {
+  & , & .c, & .c::before {
+      animation-play-state: paused;
+    }
+  }
+
+.outer-o:active * {
+  & , & .c, & .c::before {
+      animation-play-state: running;
+    }
+  }
+
+
+.tema {
+  position: absolute;
+  margin-top: 0px;
+  text-transform: capitalize;
+  top: -1%;
+  font-size: 2em;
+  font-family: sans-serif;
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #e7e7e7;
+}
+
+.source {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-family: sans-serif;
+  & a {
+    color: #fff;
+  }
+}
