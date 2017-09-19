@@ -1,0 +1,422 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  padding: 0; }
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.box {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  transform-origin: 80px 310px; }
+
+.box:nth-of-type(2) {
+  transform: rotate(30deg); }
+
+.box:nth-of-type(3) {
+  transform: rotate(60deg); }
+
+.box:nth-of-type(4) {
+  transform: rotate(90deg); }
+
+.box:nth-of-type(5) {
+  transform: rotate(120deg); }
+
+.box:nth-of-type(6) {
+  transform: rotate(150deg); }
+
+.box:nth-of-type(7) {
+  transform: rotate(180deg); }
+
+.box:nth-of-type(8) {
+  transform: rotate(210deg); }
+
+.box:nth-of-type(9) {
+  transform: rotate(240deg); }
+
+.box:nth-of-type(10) {
+  transform: rotate(270deg); }
+
+.box:nth-of-type(11) {
+  transform: rotate(300deg); }
+
+.box:nth-of-type(12) {
+  transform: rotate(330deg); }
+
+.box::before {
+  content: '';
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  opacity: 0;
+  animation-name: fadeInOut;
+  animation-duration: 12s;
+  animation-iteration-count: infinite; }
+
+.box:nth-of-type(1)::before {
+  border: 1px solid red; }
+
+.box:nth-of-type(2)::before {
+  border: 1px solid #ff8000; }
+
+.box:nth-of-type(3)::before {
+  border: 1px solid yellow; }
+
+.box:nth-of-type(4)::before {
+  border: 1px solid #80ff00; }
+
+.box:nth-of-type(5)::before {
+  border: 1px solid lime; }
+
+.box:nth-of-type(6)::before {
+  border: 1px solid #00ff80; }
+
+.box:nth-of-type(7)::before {
+  border: 1px solid cyan; }
+
+.box:nth-of-type(8)::before {
+  border: 1px solid #007fff; }
+
+.box:nth-of-type(9)::before {
+  border: 1px solid blue; }
+
+.box:nth-of-type(10)::before {
+  border: 1px solid #7f00ff; }
+
+.box:nth-of-type(11)::before {
+  border: 1px solid magenta; }
+
+.box:nth-of-type(12)::before {
+  border: 1px solid #ff0080; }
+
+.box .card {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transform: rotate(-45deg); }
+
+/* === circle === */
+.circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 80px 80px;
+  animation-duration: 12s;
+  animation-iteration-count: infinite; }
+
+.circle1 {
+  animation-name: rotate1; }
+
+.circle2 {
+  animation-name: rotate2;
+  transform: rotate(180deg); }
+
+.box:nth-of-type(1) .circle1 {
+  background-color: #ffbf00;
+  animation-delay: 0.5s; }
+
+.box:nth-of-type(1) .circle2 {
+  background-color: red;
+  animation-delay: 0.5s; }
+
+.box:nth-of-type(2) .circle1 {
+  background-color: #bfff00;
+  animation-delay: 1s; }
+
+.box:nth-of-type(2) .circle2 {
+  background-color: #ff8000;
+  animation-delay: 1s; }
+
+.box:nth-of-type(3) .circle1 {
+  background-color: #40ff00;
+  animation-delay: 1.5s; }
+
+.box:nth-of-type(3) .circle2 {
+  background-color: yellow;
+  animation-delay: 1.5s; }
+
+.box:nth-of-type(4) .circle1 {
+  background-color: #00ff40;
+  animation-delay: 2s; }
+
+.box:nth-of-type(4) .circle2 {
+  background-color: #80ff00;
+  animation-delay: 2s; }
+
+.box:nth-of-type(5) .circle1 {
+  background-color: #00ffbf;
+  animation-delay: 2.5s; }
+
+.box:nth-of-type(5) .circle2 {
+  background-color: lime;
+  animation-delay: 2.5s; }
+
+.box:nth-of-type(6) .circle1 {
+  background-color: deepskyblue;
+  animation-delay: 3s; }
+
+.box:nth-of-type(6) .circle2 {
+  background-color: #00ff80;
+  animation-delay: 3s; }
+
+.box:nth-of-type(7) .circle1 {
+  background-color: #0040ff;
+  animation-delay: 3.5s; }
+
+.box:nth-of-type(7) .circle2 {
+  background-color: cyan;
+  animation-delay: 3.5s; }
+
+.box:nth-of-type(8) .circle1 {
+  background-color: #4000ff;
+  animation-delay: 4s; }
+
+.box:nth-of-type(8) .circle2 {
+  background-color: #007fff;
+  animation-delay: 4s; }
+
+.box:nth-of-type(9) .circle1 {
+  background-color: #bf00ff;
+  animation-delay: 4.5s; }
+
+.box:nth-of-type(9) .circle2 {
+  background-color: blue;
+  animation-delay: 4.5s; }
+
+.box:nth-of-type(10) .circle1 {
+  background-color: #ff00bf;
+  animation-delay: 5s; }
+
+.box:nth-of-type(10) .circle2 {
+  background-color: #7f00ff;
+  animation-delay: 5s; }
+
+.box:nth-of-type(11) .circle1 {
+  background-color: #ff0040;
+  animation-delay: 5.5s; }
+
+.box:nth-of-type(11) .circle2 {
+  background-color: magenta;
+  animation-delay: 5.5s; }
+
+.box:nth-of-type(12) .circle1 {
+  background-color: #ff4000;
+  animation-delay: 6s; }
+
+.box:nth-of-type(12) .circle2 {
+  background-color: #ff0080;
+  animation-delay: 6s; }
+
+/* === circle before === */
+.circle::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 2;
+  animation-name: fadeInOutMask;
+  animation-duration: 12s;
+  animation-iteration-count: infinite; }
+
+.box:nth-of-type(1) .circle1::before {
+  background-color: red;
+  animation-delay: 0.5s; }
+
+.box:nth-of-type(1) .circle2::before {
+  background-color: #ffbf00;
+  animation-delay: 0.5s; }
+
+.box:nth-of-type(2) .circle1::before {
+  background-color: #ff8000;
+  animation-delay: 1s; }
+
+.box:nth-of-type(2) .circle2::before {
+  background-color: #bfff00;
+  animation-delay: 1s; }
+
+.box:nth-of-type(3) .circle1::before {
+  background-color: yellow;
+  animation-delay: 1.5s; }
+
+.box:nth-of-type(3) .circle2::before {
+  background-color: #40ff00;
+  animation-delay: 1.5s; }
+
+.box:nth-of-type(4) .circle1::before {
+  background-color: #80ff00;
+  animation-delay: 2s; }
+
+.box:nth-of-type(4) .circle2::before {
+  background-color: #00ff40;
+  animation-delay: 2s; }
+
+.box:nth-of-type(5) .circle1::before {
+  background-color: lime;
+  animation-delay: 2.5s; }
+
+.box:nth-of-type(5) .circle2::before {
+  background-color: #00ffbf;
+  animation-delay: 2.5s; }
+
+.box:nth-of-type(6) .circle1::before {
+  background-color: #00ff80;
+  animation-delay: 3s; }
+
+.box:nth-of-type(6) .circle2::before {
+  background-color: deepskyblue;
+  animation-delay: 3s; }
+
+.box:nth-of-type(7) .circle1::before {
+  background-color: cyan;
+  animation-delay: 3.5s; }
+
+.box:nth-of-type(7) .circle2::before {
+  background-color: #0040ff;
+  animation-delay: 3.5s; }
+
+.box:nth-of-type(8) .circle1::before {
+  background-color: #007fff;
+  animation-delay: 4s; }
+
+.box:nth-of-type(8) .circle2::before {
+  background-color: #4000ff;
+  animation-delay: 4s; }
+
+.box:nth-of-type(9) .circle1::before {
+  background-color: blue;
+  animation-delay: 4.5s; }
+
+.box:nth-of-type(9) .circle2::before {
+  background-color: #bf00ff;
+  animation-delay: 4.5s; }
+
+.box:nth-of-type(10) .circle1::before {
+  background-color: #7f00ff;
+  animation-delay: 5s; }
+
+.box:nth-of-type(10) .circle2::before {
+  background-color: #ff00bf;
+  animation-delay: 5s; }
+
+.box:nth-of-type(11) .circle1::before {
+  background-color: magenta;
+  animation-delay: 5.5s; }
+
+.box:nth-of-type(11) .circle2::before {
+  background-color: #ff0040;
+  animation-delay: 5.5s; }
+
+.box:nth-of-type(12) .circle1::before {
+  background-color: #ff0080;
+  animation-delay: 6s; }
+
+.box:nth-of-type(12) .circle2::before {
+  background-color: #ff4000;
+  animation-delay: 6s; }
+
+.box:nth-of-type(1)::before {
+  animation-delay: 0.5s; }
+
+.box:nth-of-type(2)::before {
+  animation-delay: 1s; }
+
+.box:nth-of-type(3)::before {
+  animation-delay: 1.5s; }
+
+.box:nth-of-type(4)::before {
+  animation-delay: 2s; }
+
+.box:nth-of-type(5)::before {
+  animation-delay: 2.5s; }
+
+.box:nth-of-type(6)::before {
+  animation-delay: 3s; }
+
+.box:nth-of-type(7)::before {
+  animation-delay: 3.5s; }
+
+.box:nth-of-type(8)::before {
+  animation-delay: 4s; }
+
+.box:nth-of-type(9)::before {
+  animation-delay: 4.5s; }
+
+.box:nth-of-type(10)::before {
+  animation-delay: 5s; }
+
+.box:nth-of-type(11)::before {
+  animation-delay: 5.5s; }
+
+.box:nth-of-type(12)::before {
+  animation-delay: 6s; }
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0; }
+
+  15% {
+    opacity: 1; }
+
+  30%,
+  50% {
+    opacity: 0; }
+
+  65% {
+    opacity: 1; }
+
+  80%,
+  100% {
+    opacity: 0; } }
+
+@keyframes rotate1 {
+  0% {
+    transform: rotate(0deg); }
+
+  30%,
+  50% {
+    transform: rotate(180deg); }
+
+  80%,
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes rotate2 {
+  0% {
+    transform: rotate(180deg); }
+
+  30%,
+  50% {
+    transform: rotate(360deg); }
+
+  80%,
+  100% {
+    transform: rotate(540deg); } }
+
+@keyframes fadeInOutMask {
+  0% {
+    opacity: 1; }
+
+  30%,
+  50% {
+    opacity: 0; }
+
+  80%,
+  100% {
+    opacity: 1; } }
