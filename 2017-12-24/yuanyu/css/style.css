@@ -1,0 +1,89 @@
+@charset "UTF-8";
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #00001A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.outer {
+  position: relative;
+  font-size: 3vmin;
+  height: 20em;
+  width: 20em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+.outer .upper {
+  left: 2em;
+  border-width: 8em;
+  border-color: white transparent transparent transparent;
+}
+.outer .upper, .outer .upper::after {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+}
+.outer .upper::after {
+  content: '';
+  top: -8em;
+  left: -4em;
+  border-width: 4em;
+  border-color: #00001A transparent transparent transparent;
+}
+.outer .upper::before {
+  content: '★';
+  position: absolute;
+  font-size: 6vmin;
+  top: -1.4em;
+  left: -0.4em;
+  z-index: 3;
+}
+.outer .bottom {
+  top: -10em;
+  border-width: 14em 10em;
+  border-color: transparent transparent white transparent;
+  border-style: solid;
+}
+.outer .bottom, .outer .bottom::before, .outer .bottom::after {
+  position: absolute;
+  height: 0;
+  width: 0;
+}
+.outer .bottom::before, .outer .bottom::after {
+  content: '';
+  border-style: solid;
+  border-color: transparent transparent #00001A transparent;
+}
+.outer .bottom::before {
+  top: -1em;
+  left: -4em;
+  border-width: 5.6em 4em;
+}
+.outer .bottom::after {
+  left: -5em;
+  border-width: 7em 5em;
+}
+.outer .mas {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  bottom: 0;
+  font-size: 6vmin;
+  width: inherit;
+  color: white;
+}
