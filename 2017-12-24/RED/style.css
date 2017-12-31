@@ -1,0 +1,169 @@
+body {
+  width:100vw;
+  height:100vh;
+  background: linear-gradient(to bottom, #B7F8DB 0%,#0fb4e7 100%);
+  overflow:hidden;
+  font-family:'Sawasdee', sans-serif;
+}
+
+h1 {
+  text-align:center;
+  margin:20px 0;
+}
+
+.book {
+  width:600px;
+  height:400px;
+  position: relative;
+  margin:0 auto;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.bookInstance {
+  width:100%;
+  height:100%;
+  transform-style: preserve-3d;
+  transform: rotateX(30deg);
+  position:absolute;
+}
+
+.pageWrapper {
+  width:50%;
+  height:100%;
+  position:absolute;
+  top:0;
+}
+
+.pageWrapper.left {
+  left:0;
+}
+
+.pageWrapper.right {
+  right:0;
+}
+
+.pageInstance {
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  transform-style: preserve-3d;
+  box-shadow:0px 0px 3px #666;
+}
+
+.pageInstance.left {
+  left:0;
+  border-radius:30px 0 0 30px;
+  transform-origin: right center;
+  transform:rotateY(180deg);
+  transition:all 1s;
+  position:absolute;
+}
+
+.pageInstance.left::before {
+  content:'';
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background: linear-gradient(to bottom, #ff9a9e 0%, #fecfef 100%);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  border-radius:30px 0 0 30px;
+}
+
+.pageInstance.left::after {
+  content:'';
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  transform:rotateY(180deg);
+  background-color:white;
+  background-image:url('http://bes.bartlettschools.org/ourpages/auto/2016/6/8/66942845/7bb2034e24f6f4c09c2f1fe2b53c4bff.jpg');
+  background-size:85% 85%;
+  background-position:center center;
+  background-repeat:no-repeat;
+  border-radius:0 30px 30px 0;
+}
+
+.pageInstance.leftShadow {
+  left:0;
+  border-radius:30px 0 0 30px;
+  transition:all 1s;
+  position:absolute;
+  background-color:#333;
+  opacity:0;
+  z-index:-1;
+  transform-origin: right center;
+  transform:rotateY(45deg);
+  transition:all .65s;
+}
+
+.pageInstance.right {
+  right:0;
+  background: linear-gradient(to bottom, #ff9a9e 0%, #fecfef 100%);
+  border-radius:0 30px 30px 0;
+}
+
+.treeWrapper {
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.treeInstance {
+  width:80%;
+  height:80%;
+  position:absolute;
+  top:10%;
+  left:10%;
+  transition:all 1s;
+  background-size:100% 100%;
+  background-image:url('http://clipartbarn.com/wp-content/uploads/2016/10/Christmas-tree-clip-art-free-printable.png');
+  background-position:center 17px;
+  transform-origin:center bottom;
+  z-index: 2;
+  background-repeat:no-repeat;
+}
+
+.treeShadow {
+  background-image:url("http://krmfla.byethost12.com/cdn/Christmas-tree-clip-art-free-printable.png");
+  z-index: 1;
+  opacity:.6;
+}
+
+.footer {
+  margin-top:100px;
+}
+
+.footer p {
+  text-align:center;
+}
+
+/* === on hover === */
+.book:hover .pageInstance.left {
+  transform:rotateY(0deg);
+}
+
+.book:hover .pageInstance.leftShadow {
+  opacity:.15;
+  transform:rotateY(0deg);
+  transition:all .5s .25s;
+}
+
+.book:hover .tree {
+  transform:rotateX(-45deg);
+  transition:all .75s .25s;
+}
+
+.book:hover .treeShadow {
+  transform:rotateX(25deg);
+  transition:all 1s;
+  opacity:.3;
+}
