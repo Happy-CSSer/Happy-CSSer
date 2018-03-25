@@ -1,0 +1,225 @@
+$debug: true;
+$debug: false;
+
+.label {
+  --ball-size: 150px;
+  --padding: .1em;
+  --path: 350px;
+  --color-theme: #d5d5d5;
+  --color-face: #e4e4e4;
+  --duration: .486s;
+
+  position: relative;
+  display: block;
+  width: calc(var(--path) + var(--padding) * 2);
+  font-size: var(--ball-size);
+  padding: var(--padding);
+  border-radius: calc(var(--ball-size) * 2);
+  color: var(--color-theme);
+  background-color: currentColor;
+  cursor: pointer;
+  transition: var(--duration);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(to right, #f39aee, #f599b8);
+    opacity: 0;
+    transition: inherit;
+    transition-property: opacity;
+
+    .checkbox:checked ~ & {
+      opacity: 1;
+    }
+  }
+}
+.head {
+  position: relative;
+  z-index: 1;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: var(--color-face);
+  transition: inherit;
+  overflow: hidden;
+  transition-property: transform;
+  box-shadow:
+    inset -.2em .2em .5em .05em #fff,
+    0em .075em .1em -.02em rgba(#000, .25);
+
+  .checkbox:checked ~ .label & {
+    transform: translateX(calc(var(--path) - 100%));
+  }
+}
+
+.face {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 40%;
+  bottom: 0;
+  width: 300%;
+  transition: inherit;
+  transform: translateX(calc(-100% + 1em));
+  @if ($debug) {
+    box-shadow: 0 0 0 1px rgba(#000, .1);
+  }
+
+  .checkbox:checked ~ .label & {
+    transform: unset;
+  }
+
+  &__sleep {
+    position: absolute;
+    right: .55em;
+    width: .075em;
+    height: .04em;
+    border-radius: 40% 40% 50% 50%;
+    box-shadow: -.01em .275em;
+    color: #8e8e8e;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 1em;
+      left: calc(50% - .5em - 1.5em * var(--eye-dir, 1));
+      width: 1em;
+      height: .75em;
+      font-size: 0.075em;
+      border-bottom: .45em solid;
+      border-radius: 0 0 1em 1em;
+    }
+    &::after {
+      --eye-dir: -1;
+    }
+  }
+
+  &__smile {
+    position: absolute;
+    left: 5.5em;
+    font-size: .1em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    color: #888;
+    box-shadow:
+      -1.75em 0,
+      1.75em 0;
+
+    &::before { // mouth
+      content: '';
+      position: absolute;
+      top: 2em;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4em;
+      height: 1.8em;
+      background-color: #aaa;
+      box-shadow: inset -.1em .2em .5em .2em rgba(#000, .3);
+      border-radius: 0 0 4em 4em;
+    }
+
+    &::after { // star
+      content: '★';
+      position: absolute;
+      top: 1em;
+      left: 3em;
+      color: #ff0;
+      text-shadow: 0 0 .2em rgba(#00f, .5);
+      opacity: 0;
+
+      .checkbox:checked ~ .label & {
+        animation: shiny 1s var(--duration);
+      }
+
+      @keyframes shiny {
+        50%,
+        70% {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+
+  small {
+    display: block;
+    text-align: right;
+    opacity: .3;
+    font-style: italic;
+    text-transform: none;
+    margin-top: .5rem;
+    border-top: 1px dashed;
+  }
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
+
+.sr-only {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
