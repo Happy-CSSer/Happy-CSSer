@@ -1,0 +1,216 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+
+#switch {
+  display: none;
+}
+#switch:checked ~ .container:after {
+  opacity: 1;
+}
+#switch:checked ~ .container .ball {
+  -webkit-transform: translatex(4em);
+          transform: translatex(4em);
+}
+#switch:checked ~ .container .ball .face1 {
+  -webkit-transition: -webkit-transform 1000ms;
+  transition: -webkit-transform 1000ms;
+  transition: transform 1000ms;
+  transition: transform 1000ms, -webkit-transform 1000ms;
+  -webkit-transform: translate(4.7em);
+          transform: translate(4.7em);
+}
+#switch:checked ~ .container .ball .face2 {
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  -webkit-transition: -webkit-transform 1000ms 200ms;
+  transition: -webkit-transform 1000ms 200ms;
+  transition: transform 1000ms 200ms;
+  transition: transform 1000ms 200ms, -webkit-transform 1000ms 200ms;
+  -webkit-transform: translate(0.8em) rotateY(30deg);
+          transform: translate(0.8em) rotateY(30deg);
+}
+
+.container {
+  background-color: #d7d7d7;
+  width: 14em;
+  height: 6em;
+  border-radius: 6em;
+  padding: 0.65em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.container:after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  opacity: 0;
+  background: -webkit-gradient(linear, left top, right top, from(#eba6e7), to(#eba6c2));
+  background: linear-gradient(to right, #eba6e7, #eba6c2);
+  -webkit-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+}
+
+.ball {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border-radius: 50%;
+  width: 4.7em;
+  -webkit-transform: translatex(-4em);
+          transform: translatex(-4em);
+  -webkit-transition: -webkit-transform 1000ms;
+  transition: -webkit-transform 1000ms;
+  transition: transform 1000ms;
+  transition: transform 1000ms, -webkit-transform 1000ms;
+  -webkit-box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.shadow {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 100% 0%, transparent 0%, transparent 20%, #ccc 100%);
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.face1,
+.face2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
+.left {
+  -webkit-transform: translateX(0.8em);
+          transform: translateX(0.8em);
+}
+
+.right {
+  -webkit-transform: translateX(-0.8em);
+          transform: translateX(-0.8em);
+}
+
+.eye {
+  z-index: 100;
+  -webkit-transform: translate(-50%, -0.4em);
+          transform: translate(-50%, -0.4em);
+  background-color: #666;
+  width: 0.6em;
+  height: 0.6em;
+  position: absolute;
+  border-radius: 50%;
+}
+.eye:after {
+  z-index: 10;
+  content: "";
+  position: absolute;
+  background: white;
+  bottom: 100%;
+  left: 50%;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, 0.3em);
+          transform: translate(-50%, 0.3em);
+}
+
+.mouth {
+  z-index: 2;
+  -webkit-transform: translate(-50%, 0.9em);
+          transform: translate(-50%, 0.9em);
+  background-color: #666;
+  width: 0.5em;
+  height: 0.4em;
+  border-radius: 50%;
+  position: absolute;
+}
+.mouth:after {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  background: white;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  -webkit-transform: translateY(0.1em);
+          transform: translateY(0.1em);
+}
+
+.face1 {
+  -webkit-transform: translate(-0.8em) rotateY(-30deg);
+          transform: translate(-0.8em) rotateY(-30deg);
+  -webkit-transition: -webkit-transform 1000ms 200ms;
+  transition: -webkit-transform 1000ms 200ms;
+  transition: transform 1000ms 200ms;
+  transition: transform 1000ms 200ms, -webkit-transform 1000ms 200ms;
+}
+
+.face2 {
+  -webkit-transform: translateX(-4.7em);
+          transform: translateX(-4.7em);
+  -webkit-transition: -webkit-transform 1000ms;
+  transition: -webkit-transform 1000ms;
+  transition: transform 1000ms;
+  transition: transform 1000ms, -webkit-transform 1000ms;
+}
+.face2 .eye {
+  width: 0.5em;
+  height: 0.5em;
+}
+.face2 .eye:after {
+  content: none;
+}
+.face2 .mouth {
+  -webkit-transform: translate(-50%, -0.4em);
+          transform: translate(-50%, -0.4em);
+  width: 2em;
+  height: 2em;
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, #666));
+  background-image: linear-gradient(to bottom, transparent 50%, #666 50%);
+}
+.face2 .mouth:after {
+  content: none;
+}
