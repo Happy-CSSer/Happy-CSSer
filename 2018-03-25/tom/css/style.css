@@ -1,0 +1,89 @@
+body, html {
+  display: flex;
+  width: 100%;
+  min-height: 400px;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.toggleWrap {
+  width: 100%;
+  max-width: 260px;
+  position: relative;
+  height: 100px;
+  border-radius: 100px;
+  background: #d5d5d5;
+  overflow: hidden; }
+  .toggleWrap .toggle {
+    width: 100%;
+    height: 100px;
+    opacity: 0;
+    border: 0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer; }
+  .toggleWrap .coverBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to right, #eba6eb, #eda6c1);
+    opacity: 0;
+    z-index: 0;
+    transition: all .5s;
+    -webkit-transition: all .5s; }
+  .toggleWrap .circle {
+    display: block;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 2px 4px 2px 1px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #ccc 5%, #fff);
+    transition: all .7s;
+    -webkit-transition: all .7s;
+    top: 5px;
+    left: 10px;
+    overflow: hidden;
+    text-align: center; }
+    .toggleWrap .circle:after {
+      content: "^ ^";
+      display: inline-block;
+      word-spacing: 5px;
+      position: absolute;
+      color: #aaa;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      top: 35px;
+      left: -40px;
+      border-radius: 50%;
+      font-weight: bolder;
+      box-shadow: 0px -11px 0px -2px inset;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; }
+    .toggleWrap .circle:before {
+      content: "= =";
+      display: inline-block;
+      color: #aaa;
+      word-spacing: 5px;
+      font-weight: bolder;
+      font-size: 20px;
+      line-height: 90px;
+      position: relative;
+      left: 0;
+      width: 35px;
+      height: 60px;
+      border-bottom: 3px solid #aaa;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; }
+  .toggleWrap .toggle:checked ~ .coverBg {
+    opacity: 1; }
+  .toggleWrap .toggle:checked ~ .circle {
+    left: 160px; }
+  .toggleWrap .toggle:checked ~ .circle:before {
+    left: 100px; }
+  .toggleWrap .toggle:checked ~ .circle:after {
+    left: 30px; }
+
+/*# sourceMappingURL=style.css.map */

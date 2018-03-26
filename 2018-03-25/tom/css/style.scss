@@ -1,0 +1,106 @@
+body,html{
+	display:flex;
+	width: 100%;
+   min-height:400px;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+$size:200px;
+$changeSec:0.3s;
+.toggleWrap{
+  width:100%;
+  max-width:$size+60;
+  position: relative;
+  height:$size/2;
+  // border:1px solid #000;
+  border-radius:$size/2;
+  background:#d5d5d5;
+  overflow: hidden;
+  // padding:10px;
+   .toggle{
+    width:100%;
+    height:$size/2;
+    //visibility: hidden;
+    opacity:0;
+    border:0;
+    position: absolute;
+    z-index:1;
+    cursor: pointer;
+  }
+  .coverBg{
+     width:100%;
+     height:100%;
+     position: absolute;
+     background:linear-gradient(to right,#eba6eb,#eda6c1);
+     opacity:0;
+     z-index:0;
+     transition: all .5s;
+     -webkit-transition: all .5s;
+  }
+  .circle{
+       display:block;
+       width:$size/2-10px;
+       height:$size/2-10px;
+       border-radius:50%;
+       position: relative;
+       box-shadow:2px 4px 2px 1px rgba(0,0,0,0.3);
+       background:linear-gradient(to right,#ccc 5%,#fff);
+       transition: all .7s;
+       -webkit-transition: all .7s;
+       top:5px;
+       left:10px;
+       overflow: hidden;
+       text-align:center;
+       &:after{
+        content: "^ ^";
+        display: inline-block;
+         word-spacing:5px;
+        position: absolute;
+        color: #aaa;
+        font-size:20px;
+        width:40px;
+        height: 40px;
+        top:35px;
+        left: -40px;
+        border-radius: 50%;
+        font-weight:bolder;
+        // background: #aaa;
+        // transform: rotate(-90deg);
+         box-shadow: 0px -11px 0px -2px inset;
+        // clip: rect(0px,15px,30px,0px);
+         // border-bottom:3px solid #aaa;
+        transition: all $changeSec;
+        -webkit-transition: all $changeSec;
+       }
+       &:before{
+          content:"= =";
+          display:inline-block;
+          color:#aaa;
+          word-spacing:5px;
+          font-weight:bolder;
+          font-size:20px;
+          line-height:$size/2-10px;
+          position: relative;
+          left:0;        
+          width:35px;
+          height: 60px;
+          border-bottom:3px solid #aaa;
+          transition: all $changeSec;
+          -webkit-transition: all $changeSec;
+      }
+    }
+  .toggle:checked ~ .coverBg{
+    opacity:1;
+  }
+  .toggle:checked ~ .circle{
+    left:$size/2+60;
+  }
+  .toggle:checked ~ .circle:before{
+    left:$size/2;
+  }
+  .toggle:checked ~ .circle:after{
+    left:30px;
+  }
+}
