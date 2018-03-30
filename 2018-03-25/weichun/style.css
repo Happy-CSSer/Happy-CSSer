@@ -1,0 +1,155 @@
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper .background {
+    animation: color 3s infinite;
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    border-radius: 50px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper .background .ball {
+    position: relative;
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 45px;
+    background-image: radial-gradient(circle at 80% 20%, #ffffff, #bbbbbb);
+    animation: rotate 3s infinite;
+    box-shadow: 0px 3px 5px #888888;
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper .background .ball .sleep {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .wrapper .background .ball .sleep .left-sleep {
+    float: left;
+    position: absolute;
+    right: 23px;
+    width: 8px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 0 0 gray;
+    animation: sleep 3s infinite;
+    animation-fill-mode: forwards;
+    top: 15px;
+  }
+  .wrapper .background .ball .sleep .right-sleep {
+    position: absolute;
+    right: 10px;
+    width: 8px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 0 0 gray;
+    animation: sleep 3s infinite;
+    animation-fill-mode: forwards;
+    top: 15px;
+  }
+  .wrapper .background .ball .sleep .mouth-sleep {
+    position: absolute;
+    top: 13px;
+    background-color: gray;
+    border-radius: 50%;
+    width: 7px;
+    height: 4px;
+    left: 16px;
+    animation: sleep 3s infinite;
+    animation-fill-mode: forwards;
+    top: 30px;
+  }
+  .wrapper .background .smile {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .wrapper .background .smile .left-smile {
+    float: left;
+    position: absolute;
+    right: 16.5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: gray;
+    animation: smile 3s infinite;
+    animation-fill-mode: forwards;
+    top: 13px;
+  }
+  .wrapper .background .smile .right-smile {
+    position: absolute;
+    right: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: gray;
+    animation: smile 3s infinite;
+    animation-fill-mode: forwards;
+    top: 13px;
+  }
+  .wrapper .background .smile .mouth-smile {
+    position: absolute;
+    top: 21px;
+    background-color: gray;
+    border-radius: 0 0 50px 50px;
+    width: 17px;
+    height: 6px;
+    left: 20px;
+    animation: smile 3s infinite;
+    animation-fill-mode: forwards;
+  }
+  
+  @-webkit-keyframes rotate {
+    0% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(100px);
+    }
+  }
+  @-webkit-keyframes sleep {
+    0% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(50px);
+    }
+    100% {
+      transform: translateX(-5px);
+    }
+  }
+  @-webkit-keyframes smile {
+    0% {
+      transform: translateX(-50px);
+    }
+    50% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(-50px);
+    }
+  }
+  @-webkit-keyframes color {
+    0% {
+      background-color: #bbb;
+    }
+    50% {
+      background: linear-gradient(to right, #ef9df3 0%, #f39eba 100%);
+    }
+    100% {
+      background-color: #bbb;
+    }
+  }
+  
