@@ -1,0 +1,136 @@
+:root {
+  --btn-height: 50px ;
+  --circle-radius: 35px;
+  --animaion-time: 2s;
+}
+.App {
+  padding-top:50px
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 120px;
+  height: var(--btn-height);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(#f39ae4,#f39ab7);
+}
+.container::before{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  content: '';
+  background-color: #d5d5d5;
+  animation: var(--animaion-time) ease infinite opa-filter;
+}
+.face-container {
+  position: absolute;
+}
+.sleepy-face-container {
+  animation: var(--animaion-time) ease infinite sleepy-face-transition;
+}
+.smile-face-container {
+  animation: var(--animaion-time) ease infinite smile-face-transition;
+}
+.face {
+  content: "";  
+  position: relative;
+  overflow: hidden;
+  left: 10px;
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background-color: white;
+  border-radius: var(--circle-radius);
+  animation: var(--animaion-time) ease infinite face-motion;
+}
+.sleepy-face-container > .eyes-line {
+  position: absolute;
+  left: 5px;
+  top: 16px;
+}
+
+.sleepy-face-container > .eyes-line::before{
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 2px;
+  background-color: gray;
+  border-radius: 0px 0px 3px 3px;
+}
+.sleepy-face-container > .eyes-line::after{
+  content: '';
+  position: absolute;
+  margin-left: 10px;
+  width: 5px;
+  height: 2px;
+  background-color: gray;
+  border-radius: 0px 0px 3px 3px;
+}
+.smile-face-container > .eyes-line {
+  position: absolute;
+  left: 14px;
+  top: 11px;
+}
+/* sleepy-mouth */
+.sleepy-face-container::after {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 23px;
+  width: 7px;
+  height: 3px;
+  background-color: gray;
+  border-radius: 0px 0px 7px 7px;
+}
+.smile-face-container > .eyes-line::before{
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: gray;
+  border-radius: 4px;
+}
+.smile-face-container > .eyes-line::after{
+  content: '';
+  position: absolute;
+  margin-left: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: gray;
+  border-radius: 4px;
+}
+/* smile-mouth */
+.smile-face-container::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 20px;
+  width: 15px;
+  height: 5px;
+  background-color: gray;
+  border-radius: 0px 0px 15px 15px;
+}
+@keyframes face-motion {
+  0% {left: 10px;}
+  50% {left: 75px;}
+  100% {left: 10px;}
+}
+@keyframes opa-filter {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes sleepy-face-transition {
+  0% {left: 0px;}
+  50% {left: 80px;}
+  100% {left: 0px;}
+}
+@keyframes smile-face-transition {
+  0% {left: -80px;}
+  50% {left: 0px;}
+  100% {left: -80px;}
+}
