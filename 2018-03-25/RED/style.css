@@ -1,0 +1,247 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 0;
+  font-family: sans-serif, "Arial";
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7db9e8+0,2af598+100 */
+  background: #7db9e8;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #7db9e8 0%, #2af598 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#2af598',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  color: #FF216B;
+}
+
+.toggleBox {
+  /*   background-color:#EEE; */
+  max-width: 420px;
+  padding: 1%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 16px;
+  color: white;
+  text-align: right;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: all .6s;
+}
+
+a:hover {
+  color: blue;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+}
+
+.toggleBar {
+  width: 30%;
+  padding-bottom: 20%;
+  background-color: #CCC;
+  float: left;
+  position: relative;
+  margin-left: 35%;
+  transition: all .6s ease-out;
+}
+
+.toggleBar::before {
+  content: "";
+  width: 60%;
+  position: absolute;
+  background-color: #CCC;
+  top: 0;
+  left: -30%;
+  height: 100%;
+  border-radius: 50% 0 0 50%;
+  transition: all .6s ease-out;
+}
+
+.toggleBar::after {
+  content: "";
+  width: 60%;
+  position: absolute;
+  background-color: #CCC;
+  top: 0;
+  right: -30%;
+  height: 100%;
+  border-radius: 0 50% 50% 0;
+  transition: all .6s ease-out;
+}
+
+.ball {
+  width: 60%;
+  padding-bottom: 60%;
+  position: absolute;
+  background-color: white;
+  top: 5%;
+  left: -25%;
+  border-radius: 50%;
+  box-shadow: 0px 2px 8px #999;
+  overflow: hidden;
+  z-index: 1;
+  transition: all .6s ease-in;
+}
+
+.ballGradient {
+  background-image: radial-gradient(circle at 80% 20%, white 0%, #FFF 30%, #DDD 80%);
+}
+
+/* face component */
+.face {
+  width: 50%;
+  padding-bottom: 50%;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  /*   border:1px solid red; */
+}
+
+.faceSleep {
+  top: 25%;
+  left: 15%;
+  transition: all .3s ease-in .3s;
+}
+
+.faceAwake {
+  left: 35%;
+  transition: all .3s ease-in 0s;
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
+}
+
+.face .eyes {
+  width: 30%;
+  height: 30%;
+  /*   border:1px solid red; */
+  position: absolute;
+  top: 20%;
+  overflow: hidden;
+}
+
+.face .eyesLeft {
+  left: 5%;
+}
+
+.face .eyesRight {
+  right: 5%;
+}
+
+.faceAwake .eyesLeft {
+  left: 0%;
+}
+
+.faceAwake .eyesRight {
+  right: 0%;
+}
+
+.faceSleep .eyes {
+  top: 40%;
+}
+
+.faceSleep .eyesBall {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #8f8f8f;
+  top: -45%;
+  /*   border:5% solid #8f8f8f; */
+}
+
+.faceAwake .eyesBall {
+  width: 60%;
+  height: 65%;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #8f8f8f;
+  top: 5%;
+  /*   border:5% solid #8f8f8f; */
+}
+
+.face .mouth {
+  width: 100%;
+  height: 30%;
+  /*   border:1px solid red; */
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  overflow: hidden;
+}
+
+.faceSleep .mouthLips {
+  width: 20%;
+  height: 40%;
+  background-color: #8f8f8f;
+  position: absolute;
+  top: -10%;
+  left: 35%;
+  border-radius: 50%;
+}
+
+.faceAwake .mouthLips {
+  width: 60%;
+  padding-bottom: 45%;
+  background-color: #8f8f8f;
+  position: absolute;
+  top: -60%;
+  left: 12.5%;
+  border-radius: 50%;
+  box-shadow: inset 0px 9px 9px rgba(115, 115, 115, 0.5);
+}
+
+.faceSleep .mouth {
+  bottom: -10%;
+}
+
+.faceAwake .mouth {
+  bottom: 10%;
+}
+
+/* transition */
+.checkbox:checked ~ .toggleBar, .checkbox:checked ~ .toggleBar::before,
+.checkbox:checked ~ .toggleBar::after {
+  background-color: #F39EBA;
+}
+
+.checkbox:checked ~ .toggleBar .ball {
+  -webkit-transform: translateX(150%);
+          transform: translateX(150%);
+}
+
+.checkbox:checked ~ .toggleBar .faceSleep {
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
+  transition-dealy: 0;
+  transition: all .3s ease-out 0s;
+}
+
+.checkbox:checked ~ .toggleBar .faceAwake {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  transition-dealy: 0;
+  transition: all .3s ease-out .3s;
+}
+
+/* debug */
+.hide {
+  display: none;
+}
