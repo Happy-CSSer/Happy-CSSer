@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title [CSS icon] Camera Aperture
+    link(rel="stylesheet", href="style.css")
+
+body
+  h1.intro [CSS icon] Camera Aperture
+    small click to toggle aperture size
+
+  .box
+    .icon-box
+      input.sr-only.checkbox.checkbox--s(type="radio" name="size" id="size-s" checked)
+      input.sr-only.checkbox.checkbox--m(type="radio" name="size" id="size-m")
+      input.sr-only.checkbox.checkbox--l(type="radio" name="size" id="size-l")
+      label.label.label--s(for="size-s" data-target-size="16" data-current-size="2.8")
+      label.label.label--m(for="size-m" data-target-size="10" data-current-size="16")
+      label.label.label--l(for="size-l" data-target-size="2.8" data-current-size="10")
+
+      .camera-aperture
+        .blade-box
+          .blade
+          .blade
+          .blade
+          .blade
+          .blade
+          .blade
+
+  blockquote.info
+    | inspired from 
+    a(href="https://dribbble.com/shots/3787986-41-Camera-Aperture") 41 - Camera Aperture

@@ -1,0 +1,172 @@
+$color-white: #fff;
+
+$color-light: #c4c4c4;
+$color-dark: #1b1b1b;
+$color-bg: $color-white;
+
+.camera-aperture {
+  border-radius: 50%;
+  border: .06em solid $color-bg;
+  box-shadow: 0 0 0 .05em $color-light;
+  overflow: hidden;
+
+  .checkbox--l:checked ~ & { --aperture-size: -35deg; } // 1/2.8
+  .checkbox--m:checked ~ & { --aperture-size: -25deg; } // 1/10
+  .checkbox--s:checked ~ & { --aperture-size: -10deg; } // 1/16
+}
+
+.blade-box {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  transform-style: preserve-3d;
+  transform: rotate(-200deg);
+}
+
+.blade {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform: rotate(calc(var(--i) * 60deg)) rotateX(-60deg) scaleY(2);
+  transform-origin: 0% 50%;
+
+  @for $i from 1 through 6 {
+    &:nth-of-type(#{$i}) {
+      --i: #{$i};
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow:
+      inset .03em 0 $color-bg,
+      inset 1em 0 $color-dark; // fake bgc, avoid strange line on edge
+    transform-origin: 0% 0%;
+    transform: rotate(var(--aperture-size, -10deg));
+    transition: transform .3s;
+  }
+}
+
+.label {
+  --active: 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: var(--active);
+  z-index: var(--active);
+  transition: opacity .2s;
+  font-size: .2em;
+  border-radius: 50%;
+
+  &::before {
+    content: attr(data-current-size);
+    position: absolute;
+    top: 115%;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: $color-light;
+    transform: translateY(calc(1em * (1 - var(--active))));
+    transition: transform .3s;
+  }
+}
+
+.checkbox--l:checked ~ .label--s,
+.checkbox--s:checked ~ .label--m,
+.checkbox--m:checked ~ .label--l {
+  --active: 1;
+}
+
+.icon-box {
+  position: relative;
+  font-size: 150px;
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+
+  small {
+    display: block;
+    text-align: right;
+    opacity: .3;
+    font-style: italic;
+    text-transform: none;
+    margin-top: .5rem;
+    border-top: 1px dashed;
+  }
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 1em;
+  font-size: .9em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+}
+
+.sr-only {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
