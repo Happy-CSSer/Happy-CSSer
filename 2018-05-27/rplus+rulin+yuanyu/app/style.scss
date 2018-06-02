@@ -1,0 +1,169 @@
+$unit-width: 300px;
+$unit-height: $unit-width * .42;
+$icon-size: 90px;
+
+.align-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $unit-width;
+  height: $unit-height;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 25px 100px -20px rgba(#330, .1);
+  transition: transform .6s;
+
+  &:active {
+    transform: scale(.98);
+  }
+}
+
+.icon {
+  --i1: 0;
+  --i2: 1;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 47px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #e8e8e8;
+  pointer-events: none;
+
+  &[data-state="0"],
+  .align-radio[value="0"]:checked ~ & { // left
+    --i1: 0;
+    --i2: 1; // related with transition speed
+  }
+
+  &[data-state="1"],
+  .align-radio[value="1"]:checked ~ & { // center
+    --i1: 1;
+    --i2: 1;
+  }
+
+  &[data-state="2"],
+  .align-radio[value="2"]:checked ~ & { // right
+    --i1: 1;
+    --i2: 0;
+  }
+
+  &:nth-of-type(4) { // indicator
+    color: #000;
+  }
+}
+
+.l {
+  display: flex;
+  width: 100%;
+
+  // thanks for simplifying structure with pseudo element by rulinshyu
+  &::before,
+  &::after {
+    content: '';
+    transition: .75s flex-grow;
+    transition-delay: var(--delay);
+  }
+
+  &::before { flex-grow: var(--i1); }
+  &::after { flex-grow: var(--i2); }
+
+  &:nth-of-type(1) { --delay: 0s; }
+  &:nth-of-type(2) { --delay: .08s; }
+  &:nth-of-type(3) { --delay: .16s; }
+}
+
+.s {
+  width: 40px;
+  height: 6px;
+  transform: scaleY(.75);
+  background-color: currentColor;
+  border-radius: 1em;
+
+  .l:nth-of-type(3) & {
+    width: 20px;
+  }
+}
+
+.align-radio {
+  width: $icon-size;
+  height: $icon-size;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em;
+}
+
+/// reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  line-height: 1.4;
+  background: #f1f1f1;
+}
+
+.intro {
+  width: 90%;
+  max-width: 50rem;
+  padding-top: .5em;
+  padding-bottom: 1rem;
+  margin: 0 auto 1em;
+  font-size: calc(1rem + 2vmin);
+  text-transform: capitalize;
+  text-align: center;
+  font-family: serif;
+
+  small {
+    display: block;
+    text-align: right;
+    opacity: .3;
+    font-style: italic;
+    text-transform: none;
+    margin-top: .5rem;
+    border-top: 1px dashed;
+  }
+}
+
+.info {
+  margin: auto 0 0;
+  padding: 2em 1em 1em;
+  font-size: .85em;
+  font-style: italic;
+  font-family: serif;
+  text-align: right;
+  opacity: .75;
+
+  a {
+    color: inherit;
+  }
+
+  .left {
+    padding-top: 1em;
+  }
+}

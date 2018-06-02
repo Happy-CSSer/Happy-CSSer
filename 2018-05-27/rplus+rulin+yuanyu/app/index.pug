@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title [CSS] Alignment button
+    link(rel="stylesheet", href="style.css")
+
+body
+  h1.intro Alignment button
+    small click to switch
+
+  mixin icon(state)
+    .icon(data-state=state)
+      .l
+        .s
+      .l
+        .s
+      .l
+        .s
+
+  .box
+    .align-unit
+      +icon(0)
+      +icon(1)
+      +icon(2)
+
+      input.align-radio(
+        type="radio"
+        name="align"
+        value="0"
+        checked autofocus
+        aria-label="align to left")
+      input.align-radio(
+        type="radio"
+        name="align"
+        value="1"
+        aria-label="align to center")
+      input.align-radio(
+        type="radio"
+        name="align"
+        value="2"
+        aria-label="align to right")
+      +icon
+
+  blockquote.info
+    .right
+      | inspired from 
+      a(href="https://dribbble.com/shots/3945978-Alignment-button") Alignment button
+
+    .left
+      | Pair programming with #[a(href="https://codepen.io/rulinshyu") RulinShyu] & #[a(href="https://codepen.io/yuanyu/") yuanyu],
+      br
+      | @ #[a(href="https://www.facebook.com/events/458246697959438/") Happy CSSer - 27] by #[a(href="https://www.visualstudio.com/services/live-share/") VS Code Live Share]
