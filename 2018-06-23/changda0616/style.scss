@@ -1,0 +1,283 @@
+$disk-radius: 120px;
+$inner-circle: 28px;
+* {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+}
+body{
+  background: #FFEFF5;
+}
+.player {
+  box-shadow: 0px 25px 40px #AD939B, 0px 100px 50px -50px #D4BCC4;
+  position: relative;
+  top: 40vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 480px;
+  height: 110px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  .info {
+    // box-shadow: 0 0 0 1px black; // position helper
+    border-radius: 10px;
+    position: absolute;
+    z-index: -1;
+    top:0;
+    right:0;
+    width: 95%;
+    height: 80px;
+    transition: transform .4s .1s ease-in, z-index .1s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(255,255,255,.6);
+    &__panel{
+      // box-shadow: 0 0 0 1px black; // position helper
+      width: 65%;
+      height: 85%;
+      h5 {
+        font-size:16px;
+        margin:5px 0 1px 0;
+        color: rgb(100,100,100);
+      }
+      p {
+        font-size:14px;
+        color: rgb(160,160,160);
+        margin-bottom: 13px;
+      }
+      &_progress {
+        // box-shadow: 0 0 0 1px black; // position helper
+        width: 90%;
+        height: 4px;
+        border-radius: 2px;
+        background-color: #E8E7E7;
+        position: relative;
+        overflow: hidden;
+        &--runner{
+          position: absolute;
+          left:-100%;
+          content:"";
+          width: 100%;
+          height: 4px;;
+          background-color: #F17AA4;
+          animation: loading 10s linear infinite paused;
+        }
+      }
+    }
+    &--active {
+      transform: translateY(-75px);
+      z-index: 1;
+      transition: transform .4s ease-in, z-index .1s .3s;
+      .info__panel_progress {
+        &--runner{
+          transform: translateX(0);
+          animation:loading 10s linear infinite running;
+        }
+      }
+    }
+  }
+  .disk {
+    position: absolute;
+    z-index: 2;
+    left: 35px;
+    bottom: 21px;
+    width: $disk-radius;
+    height: $disk-radius;
+    border-radius: 60px;
+    transition: filter .3s .1s ease-out;
+    &::before {
+      display:block;
+      content: "";
+      width: $disk-radius;
+      height: $disk-radius;
+      border-radius: 60px;
+      background-image: url("https://picsum.photos/150/150?random=1");
+      // background-image: url("./NWA.jpg");
+      mask-image: radial-gradient(circle at center, transparent 0, transparent 15%, black 15%, black 100%);
+      -webkit-mask-image: radial-gradient(circle at center, transparent 0, transparent 15%, black 15%, black 100%);
+      background-size: cover;
+      animation:spin 4s linear infinite paused;
+    }
+    &--active {
+      filter: drop-shadow(0 5px 10px rgba(181, 115, 162, 0.5));
+      animation: scale-out 10s .15s ease-in;
+      &::before {
+        animation:spin 4s linear infinite running;
+      }
+    }
+    &--stop {
+      animation: scale-in .3s ease-in;
+    }
+  }
+  .controller {
+    position: absolute;
+    width: 285px;
+    height: 85px;
+    right: 13px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__button {
+      // box-shadow: 0 0 0 1px black; // position helper
+      width: 85px;
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      &:hover {
+        background-color: #D9DCDF;
+        &::before {
+          background-color: white;
+        }
+      }
+      // general icon styling
+      &::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        background-color: #D9D9DE;
+        transition: background-color 0.1s cubic-bezier(1, 0.03, 1, 1);
+        &::before {
+          transition: background-color 0.1s cubic-bezier(1, 0.03, 1, 1);
+        }
+      }
+      &_backward {
+        &::before {
+          clip-path: polygon(0 50%, 60% 100%, 60% 66%, 100% 100%, 100% 0, 60% 33%, 60% 0);  
+        }
+      }
+      &_play {
+        &::before {
+          width: 30px;
+          height: 30px;
+          background-color: #C0C3CB;
+          transform: scale(1); 
+          opacity: 1;
+          clip-path: polygon(0 0, 0 100%, 100% 50%);
+        }
+        &--active {
+          &::before {
+            transform: scale(1); 
+            opacity: 1;
+            clip-path: polygon(0% 0%, 0% 100%, 36% 100%, 36% 0, 64% 0, 64% 100%, 36% 100%, 36% 100%, 100% 100%, 100% 0%);        
+            animation: play .3s cubic-bezier(1, 0.03, 1, 1) forwards;
+          }
+        }
+        &--stop {
+          &::before {
+            animation: pause .3s cubic-bezier(1, 0.03, 1, 1) forwards;
+          }
+        }
+      }
+      &_forward {
+        &::before {
+          clip-path: polygon(0 0, 0 100%, 40% 66%, 40% 100%, 100% 50%, 40% 0, 40% 33%);  
+        }
+      }
+
+    }
+  }
+}
+@keyframes play {
+  0%   {
+    transform: scale(1); 
+    opacity: 1;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+  }
+  33% {
+    background-color: rgba(150,150,150,0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0;
+    clip-path: polygon(0% 0%, 0% 100%, .1% 100%, .1% 0, 99.9% 0, 99.9% 100%, .1% 100%, .1% 100%, 100% 100%, 100% 0%);
+  }
+  100% {
+    transform: scale(1); 
+    opacity: 1;
+    clip-path: polygon(0% 0%, 0% 100%, 36% 100%, 36% 0, 64% 0, 64% 100%, 36% 100%, 36% 100%, 100% 100%, 100% 0%);
+  }
+}
+@keyframes pause {
+  0% {
+    transform: scale(1); 
+    opacity: 1;
+    clip-path: polygon(0% 0%, 0% 100%, 36% 100%, 36% 0, 64% 0, 64% 100%, 36% 100%, 36% 100%, 100% 100%, 100% 0%);
+  }
+  33% {
+    transform: scale(1);
+    opacity: 0;
+    clip-path: polygon(0% 0%, 0% 100%, .1% 100%, .1% 0, 99.9% 0, 99.9% 100%, .1% 100%, .1% 100%, 100% 100%, 100% 0%);
+  }
+  50% {
+    background-color: rgba(150,150,150,0);
+    transform: scale(0);
+    opacity: 0;
+  }
+  100%   {
+    transform: scale(1); 
+    opacity: 1;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+  }
+  1% {
+    transform: scale(1.15) translateY(-10px);
+  }
+  99% {
+    transform: scale(1.15) translateY(-10px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes scale-in {
+  0% {
+    transform: scale(1.15) translateY(-10px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
+.link {
+  bottom: 10px;
+  font-size: 14px;
+  position: fixed;
+  right: 16px;
+
+  a {
+    color: #ea4c89;
+    text-decoration: none;
+
+    &:visited {
+      color: #ea4c89;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "camera-motion",
+  "devDependencies": {
+    "node-sass": "^4.9.0"
+  },
+  "version": "1.0.0",
+  "dependencies": {},
+  "scripts": {
+    "start": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "node-sass --include-path scss ./style.scss   ./style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

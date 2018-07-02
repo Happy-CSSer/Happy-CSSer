@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="player">
+    <div class="info">
+      <div class="info__panel">
+        <h5>It Was A Good Day</h5>
+        <p>Ice Cube</p>
+        <div class="info__panel_progress">
+          <div class="info__panel_progress--runner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="disk"></div>
+    <div class="controller">
+      <div class="controller__button controller__button_backward"></div>
+      <div onclick="togglePlay()" class="controller__button controller__button_play"></div>
+      <div class="controller__button controller__button_forward"></div>
+    </div>
+  </div>
+  <span class="link">Music player animation, inspired by <a href="https://dribbble.com/shots/4240318-Made-with-InVision-Studio-Music-Player" target="_blank">Charles Patterson</a></span>
+  <script>
+
+    const panelEle = document.querySelector(".info");
+    const playEle = document.querySelector(".controller__button_play");
+    const diskEle = document.querySelector(".disk");
+    const progressEle = document.querySelector(".info__panel_progress");
+    let initState = true;
+
+    progressEle.addEventListener("animationiteration", (e) => {
+      panelEle.classList.remove("info--active")
+      diskEle.classList.remove("disk--active")
+      playEle.classList.remove("controller__button_play--active")
+      playEle.classList.add("controller__button_play--stop")
+      diskEle.classList.add("disk--stop")
+    })
+    function togglePlay() {
+      playEle.classList.toggle("controller__button_play--active")
+      diskEle.classList.toggle("disk--active")
+      panelEle.classList.toggle("info--active")
+
+      if (initState) {
+        initState = false;
+        return;
+      };
+
+      playEle.classList.toggle("controller__button_play--stop")
+      diskEle.classList.toggle("disk--stop")
+    }
+  </script>
+</body>
+
+</html>
