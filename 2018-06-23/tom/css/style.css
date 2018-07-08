@@ -1,0 +1,239 @@
+body {
+  background: #ffeff5; }
+
+.playerWrap {
+  width: 500px;
+  margin: 25% auto;
+  min-height: 100px; }
+  .playerWrap .playerPanel {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 1px 10px 10px #ccc;
+    background: #fff; }
+    .playerWrap .playerPanel .controlContent {
+      width: 100%;
+      height: 80px;
+      text-align: right;
+      line-height: 80px;
+      position: relative; }
+      .playerWrap .playerPanel .controlContent .disc {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transform-origin: 50% 50%;
+        position: absolute;
+        left: 50px;
+        top: -50px;
+        background: #000;
+        transition: all 1s;
+        animation: Rotate 5s linear infinite;
+        animation-play-state: paused;
+        overflow: hidden; }
+        .playerWrap .playerPanel .controlContent .disc:before {
+          content: "";
+          display: block;
+          width: 25px;
+          height: 25px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin: auto;
+          border-radius: 50%;
+          background: #fff; }
+        .playerWrap .playerPanel .controlContent .disc img {
+          width: 100%; }
+      .playerWrap .playerPanel .controlContent .musicInfo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        width: calc(100% - 50px);
+        height: 0px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        position: absolute;
+        bottom: 92px;
+        background: rgba(250, 250, 250, 0.7);
+        transition: all 1s;
+        overflow: hidden;
+        text-align: left;
+        padding: 0 10px; }
+        .playerWrap .playerPanel .controlContent .musicInfo .info {
+          width: 70%;
+          height: 50px;
+          line-height: 1;
+          transition: all 1s;
+          position: relative;
+          top: 100px; }
+          .playerWrap .playerPanel .controlContent .musicInfo .info p {
+            margin: 0; }
+          .playerWrap .playerPanel .controlContent .musicInfo .info span {
+            font-size: 14px; }
+          .playerWrap .playerPanel .controlContent .musicInfo .info .progressBar {
+            width: 100%;
+            height: 5px;
+            background: #ede6e7;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px; }
+            .playerWrap .playerPanel .controlContent .musicInfo .info .progressBar:before {
+              content: "";
+              display: block;
+              width: 100%;
+              height: inherit;
+              background: #f27aa1;
+              border-radius: 5px;
+              animation: startplay 10s linear;
+              animation-fill-mode: forwards;
+              animation-play-state: paused; }
+      .playerWrap .playerPanel .controlContent #play {
+        display: none; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .disc {
+        left: 25px;
+        top: -75px;
+        width: 125px;
+        height: 125px;
+        animation-play-state: running; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .musicInfo {
+        height: 100px; }
+        .playerWrap .playerPanel .controlContent #play:checked ~ .musicInfo .info {
+          top: 0px; }
+        .playerWrap .playerPanel .controlContent #play:checked ~ .musicInfo .progressBar:before {
+          animation-play-state: running; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay:before, .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay:after {
+        opacity: 1; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay:before {
+        left: 0px; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay:after {
+        right: 0px; }
+      .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay label {
+        background: #dbdedf; }
+        .playerWrap .playerPanel .controlContent #play:checked ~ .btn.startPlay label:before {
+          opacity: 0;
+          transform: scale(0); }
+      .playerWrap .playerPanel .controlContent .btn {
+        display: inline-block;
+        width: 20%;
+        height: 80px;
+        border: 0;
+        margin: 0 5px;
+        position: relative;
+        vertical-align: middle;
+        font-size: 30px;
+        background: transparent;
+        transition: all 1s;
+        color: #dadde0;
+        border-radius: 10px;
+        outline: none;
+        cursor: pointer; }
+        .playerWrap .playerPanel .controlContent .btn:hover {
+          background: #dbdedf;
+          color: #fff; }
+          .playerWrap .playerPanel .controlContent .btn:hover:before, .playerWrap .playerPanel .controlContent .btn:hover:after {
+            background-color: #fff; }
+        .playerWrap .playerPanel .controlContent .btn label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 10px; }
+          .playerWrap .playerPanel .controlContent .btn label:before {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            -webkit-clip-path: polygon(50% 0%, 50% 100%, 100% 50%);
+            clip-path: polygon(50% 0%, 50% 100%, 100% 50%);
+            background-color: #dadde0;
+            transition: all 0.5s;
+            margin-right: 9px;
+            opacity: 1;
+            transform: scale(1); }
+          .playerWrap .playerPanel .controlContent .btn label:hover {
+            background: #dbdedf; }
+            .playerWrap .playerPanel .controlContent .btn label:hover:before {
+              background-color: #fff; }
+      .playerWrap .playerPanel .controlContent .btn.startPlay {
+        text-align: center; }
+        .playerWrap .playerPanel .controlContent .btn.startPlay:before, .playerWrap .playerPanel .controlContent .btn.startPlay:after {
+          content: "";
+          display: inline-block;
+          width: 20px;
+          height: 40px;
+          position: relative;
+          background-color: #fff;
+          transition: all 1s;
+          opacity: 0;
+          z-index: 1; }
+        .playerWrap .playerPanel .controlContent .btn.startPlay:before {
+          left: -10px; }
+        .playerWrap .playerPanel .controlContent .btn.startPlay:after {
+          right: -10px; }
+      .playerWrap .playerPanel .controlContent .prev:before, .playerWrap .playerPanel .controlContent .prev:after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #dadde0;
+        -webkit-clip-path: polygon(50% 0%, 0 52%, 50% 100%);
+        clip-path: polygon(50% 0%, 0 52%, 50% 100%);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto; }
+      .playerWrap .playerPanel .controlContent .prev:before {
+        left: 30px; }
+      .playerWrap .playerPanel .controlContent .prev:after {
+        right: 12px; }
+      .playerWrap .playerPanel .controlContent .next:before, .playerWrap .playerPanel .controlContent .next:after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #dadde0;
+        -webkit-clip-path: polygon(50% 0%, 50% 100%, 100% 50%);
+        clip-path: polygon(50% 0%, 50% 100%, 100% 50%);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto; }
+      .playerWrap .playerPanel .controlContent .next:before {
+        right: 30px; }
+      .playerWrap .playerPanel .controlContent .next:after {
+        left: 12px; }
+
+@keyframes Rotate {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes startplay {
+  from {
+    transform: translateX(-100%); }
+  to {
+    transform: translateX(0%); } }
+
+/*# sourceMappingURL=style.css.map */
