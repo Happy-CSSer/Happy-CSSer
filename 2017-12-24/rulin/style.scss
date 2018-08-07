@@ -1,0 +1,72 @@
+$layer-amount: 14;
+$base-size: 300px;
+$line-size: 20px;
+$color--dark: #09083d;
+$color--green: #2e8e00;
+$color--yellow: #fddc2d;
+
+.tree {
+  position: relative;
+  width: $base-size;
+  height: $base-size;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transform: translate(0, 600px) perspective($base-size * 2/3) translate3d(0, $base-size * -5/3 + 10px * $layer-amount, 0) rotate3d(1, 0, 0, 10deg);
+  cursor: pointer;
+  transition: transform .5s;
+
+  &:hover {
+    transform: translate(0, 0) translate3d(0, 10px * $layer-amount, 0) rotate3d(1, 0, 0, 10deg);
+  }
+
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: $line-size / 2;
+    filter: drop-shadow(0 0 $line-size / 4 $color--dark);
+  }
+}
+
+.layer {
+  border: $line-size solid $color--green;
+  transition: transform .5s;
+
+  $angle: 0;
+  $height: 0;
+  @for $layer from 0 through $layer-amount {
+    $scale: ($layer-amount + 1 - $layer) / ($layer-amount + 1);
+    $angle: $angle + 10deg * $scale;
+    $height: $height + 10px * $scale;
+
+    &:nth-child(#{$layer}) {
+      transform: rotate($angle) scale($scale) translateZ($height);
+      .tree:hover & { transform: scale($scale) translateZ($height); }
+    }
+  }
+}
+
+.star {
+  width: $line-size;
+  height: $line-size;
+  margin: auto;
+  background-color: $color--yellow;
+  transform: translateZ($layer-amount * 6px) rotate3d(-1, 0, 0, 10deg);
+}
+
+body {
+  min-height: 100vh;
+  background-color: $color--dark;
+}
+
+.note {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  color: #fff;
+  line-height: 1.5;
+  
+  a { color: $color--yellow; }
+}
